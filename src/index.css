@@ -1,0 +1,19 @@
+@import url(./SCDream.css);
+
+:root {
+  background-color: black;
+
+  font-family: SCDream, -apple-system, sans-serif;
+
+  color: white;
+
+  --theme-color: #40f;
+}
+
+body {
+  margin: auto;
+
+  max-width: 30rem;
+
+  box-sizing: border-box;
+}

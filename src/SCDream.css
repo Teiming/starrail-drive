@@ -1,0 +1,45 @@
+@font-face {
+  font-family: SCDream;
+  src: url("SCDream1.woff2") format(woff2);
+  font-weight: 100;
+}
+@font-face {
+  font-family: SCDream;
+  src: url("SCDream2.woff2") format(woff2);
+  font-weight: 200;
+}
+@font-face {
+  font-family: SCDream;
+  src: url("SCDream3.woff2") format(woff2);
+  font-weight: 300;
+}
+@font-face {
+  font-family: SCDream;
+  src: url("SCDream4.woff2") format(woff2);
+  font-weight: 400;
+}
+@font-face {
+  font-family: SCDream;
+  src: url("SCDream5.woff2") format(woff2);
+  font-weight: 500;
+}
+@font-face {
+  font-family: SCDream;
+  src: url("SCDream6.woff2") format(woff2);
+  font-weight: 600;
+}
+@font-face {
+  font-family: SCDream;
+  src: url("SCDream7.woff2") format(woff2);
+  font-weight: 700;
+}
+@font-face {
+  font-family: SCDream;
+  src: url("SCDream8.woff2") format(woff2);
+  font-weight: 800;
+}
+@font-face {
+  font-family: SCDream;
+  src: url("SCDream9.woff2") format(woff2);
+  font-weight: 900;
+}

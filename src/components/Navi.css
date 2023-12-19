@@ -1,0 +1,34 @@
+#Navi {
+  position: fixed;
+  bottom: 0;
+
+  margin: 1rem;
+  padding: 0;
+  max-width: 30rem;
+  width: 100%;
+
+  list-style-type: none;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+#Navi li {
+  width: 100%;
+  height: 2rem;
+
+  font-size: 1rem;
+  font-weight: bolder;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 2rem;
+}
+#Navi li[data-selected="yes"] {
+  background-color: var(--theme-color);
+}
+#Navi li[data-selected="no"] {
+  border: 1px solid var(--theme-color);
+}
