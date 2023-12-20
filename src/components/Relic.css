@@ -1,0 +1,61 @@
+@media (min-width: 60rem) {
+  #유물 {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+#유물 {
+  padding: 6pt;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.유물 {
+  background-color: var(--theme-color);
+
+  border-radius: 1rem;
+
+  padding: 1rem;
+
+  font-size: 1rem;
+}
+.유물_세트이름 {
+  margin-bottom: 1rem;
+}
+.유물_주옵 {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+.유물_주옵 div:first-child {
+  font-weight: bolder;
+  margin-right: auto;
+}
+.유물_부옵 {
+  display: flex;
+  margin-bottom: 0rem;
+}
+.유물_부옵 div:first-child {
+  font-weight: bolder;
+  margin-right: auto;
+}
+
+.유물_착용 {
+  display: flex;
+  border-radius: 1rem;
+}
+.유물_착용 input {
+  font-size: 1rem;
+  max-width: 6rem;
+  color: var(--theme-color);
+  font-weight: bolder;
+  text-align: center;
+  border-radius: 0;
+}
+.유물_착용 span {
+  padding: 2pt;
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  color: var(--theme-color);
+}

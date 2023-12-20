@@ -1,7 +1,13 @@
 @import url(./SCDream.css);
 
+@media (min-width: 60rem) {
+  body {
+    max-width: 60rem !important;
+  }
+}
+
 :root {
-  background-color: black;
+  /* background-color: black; */
 
   font-family: SCDream, -apple-system, sans-serif;
 
@@ -10,10 +16,14 @@
   --theme-color: #40f;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: auto;
 
   max-width: 30rem;
-
-  box-sizing: border-box;
 }

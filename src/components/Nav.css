@@ -1,20 +1,28 @@
+@media (min-width: 60rem) {
+  #Navi {
+    max-width: 60rem !important;
+  }
+}
 #Navi {
   position: fixed;
   bottom: 0;
 
-  margin: 1rem;
-  padding: 0;
+  padding: 1rem 0;
   max-width: 30rem;
   width: 100%;
 
   list-style-type: none;
 
+  background-color: black;
+}
+#NavMain {
+  margin: 0 1rem 0 1rem;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 #Navi li {
-  width: 100%;
   height: 2rem;
 
   font-size: 1rem;
