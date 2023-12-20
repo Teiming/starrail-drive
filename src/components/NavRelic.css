@@ -1,15 +1,7 @@
 #NavRelic {
-  padding: 0 1rem;
-
-  max-width: 30rem;
-  width: 100%;
-
   list-style-type: none;
   background-color: black;
 
   display: flex;
   gap: 1rem;
-}
-#NavRelic li {
-  width: 100%;
 }

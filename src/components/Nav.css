@@ -1,29 +1,34 @@
 @media (min-width: 60rem) {
-  #Navi {
+  #Nav {
     max-width: 60rem !important;
   }
 }
-#Navi {
+#Nav {
   position: fixed;
   bottom: 0;
 
-  padding: 1rem 0;
   max-width: 30rem;
   width: 100%;
 
-  list-style-type: none;
+  padding: 0.5rem;
 
   background-color: black;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  list-style-type: none;
 }
-#NavMain {
-  margin: 0 1rem 0 1rem;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+#NavMain,
+#NavRelic {
+  list-style-type: none;
+  display: flex;
+  gap: 0.5rem;
 }
-#Navi li {
+#Nav li {
   height: 2rem;
+  width: 100%;
 
   font-size: 1rem;
   font-weight: bolder;
@@ -34,9 +39,9 @@
 
   border-radius: 2rem;
 }
-#Navi li[data-selected="yes"] {
+#Nav li[data-selected="yes"] {
   background-color: var(--theme-color);
 }
-#Navi li[data-selected="no"] {
+#Nav li[data-selected="no"] {
   border: 1px solid var(--theme-color);
 }

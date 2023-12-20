@@ -27,7 +27,7 @@ class Nav extends Component {
   }
   render() {
     return (
-      <nav id="Navi">
+      <nav id="Nav">
         {this.nav_plus(this.state.mode)}
         <ul id="NavMain">
           <li
@@ -40,7 +40,8 @@ class Nav extends Component {
           </li>
           <li
             data-selected={this.selected("광추")}
-            onClick={function () {
+            onClick={function (e) {
+              console.log(e);
               this.mode_change("광추");
             }.bind(this)}
           >
