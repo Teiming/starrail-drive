@@ -3,14 +3,8 @@ import NavRelic from "./NavRelic";
 import "./Nav.css";
 
 class Nav extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      mode: localStorage.mode,
-    };
-  }
   selected(target) {
-    if (this.state.mode === target) {
+    if (this.props.mode === target) {
       return "yes";
     } else {
       return "no";
@@ -28,11 +22,11 @@ class Nav extends Component {
   render() {
     return (
       <nav id="Nav">
-        {this.nav_plus(this.state.mode)}
+        {this.nav_plus(this.props.mode)}
         <ul id="NavMain">
           <li
             data-selected={this.selected("캐릭터")}
-            onClick={function () {
+            onClick={function (e) {
               this.mode_change("캐릭터");
             }.bind(this)}
           >
@@ -41,7 +35,6 @@ class Nav extends Component {
           <li
             data-selected={this.selected("광추")}
             onClick={function (e) {
-              console.log(e);
               this.mode_change("광추");
             }.bind(this)}
           >
@@ -49,7 +42,7 @@ class Nav extends Component {
           </li>
           <li
             data-selected={this.selected("유물")}
-            onClick={function () {
+            onClick={function (e) {
               this.mode_change("유물");
             }.bind(this)}
           >

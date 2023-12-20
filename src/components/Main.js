@@ -9,12 +9,13 @@ class Main extends Component {
     this.state = {};
   }
   render() {
-    if (localStorage.mode === "캐릭터") {
-      return <Character />;
-    } else if (localStorage.mode === "광추") {
-      return <Lightcone />;
-    } else if (localStorage.mode === "유물") {
-      return <Relic />;
+    switch (this.props.mode) {
+      case "캐릭터":
+        return <Character />;
+      case "광추":
+        return <Lightcone />;
+      default:
+        return <Relic />;
     }
   }
 }

@@ -7,7 +7,7 @@
 }
 
 :root {
-  /* background-color: black; */
+  background-color: black;
 
   font-family: SCDream, -apple-system, sans-serif;
 
@@ -26,4 +26,8 @@ body {
   margin: auto;
 
   max-width: 30rem;
+  padding-bottom: 5rem;
+}
+input {
+  appearance: none;
 }

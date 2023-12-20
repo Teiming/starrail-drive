@@ -35,8 +35,17 @@ class RelicItem extends Component {
           <div>{this.props.sub4_value}</div>
         </div>
         <div className="유물_착용">
-          <input type="text" name="착용" value={this.props.owner}></input>
+          <input name="장착" list="CharacterList" placeholder="dff"></input>
+          <datalist id="CharacterList">
+            <option value="dfsf"></option>
+            <option value="dfdfsf"></option>
+            <option value="dfffdsf"></option>
+          </datalist>
           <span className="유물_부위">{this.props.slot}</span>
+        </div>
+        <div className="유물_편집">
+          <input type="button" value="수정"></input>
+          <input type="button" value="삭제"></input>
         </div>
       </div>
     );

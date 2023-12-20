@@ -10,6 +10,9 @@ class Relic extends Component {
   render() {
     return (
       <main id="유물">
+        <div className="유물" id="유물_등록">
+          <span>+</span>
+        </div>
         <div
           className="유물"
           data-name=""
@@ -45,6 +48,7 @@ class Relic extends Component {
           sub2="dfsf"
           sub3="dfsfdfdf"
           sub4="2123"
+          sub4_value="23%"
         />
         <RelicItem
           set="dfsf"
@@ -76,9 +80,6 @@ class Relic extends Component {
           sub3="dfsfdfdf"
           sub4="2123"
         />
-        <div>
-          <span>+신규등록</span>
-        </div>
       </main>
     );
   }
