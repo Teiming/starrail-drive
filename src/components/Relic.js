@@ -10,37 +10,26 @@ class Relic extends Component {
   render() {
     return (
       <main id="유물">
-        <div className="유물" id="유물_등록">
+        <div id="addRelic">
           <span>+</span>
-        </div>
-        <div
-          className="유물"
-          data-name=""
-          data-slot="팔"
-          data-main-option="공격력"
-        >
-          <div className="유물_세트이름">들이삭과 동행하는 거너</div>
-          <div className="유물_주옵">
-            <div>공격력</div>
-            <div>43.2%</div>
-          </div>
-          <div className="유물_부옵">공격력</div>
-          <div className="유물_부옵">공격력</div>
-          <div className="유물_착용">
-            <input type="text" name="착용" value="단항_음월"></input>
-            <span className="유물_부위">팔</span>
-          </div>
-        </div>
-        <div
-          className="유물"
-          data-name=""
-          data-slot="팔"
-          data-main-option="공격력"
-        >
-          asdf
         </div>
         <RelicItem
           set="dfsf"
+          slot="다리"
+          level="15"
+          owner="단항_음월"
+          main="공격력"
+          sub1="dfsf"
+          sub2="dfsf"
+          sub3="dfsfdfdf"
+          sub4="2123"
+          sub1_value="0.21"
+          sub2_value="0.22"
+          sub3_value="0.23"
+          sub4_value="0.24"
+        />
+        <RelicItem
+          set="들이삭과 동행하는 거너"
           slot="다리"
           owner="정운"
           main="공격력"
@@ -48,12 +37,34 @@ class Relic extends Component {
           sub2="dfsf"
           sub3="dfsfdfdf"
           sub4="2123"
-          sub4_value="23%"
+          sub4_value="0.23"
+        />
+        <RelicItem
+          set="들이삭과 동행하는 거너"
+          slot="다리"
+          owner="정운"
+          main="공격력"
+          sub1="dfsf"
+          sub2="dfsf"
+          sub3="dfsfdfdf"
+          sub4="2123"
+          sub4_value="0.23"
+        />
+        <RelicItem
+          set="들이삭과 동행하는 거너"
+          slot="다리"
+          owner="정운"
+          main="공격력"
+          sub1="dfsf"
+          sub2="dfsf"
+          sub3="dfsfdfdf"
+          sub4="2123"
+          sub4_value="0.23"
         />
         <RelicItem
           set="dfsf"
           slot="다리"
-          owner="정운"
+          owner="부현"
           main="HP"
           sub1="dfsf"
           sub2="dfsf"

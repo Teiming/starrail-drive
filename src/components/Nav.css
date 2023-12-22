@@ -1,18 +1,14 @@
-@media (min-width: 60rem) {
-  #Nav {
-    max-width: 60rem !important;
-  }
-}
-#Nav {
+footer {
   position: fixed;
   bottom: 0;
 
-  max-width: 30rem;
-  width: 100%;
-
   padding: 0.5rem;
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
 
-  background-color: black;
+  width: 100%;
+  max-width: 25rem;
+
+  background-color: #000000dd;
 
   display: flex;
   flex-direction: column;
@@ -20,28 +16,67 @@
 
   list-style-type: none;
 }
+
+@media (min-width: 50rem) {
+  footer {
+    max-width: 50rem;
+  }
+}
+@media (min-width: 75rem) {
+  footer {
+    max-width: 75rem;
+  }
+}
+
 #NavMain,
+#NavCharacter,
+#NavLightcone,
 #NavRelic {
-  list-style-type: none;
-  display: flex;
-  gap: 0.5rem;
-}
-#Nav li {
-  height: 2rem;
-  width: 100%;
+  ul {
+    list-style-type: none;
 
-  font-size: 1rem;
-  font-weight: bolder;
+    display: flex;
+    li {
+      height: 2rem;
+      width: 100%;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+      font-size: 1rem;
+      font-weight: bolder;
 
-  border-radius: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 2rem;
+    }
+
+    li[data-selected="yes"] {
+      background-color: var(--theme-color);
+    }
+
+    li[data-selected="no"] {
+      border: 1px solid var(--theme-color);
+    }
+  }
 }
-#Nav li[data-selected="yes"] {
-  background-color: var(--theme-color);
+#NavMain {
+  ul {
+    gap: 0.5rem;
+  }
 }
-#Nav li[data-selected="no"] {
-  border: 1px solid var(--theme-color);
+#NavCharacter,
+#NavLightcone,
+#NavRelic {
+  ul {
+    gap: 0;
+  }
+  li {
+    border-radius: 0 !important;
+  }
+  li:first-child {
+    border-radius: 1rem 0 0 1rem !important;
+  }
+  li:last-child {
+    border-radius: 0 1rem 1rem 0 !important;
+  }
 }

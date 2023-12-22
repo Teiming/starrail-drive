@@ -18,7 +18,15 @@
   // HTML Tag
   "div": {
     "prefix": "div",
-    "body": "<div>$1</div>"
+    "body": "<div className=\"\">$0</div>"
+  },
+  "span": {
+    "prefix": "span",
+    "body": "<span>$0</span>"
+  },
+  "nav": {
+    "prefix": "nav",
+    "body": "<nav>$0</nav>"
   },
   // CSS
   "@media": {

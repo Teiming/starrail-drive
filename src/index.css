@@ -1,11 +1,5 @@
 @import url(./SCDream.css);
 
-@media (min-width: 60rem) {
-  body {
-    max-width: 60rem !important;
-  }
-}
-
 :root {
   background-color: black;
 
@@ -20,14 +14,23 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  appearance: none;
 }
 
 body {
   margin: auto;
 
-  max-width: 30rem;
-  padding-bottom: 5rem;
+  padding-bottom: calc(4.5rem + max(0.5rem, env(safe-area-inset-bottom)));
+
+  max-width: 25rem;
 }
-input {
-  appearance: none;
+@media (min-width: 50rem) {
+  body {
+    max-width: 50rem !important;
+  }
+}
+@media (min-width: 75rem) {
+  body {
+    max-width: 75rem !important;
+  }
 }
