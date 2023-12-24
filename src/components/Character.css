@@ -38,7 +38,7 @@
       overflow: hidden;
 
       border-radius: 1rem;
-      background-color: #40f;
+      background-color: var(--theme-color-shadow);
 
       img {
         width: 100%;
@@ -75,10 +75,9 @@
       }
 
       .광추이미지 {
-        min-width: 3rem;
+        width: 3rem;
         height: 3rem;
-        background-color: gray;
-
+        background-color: var(--theme-color-shadow);
         border-radius: 1rem;
         overflow: hidden;
 
@@ -97,37 +96,39 @@
       display: flex;
       width: 100%;
       gap: 0.5rem;
+
       .성혼_태그 {
         flex-grow: auto;
-      }
-      .성혼_그래프 {
-        word-break: keep-all;
-        display: flex;
-        flex-grow: 1;
-        text-align: center;
-        .성혼 {
-          height: 1rem;
-          width: 100%;
-          background-color: white;
-        }
-        .성혼:first-child {
-          border-top-left-radius: 1rem;
-          border-bottom-left-radius: 1rem;
-        }
-        .성혼:last-child {
-          border-top-right-radius: 1rem;
-          border-bottom-right-radius: 1rem;
-        }
-        .성혼[data-eidolon="activated"] {
-          background-color: var(--theme-color);
-          border: 0.075rem solid white;
-          box-sizing: border-box;
-        }
       }
     }
   }
 }
+.성혼_그래프 {
+  display: flex;
+  flex-grow: 1;
 
+  .성혼 {
+    height: 1rem;
+    width: 100%;
+    background-color: white;
+  }
+  .성혼:first-child {
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+  }
+  .성혼:last-child {
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+  }
+  .성혼[data-eidolon="activated"] {
+    background-color: var(--theme-color);
+    border: 0.075rem solid white;
+    box-sizing: border-box;
+  }
+}
+.캐릭터[data-filter="false"] {
+  display: none;
+}
 #addCharacter {
   background-color: white;
   border-radius: 1rem;

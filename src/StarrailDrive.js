@@ -5,12 +5,18 @@ import Nav from "./components/Nav";
 class StarrailDrive extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      mode: "캐릭터",
-    };
-    if (localStorage.mode) {
-      this.state.mode = localStorage.mode;
+    var currentMode = localStorage.getItem("mode");
+    var setMode = "캐릭터";
+    if (currentMode) {
+      setMode = currentMode;
     }
+    this.state = {
+      mode: setMode,
+    };
+  }
+  changeMode(_mode) {
+    this.setState({ mode: _mode });
+    localStorage.mode = _mode;
   }
   render() {
     return (
@@ -18,15 +24,13 @@ class StarrailDrive extends Component {
         <Main
           mode={this.state.mode}
           newDataMode={function (_mode) {
-            this.setState({ mode: _mode });
-            localStorage.mode = _mode;
+            this.changeMode(_mode);
           }.bind(this)}
         />
         <Nav
           mode={this.state.mode}
           selectMode={function (_mode) {
-            this.setState({ mode: _mode });
-            localStorage.mode = _mode;
+            this.changeMode(_mode);
           }.bind(this)}
         />
       </div>

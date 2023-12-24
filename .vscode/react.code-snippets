@@ -33,10 +33,6 @@
     "prefix": "media",
     "body": "@media (min-width: ${1:60}rem) {${2:selector}{}}"
   },
-  "constructor": {
-    "prefix": "constructor",
-    "body": ["constructor(props) {", "super(props);", "this.state = {$1}}"]
-  },
   "render": {
     "prefix": "render",
     "body": ["render() {return $1}"]

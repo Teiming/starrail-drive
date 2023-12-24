@@ -1,0 +1,36 @@
+main#캐릭터_추가 {
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  .캐릭터_신규 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+    align-items: center;
+    .썸네일 {
+      width: 7rem;
+      height: 7rem;
+      border-radius: 1rem;
+      overflow: hidden;
+      background-color: var(--theme-color);
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .캐릭터_신규[data-already="true"] {
+    display: none;
+  }
+}
+@media (min-width: 50rem) {
+  main#캐릭터_추가 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+@media (min-width: 75rem) {
+  main#캐릭터_추가 {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}

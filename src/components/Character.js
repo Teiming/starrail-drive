@@ -1,6 +1,5 @@
 import { Component } from "react";
 import "./Character.css";
-import "./TestCharacter";
 
 export default class Character extends Component {
   findElement(name) {
@@ -57,52 +56,101 @@ export default class Character extends Component {
         return "풍요";
     }
   }
+  filterCharacter(element) {
+    switch (this.props.currentFilter[element]) {
+      case "hide":
+        return false;
+      default:
+        return true;
+    }
+  }
+  emptyData(dataSet, i, dataName) {
+    switch (dataName) {
+      case "레벨":
+        var initValue = 1;
+        break;
+      default:
+        var initValue = 0;
+        break;
+    }
+    var newItem = Object.assign(dataSet[i], {
+      [dataName]: initValue,
+    });
+    dataSet[i] = newItem;
+    localStorage.setItem("캐릭터", JSON.stringify(dataSet));
+    this.setState({ update: "yes" });
+  }
   constructor(props) {
     super(props);
     this.state = {
       characterData: [],
     };
-    var getCharacter = JSON.parse(localStorage.getItem("캐릭터"));
-    for (let i = 0; i < getCharacter.length; i++) {
+    if (localStorage.getItem("캐릭터")) {
+      var currentCharacterSet = JSON.parse(localStorage.getItem("캐릭터"));
+    } else {
+      var currentCharacterSet = [
+        { 이름: "개척자", 속성: "물리" },
+        { 이름: "단항" },
+        { 이름: "Mar. 7th" },
+      ];
+      localStorage.setItem("캐릭터", JSON.stringify(currentCharacterSet));
+    }
+
+    for (let i = 0; i < currentCharacterSet.length; i++) {
+      var name = currentCharacterSet[i]["이름"];
+      if (!currentCharacterSet[i]["레벨"]) {
+        this.emptyData(currentCharacterSet, i, "레벨");
+      }
+      if (currentCharacterSet[i]["성혼"]) {
+        var level = currentCharacterSet[i]["성혼"];
+      } else {
+        this.emptyData(currentCharacterSet, i, "성혼");
+      }
       this.state.characterData.push({
-        이름: getCharacter[i]["이름"],
-        레벨: getCharacter[i]["레벨"],
-        성혼: getCharacter[i]["성혼"],
+        이름: name,
+        속성: currentCharacterSet[i]["속성"],
+        레벨: currentCharacterSet[i]["레벨"],
+        성혼: currentCharacterSet[i]["성혼"],
       });
     }
   }
   render() {
     var output = [];
     var characterData = this.state.characterData;
+    var characterElement, characterPath;
     for (let i = 0; i < characterData.length; i++) {
       if (characterData[i]["이름"] === "개척자") {
         switch (characterData[i]["속성"]) {
           case "물리":
-            var characterElement = "물리";
-            var characterPath = "파멸";
+            characterElement = "물리";
+            characterPath = "파멸";
             break;
           default:
-            var characterElement = "화염";
-            var characterPath = "보존";
+            characterElement = "화염";
+            characterPath = "보존";
             break;
         }
       } else {
-        var characterElement = this.findElement(characterData[i]["이름"]);
-        var characterPath = this.findPath(characterData[i]["이름"]);
+        characterElement = this.findElement(characterData[i]["이름"]);
+        characterPath = this.findPath(characterData[i]["이름"]);
       }
+      var characterFiltered = this.filterCharacter(characterElement);
       var characterEidolon = Number(characterData[i]["성혼"]);
       var eidolonActivated = [];
       for (let i = 0; i < characterEidolon; i++) {
         eidolonActivated.push(
-          <div className="성혼" data-eidolon="activated"></div>
+          <div key={i} className="성혼" data-eidolon="activated"></div>
         );
       }
       for (let i = 0; i < 6 - characterEidolon; i++) {
-        eidolonActivated.push(<div className="성혼"></div>);
+        eidolonActivated.push(<div key={6 - i} className="성혼"></div>);
       }
-      console.log(eidolonActivated);
       output.push(
-        <article key={characterData[i]["이름"]} className="캐릭터">
+        <article
+          key={characterData[i]["이름"]}
+          className="캐릭터"
+          data-filter={characterFiltered}
+        >
           <div className="캐릭터_상단">
             <div className="캐릭터_이미지">
               <img
@@ -117,18 +165,18 @@ export default class Character extends Component {
             </div>
             <div className="캐릭터_요약">
               <div className="캐릭터_이름">{characterData[i]["이름"]}</div>
+              <div className="캐릭터_레벨">Lv. {characterData[i]["레벨"]}</div>
               <div className="캐릭터_정보">
                 {characterElement} / {characterPath}
               </div>
-              <div className="캐릭터_레벨">Lv. {characterData[i]["레벨"]}</div>
             </div>
           </div>
           <hr />
           <div className="캐릭터_하단">
             <div className="캐릭터_광추">
               <div className="광추요약">
-                <div className="광추이름">댄스! 댄스! 댄스!dafsdfasdfs</div>
-                <div className="광추레벨">Lv. 71</div>
+                <div className="광추이름">댄스! 댄스! 댄스!</div>
+                <div className="광추레벨">Lv. 90</div>
               </div>
               <div className="광추이미지">
                 <img src="./ㅁㄴㄹㅇㄹ.png" alt="광추 이미지" />
@@ -157,8 +205,8 @@ export default class Character extends Component {
         {output}
         <div
           id="addCharacter"
-          onClick={function (e) {
-            this.props.onNewCharacter("신규캐릭터");
+          onClick={function () {
+            this.props.onNewCharacter("캐릭터생성");
           }.bind(this)}
         >
           <span>+</span>

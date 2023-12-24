@@ -5,6 +5,19 @@ import NavRelic from "./NavRelic";
 import "./Nav.css";
 
 class Nav extends Component {
+  constructor(props) {
+    super(props);
+    var localData = localStorage.getItem("filterCharacter");
+    if (localData) {
+      this.state = {
+        filterCharacter: JSON.parse(localData),
+      };
+    } else {
+      this.state = {
+        filterCharacter: {},
+      };
+    }
+  }
   selected(target) {
     if (this.props.mode === target) {
       return "yes";
@@ -17,7 +30,25 @@ class Nav extends Component {
     }
     switch (target) {
       case "캐릭터":
-        return <NavCharacter />;
+        return (
+          <NavCharacter
+            filterCharacter={this.state.filterCharacter}
+            onFilterCharacter={function (element) {
+              var _currentFilter = this.state.filterCharacter;
+              if (_currentFilter[element] === "hide") {
+                _currentFilter[element] = "show";
+                this.setState({ filterCharacter: _currentFilter });
+                // localStorage.setItem("filterCharacter", JSON.stringify(_currentFilter));
+                localStorage.filterCharacter = JSON.stringify(_currentFilter);
+              } else {
+                _currentFilter[element] = "hide";
+                this.setState({ filterCharacter: _currentFilter });
+                // localStorage.setItem("filterCharacter", JSON.stringify(_currentFilter));
+                localStorage.filterCharacter = JSON.stringify(_currentFilter);
+              }
+            }.bind(this)}
+          />
+        );
       case "광추":
         return <NavLightcone />;
       case "유물":

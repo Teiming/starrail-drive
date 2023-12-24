@@ -50,12 +50,14 @@ footer {
       border-radius: 2rem;
     }
 
-    li[data-selected="yes"] {
+    li[data-selected="yes"],
+    li[data-filter="true"] {
       background-color: var(--theme-color);
     }
 
-    li[data-selected="no"] {
-      border: 1px solid var(--theme-color);
+    li[data-selected="no"],
+    li[data-filter="false"] {
+      border: 0.05rem solid var(--theme-color);
     }
   }
 }

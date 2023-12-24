@@ -7,7 +7,8 @@
 
   color: white;
 
-  --theme-color: #40f;
+  --theme-color: color(display-p3 0.25 0 1);
+  --theme-color-shadow: color(display-p3 0.2 0 0.8);
 }
 
 * {
