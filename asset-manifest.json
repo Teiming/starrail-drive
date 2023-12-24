@@ -1,8 +1,7 @@
 {
   "files": {
-    "main.css": "/starrail-drive/static/css/main.b9d13d6a.css",
-    "main.js": "/starrail-drive/static/js/main.ff70aac1.js",
-    "static/js/787.a1e6f78d.chunk.js": "/starrail-drive/static/js/787.a1e6f78d.chunk.js",
+    "main.css": "/starrail-drive/static/css/main.526f321e.css",
+    "main.js": "/starrail-drive/static/js/main.23aa38e5.js",
     "static/media/SCDream8.woff2": "/starrail-drive/static/media/SCDream8.5d878c5ad8dfa78f49ee.woff2",
     "static/media/SCDream7.woff2": "/starrail-drive/static/media/SCDream7.bebaac341968358ecc34.woff2",
     "static/media/SCDream3.woff2": "/starrail-drive/static/media/SCDream3.91dcf0ee2b928af5da4f.woff2",
@@ -13,12 +12,11 @@
     "static/media/SCDream6.woff2": "/starrail-drive/static/media/SCDream6.df435877af61052a0249.woff2",
     "static/media/SCDream1.woff2": "/starrail-drive/static/media/SCDream1.4b6875a51d8086635c91.woff2",
     "index.html": "/starrail-drive/index.html",
-    "main.b9d13d6a.css.map": "/starrail-drive/static/css/main.b9d13d6a.css.map",
-    "main.ff70aac1.js.map": "/starrail-drive/static/js/main.ff70aac1.js.map",
-    "787.a1e6f78d.chunk.js.map": "/starrail-drive/static/js/787.a1e6f78d.chunk.js.map"
+    "main.526f321e.css.map": "/starrail-drive/static/css/main.526f321e.css.map",
+    "main.23aa38e5.js.map": "/starrail-drive/static/js/main.23aa38e5.js.map"
   },
   "entrypoints": [
-    "static/css/main.b9d13d6a.css",
-    "static/js/main.ff70aac1.js"
+    "static/css/main.526f321e.css",
+    "static/js/main.23aa38e5.js"
   ]
 }
