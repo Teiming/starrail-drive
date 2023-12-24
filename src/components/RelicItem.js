@@ -1,6 +1,6 @@
 import { Component } from "react";
-import "./RelicItem.css";
 import RelicItemCharacterList from "./RelicItemCharacterList";
+import "../css/RelicItem.css";
 
 class RelicItem extends Component {
   static defaultProps = {

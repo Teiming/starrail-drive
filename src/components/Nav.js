@@ -2,9 +2,9 @@ import { Component } from "react";
 import NavCharacter from "./NavCharacter";
 import NavLightcone from "./NavLightcone";
 import NavRelic from "./NavRelic";
-import "./Nav.css";
+import "../css/Nav.css";
 
-class Nav extends Component {
+export default class Nav extends Component {
   constructor(props) {
     super(props);
     var localData = localStorage.getItem("filterCharacter");
@@ -93,5 +93,3 @@ class Nav extends Component {
     );
   }
 }
-
-export default Nav;

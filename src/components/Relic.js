@@ -1,6 +1,6 @@
 import { Component } from "react";
 import RelicItem from "./RelicItem";
-import "./Relic.css";
+import "../css/Relic.css";
 
 class Relic extends Component {
   constructor(props) {

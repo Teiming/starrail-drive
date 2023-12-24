@@ -21,17 +21,18 @@
 body {
   margin: auto;
 
-  padding-bottom: calc(4.5rem + max(0.5rem, env(safe-area-inset-bottom)));
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 
   max-width: 25rem;
 }
 @media (min-width: 50rem) {
   body {
-    max-width: 50rem !important;
+    max-width: 50rem;
   }
 }
 @media (min-width: 75rem) {
   body {
-    max-width: 75rem !important;
+    max-width: 75rem;
   }
 }

@@ -3,10 +3,13 @@ footer {
   bottom: 0;
 
   padding: 0.5rem;
+
   padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
 
   width: 100%;
-  max-width: 25rem;
+  max-width: calc(
+    25rem - env(safe-area-inset-left) - env(safe-area-inset-right)
+  );
 
   background-color: #000000dd;
 
@@ -19,12 +22,16 @@ footer {
 
 @media (min-width: 50rem) {
   footer {
-    max-width: 50rem;
+    max-width: calc(
+      50rem - env(safe-area-inset-left) - env(safe-area-inset-right)
+    );
   }
 }
 @media (min-width: 75rem) {
   footer {
-    max-width: 75rem;
+    max-width: calc(
+      75rem - env(safe-area-inset-left) - env(safe-area-inset-right)
+    );
   }
 }
 

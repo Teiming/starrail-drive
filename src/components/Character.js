@@ -1,28 +1,59 @@
 import { Component } from "react";
-import "./Character.css";
+import "../css/Character.css";
 
 export default class Character extends Component {
+  state = {
+    currentCharacterSet: {},
+  };
+  constructor(props) {
+    super(props);
+    if (localStorage.getItem("캐릭터")) {
+      this.state = {
+        currentCharacterSet: JSON.parse(localStorage.getItem("캐릭터")),
+      };
+    }
+  }
   findElement(name) {
     switch (name) {
-      case "소상":
+      case "아젠티":
+      case "루카":
+      case "클라라":
       case "한아":
+      case "나타샤":
+      case "소상":
         return "물리";
       case "계네빈":
+      case "아스타":
+      case "토파즈&복순이":
       case "후크":
+      case "히메코":
         return "화염";
       case "게파드":
       case "경류":
+      case "연경":
+      case "완·매":
+      case "페라":
+      case "헤르타":
       case "Mar. 7th":
         return "얼음";
+      case "경원":
+      case "백로":
+      case "서벌":
       case "아를란":
       case "정운":
+      case "카프카":
         return "번개";
+      case "곽향":
       case "단항":
       case "브로냐":
+      case "블레이드":
+      case "삼포":
         return "바람";
-      case "부현":
       case "링스":
+      case "부현":
+      case "설의":
       case "은랑":
+      case "제레":
       case "청작":
         return "양자";
       default:
@@ -56,6 +87,20 @@ export default class Character extends Component {
         return "풍요";
     }
   }
+  getEidolon(characterEidolon) {
+    var activated = characterEidolon;
+    var eidolonActivated = [];
+    var i = 0;
+    while (i < activated) {
+      eidolonActivated.push(<div key={i + 1} className="성혼 활성"></div>);
+      i++;
+    }
+    while (i < 6) {
+      eidolonActivated.push(<div key={i + 1} className="성혼 비활성"></div>);
+      i++;
+    }
+    return eidolonActivated;
+  }
   filterCharacter(element) {
     switch (this.props.currentFilter[element]) {
       case "hide":
@@ -65,12 +110,12 @@ export default class Character extends Component {
     }
   }
   emptyData(dataSet, i, dataName) {
+    var initValue = 0;
     switch (dataName) {
       case "레벨":
-        var initValue = 1;
+        initValue = 1;
         break;
       default:
-        var initValue = 0;
         break;
     }
     var newItem = Object.assign(dataSet[i], {
@@ -80,47 +125,18 @@ export default class Character extends Component {
     localStorage.setItem("캐릭터", JSON.stringify(dataSet));
     this.setState({ update: "yes" });
   }
-  constructor(props) {
-    super(props);
-    this.state = {
-      characterData: [],
-    };
-    if (localStorage.getItem("캐릭터")) {
-      var currentCharacterSet = JSON.parse(localStorage.getItem("캐릭터"));
-    } else {
-      var currentCharacterSet = [
-        { 이름: "개척자", 속성: "물리" },
-        { 이름: "단항" },
-        { 이름: "Mar. 7th" },
-      ];
-      localStorage.setItem("캐릭터", JSON.stringify(currentCharacterSet));
-    }
-
-    for (let i = 0; i < currentCharacterSet.length; i++) {
-      var name = currentCharacterSet[i]["이름"];
-      if (!currentCharacterSet[i]["레벨"]) {
-        this.emptyData(currentCharacterSet, i, "레벨");
-      }
-      if (currentCharacterSet[i]["성혼"]) {
-        var level = currentCharacterSet[i]["성혼"];
-      } else {
-        this.emptyData(currentCharacterSet, i, "성혼");
-      }
-      this.state.characterData.push({
-        이름: name,
-        속성: currentCharacterSet[i]["속성"],
-        레벨: currentCharacterSet[i]["레벨"],
-        성혼: currentCharacterSet[i]["성혼"],
-      });
-    }
-  }
   render() {
-    var output = [];
-    var characterData = this.state.characterData;
-    var characterElement, characterPath;
-    for (let i = 0; i < characterData.length; i++) {
-      if (characterData[i]["이름"] === "개척자") {
-        switch (characterData[i]["속성"]) {
+    console.log("Character render()");
+    console.log(this.state.currentCharacterSet);
+
+    var innerCharacter = [];
+
+    var currentCharacterSet = this.state.currentCharacterSet;
+
+    for (const key in currentCharacterSet) {
+      var characterElement, characterPath;
+      if (key === "개척자") {
+        switch (currentCharacterSet[key]["속성"]) {
           case "물리":
             characterElement = "물리";
             characterPath = "파멸";
@@ -131,78 +147,113 @@ export default class Character extends Component {
             break;
         }
       } else {
-        characterElement = this.findElement(characterData[i]["이름"]);
-        characterPath = this.findPath(characterData[i]["이름"]);
+        characterElement = this.findElement(key);
+        characterPath = this.findPath(key);
       }
       var characterFiltered = this.filterCharacter(characterElement);
-      var characterEidolon = Number(characterData[i]["성혼"]);
-      var eidolonActivated = [];
-      for (let i = 0; i < characterEidolon; i++) {
-        eidolonActivated.push(
-          <div key={i} className="성혼" data-eidolon="activated"></div>
-        );
-      }
-      for (let i = 0; i < 6 - characterEidolon; i++) {
-        eidolonActivated.push(<div key={6 - i} className="성혼"></div>);
-      }
-      output.push(
+      var eidolonActivated = this.getEidolon(
+        Number(currentCharacterSet[key]["성혼"])
+      );
+      innerCharacter.push(
         <article
-          key={characterData[i]["이름"]}
+          key={key}
           className="캐릭터"
           data-filter={characterFiltered}
+          onClick={function () {
+            this.props.onCharacterDetail(key);
+          }.bind(this)}
         >
           <div className="캐릭터_상단">
             <div className="캐릭터_이미지">
               <img
-                src={
-                  process.env.PUBLIC_URL +
-                  "/thumbnail/" +
-                  characterData[i]["이름"] +
-                  ".png"
-                }
-                alt={"캐릭터 썸네일 (" + characterData[i]["이름"] + ")"}
+                src={process.env.PUBLIC_URL + "/png/character/" + key + ".png"}
+                alt={"캐릭터 썸네일 (" + key + ")"}
               />
             </div>
             <div className="캐릭터_요약">
-              <div className="캐릭터_이름">{characterData[i]["이름"]}</div>
-              <div className="캐릭터_레벨">Lv. {characterData[i]["레벨"]}</div>
+              <div className="캐릭터_이름">{key}</div>
+              <div className="캐릭터_레벨">
+                Lv. {currentCharacterSet[key]["레벨"]}
+              </div>
               <div className="캐릭터_정보">
                 {characterElement} / {characterPath}
               </div>
             </div>
           </div>
           <hr />
-          <div className="캐릭터_하단">
+          <section className="캐릭터_하단">
             <div className="캐릭터_광추">
-              <div className="광추요약">
-                <div className="광추이름">댄스! 댄스! 댄스!</div>
-                <div className="광추레벨">Lv. 90</div>
+              <div className="요약">
+                <div className="이름">댄스! 댄스! 댄스!</div>
+                <div className="레벨">Lv. 90</div>
               </div>
-              <div className="광추이미지">
-                <img src="./ㅁㄴㄹㅇㄹ.png" alt="광추 이미지" />
+              <div className="이미지">
+                <img
+                  src={
+                    process.env.PUBLIC_URL +
+                    "/png/lightcone/어떤 에이언즈의 몰락.png"
+                  }
+                  alt="광추 이미지"
+                />
               </div>
             </div>
-            <div className="캐릭터_행적">
-              <div className="항목 일반">
-                <span>일반</span>
-                <span>6</span>
+            <section className="캐릭터_행적">
+              <div className="항목 일반공격">
+                <div>
+                  <span>일반</span>
+                </div>
+                <div>
+                  <span>6</span>
+                </div>
               </div>
-              <div className="항목 스킬">스킬 5</div>
-              <div className="항목 필살기">필살 6</div>
-              <div className="항목 특성">특성 7</div>
-            </div>
-            <div className="캐릭터_유물"></div>
-            <div className="캐릭터_성혼">
-              <div className="성혼_태그">성혼</div>
-              <div className="성혼_그래프">{eidolonActivated}</div>
-            </div>
-          </div>
+              <div className="항목 전투스킬">
+                <div>
+                  <span>스킬</span>
+                </div>
+                <div>
+                  <span>6</span>
+                </div>
+              </div>
+              <div className="항목 필살기">
+                <div>
+                  <span>필살</span>
+                </div>
+                <div>
+                  <span>6</span>
+                </div>
+              </div>
+              <div className="항목 특성">
+                <div>
+                  <span>특성</span>
+                </div>
+                <div>
+                  <span>6</span>
+                </div>
+              </div>
+            </section>
+            <section className="캐릭터_유물">
+              <div className="분류 터널">
+                <div className="부위 머리">머리</div>
+                <div className="부위 팔">팔</div>
+                <div className="부위 몸통">몸통</div>
+                <div className="부위 다리">다리</div>
+                <div className="부위 구체">구체</div>
+                <div className="부위 매듭">매듭</div>
+              </div>
+            </section>
+            <section className="캐릭터_성혼">
+              <div className="태그">
+                <span>성혼</span>
+              </div>
+              <div className="캐릭터 성혼 그래프">{eidolonActivated}</div>
+            </section>
+          </section>
         </article>
       );
     }
     return (
       <main id="캐릭터">
-        {output}
+        {innerCharacter}
         <div
           id="addCharacter"
           onClick={function () {
