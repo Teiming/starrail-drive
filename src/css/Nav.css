@@ -3,7 +3,6 @@ footer {
   bottom: 0;
 
   padding: 0.5rem;
-
   padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
 
   width: 100%;
@@ -11,15 +10,63 @@ footer {
     25rem - env(safe-area-inset-left) - env(safe-area-inset-right)
   );
 
-  background-color: #000000dd;
+  background-color: color(display-p3 0 0 0 / 0.8);
 
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 
   list-style-type: none;
-}
 
+  #NavCharacter,
+  #NavLightcone,
+  #NavRelic {
+    li {
+      border-radius: 0;
+    }
+    li:first-child {
+      border-top-left-radius: 3rem;
+      border-bottom-left-radius: 3rem;
+    }
+    li:last-child {
+      border-top-right-radius: 3rem;
+      border-bottom-right-radius: 3rem;
+    }
+  }
+  nav {
+    ul {
+      list-style-type: none;
+
+      display: flex;
+
+      li {
+        height: 3rem;
+        width: 100%;
+
+        border-radius: 3rem;
+
+        font-size: 1rem;
+        font-weight: bolder;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      li[data-selected="true"] {
+        background-color: var(--theme-color);
+      }
+      li[data-selected="false"] {
+        border: 0.1rem solid var(--theme-color);
+      }
+    }
+  }
+  #NavMain {
+    ul {
+      gap: 0.5rem;
+    }
+  }
+}
 @media (min-width: 50rem) {
   footer {
     max-width: calc(
@@ -32,60 +79,5 @@ footer {
     max-width: calc(
       75rem - env(safe-area-inset-left) - env(safe-area-inset-right)
     );
-  }
-}
-
-#NavMain,
-#NavCharacter,
-#NavLightcone,
-#NavRelic {
-  ul {
-    list-style-type: none;
-
-    display: flex;
-    li {
-      height: 2rem;
-      width: 100%;
-
-      font-size: 1rem;
-      font-weight: bolder;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      border-radius: 2rem;
-    }
-
-    li[data-selected="yes"],
-    li[data-filter="true"] {
-      background-color: var(--theme-color);
-    }
-
-    li[data-selected="no"],
-    li[data-filter="false"] {
-      border: 0.05rem solid var(--theme-color);
-    }
-  }
-}
-#NavMain {
-  ul {
-    gap: 0.5rem;
-  }
-}
-#NavCharacter,
-#NavLightcone,
-#NavRelic {
-  ul {
-    gap: 0;
-  }
-  li {
-    border-radius: 0 !important;
-  }
-  li:first-child {
-    border-radius: 1rem 0 0 1rem !important;
-  }
-  li:last-child {
-    border-radius: 0 1rem 1rem 0 !important;
   }
 }

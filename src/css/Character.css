@@ -1,6 +1,5 @@
 #캐릭터 {
   padding: 0.5rem;
-  padding-bottom: calc(5rem + max(0.5rem, env(safe-area-inset-bottom)));
 
   display: grid;
   gap: 0.5rem;
@@ -22,6 +21,7 @@ article.캐릭터 {
   border-radius: 1rem;
 
   background-color: var(--theme-color);
+  scroll-snap-align: start;
 
   hr {
     appearance: none;
@@ -48,7 +48,7 @@ article.캐릭터 {
 
     .캐릭터_요약 {
       text-align: right;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
 
       display: flex;
       flex-direction: column;
@@ -56,7 +56,6 @@ article.캐릭터 {
 
       .캐릭터_이름 {
         font-weight: bolder;
-        font-size: 1rem;
       }
     }
   }
@@ -191,18 +190,17 @@ article.캐릭터 {
   display: none;
 }
 article.캐릭터:hover {
-  opacity: 0.5;
+  opacity: 0.75;
 }
 
 #addCharacter {
-  background-color: white;
   border-radius: 1rem;
-
+  background-color: white;
+  color: var(--theme-color);
   display: flex;
   justify-content: center;
   align-items: center;
   span {
-    color: var(--theme-color);
     font-size: 6rem;
   }
 }

@@ -1,0 +1,23 @@
+main.character_detail {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#trailblazer {
+  display: flex;
+  gap: 1rem;
+  background-color: color(display-p3 0.1 0 0.4);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  justify-content: center;
+  div {
+    padding: 1rem;
+    display: flex;
+    border-radius: 0.5rem;
+  }
+  #현재 {
+    background-color: var(--theme-color);
+  }
+}

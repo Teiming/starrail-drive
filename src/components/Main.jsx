@@ -4,9 +4,8 @@ import CharacterNew from "./CharacterNew";
 import CharacterDetail from "./CharacterDetail";
 import Lightcone from "./Lightcone";
 import Relic from "./Relic";
-import "../css/Main.css";
 
-class Main extends Component {
+export default class Main extends Component {
   state = {
     캐릭터: {},
     광추: {},
@@ -29,17 +28,16 @@ class Main extends Component {
     }
   }
   render() {
-    console.log("Main render() " + JSON.stringify(this.state.캐릭터));
     switch (this.props.mode) {
       case "캐릭터":
         return (
           <Character
             currentFilter={this.state.filterCharacter}
             onNewCharacter={function (_mode) {
-              this.props.newDataMode(_mode);
+              this.props.onNewItem(_mode);
             }.bind(this)}
             onCharacterDetail={function (name) {
-              this.props.newDataMode("캐릭터상세");
+              this.props.onCharacterDetail(name);
             }.bind(this)}
           />
         );
@@ -57,7 +55,7 @@ class Main extends Component {
           />
         );
       case "캐릭터상세":
-        return <CharacterDetail />;
+        return <CharacterDetail name={this.props.selectedCharacter} />;
       case "광추":
         return <Lightcone />;
       default:
@@ -66,7 +64,7 @@ class Main extends Component {
   }
   componentDidUpdate() {
     localStorage.setItem("캐릭터", JSON.stringify(this.state.캐릭터));
+    localStorage.setItem("광추", JSON.stringify(this.state.광추));
+    localStorage.setItem("유물", JSON.stringify(this.state.유물));
   }
 }
-
-export default Main;

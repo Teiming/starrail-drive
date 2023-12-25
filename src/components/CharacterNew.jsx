@@ -9,7 +9,6 @@ export default class CharacterNew extends Component {
   render() {
     var every = this.state.everyCharacterName;
     var current = Object.keys(this.props.currentCharacterSet);
-    console.log(current);
     var difference = every.filter((name) => !current.includes(name));
 
     var output = [];
@@ -22,7 +21,6 @@ export default class CharacterNew extends Component {
             href="/"
             onClick={function (e) {
               e.preventDefault();
-              console.log(name);
               this.props.onAddCharacter(name);
             }.bind(this)}
           >

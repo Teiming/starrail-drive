@@ -16,6 +16,7 @@
   padding: 0;
   box-sizing: border-box;
   appearance: none;
+  word-break: keep-all;
 }
 
 body {
@@ -35,4 +36,8 @@ body {
   body {
     max-width: 75rem;
   }
+}
+
+main {
+  scroll-snap-type: y mandatory;
 }

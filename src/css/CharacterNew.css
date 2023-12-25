@@ -1,10 +1,9 @@
 main#캐릭터_추가 {
   padding: 0.5rem;
-  padding-bottom: calc(2.5rem + max(0.5rem, env(safe-area-inset-bottom)));
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.5rem;
+  gap: 0.8rem;
 
   .캐릭터_신규 {
     display: flex;
@@ -12,7 +11,7 @@ main#캐릭터_추가 {
     gap: 0.5rem;
 
     align-items: center;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 
     .썸네일 {
       width: 5rem;

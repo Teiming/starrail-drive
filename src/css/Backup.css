@@ -1,0 +1,16 @@
+#backup {
+  padding: 0 0.5rem;
+  padding-bottom: calc(7rem + max(0.5rem, env(safe-area-inset-bottom)));
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+
+  div {
+    color: white;
+    padding: 1rem;
+    background-color: var(--theme-color-shadow);
+    border-radius: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+}

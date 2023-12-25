@@ -37,7 +37,7 @@ class RelicItem extends Component {
     var cList = this.state.characterList;
     var temp = [];
     for (let i = 0; i < cList.length; i++) {
-      temp.push(<RelicItemCharacterList value={cList[i]} />);
+      temp.push(<RelicItemCharacterList key={i} value={cList[i]} />);
     }
     return temp;
   }
