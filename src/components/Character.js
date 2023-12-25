@@ -185,13 +185,13 @@ export default class Character extends Component {
             <div className="캐릭터_광추">
               <div className="요약">
                 <div className="이름">댄스! 댄스! 댄스!</div>
-                <div className="레벨">Lv. 90</div>
+                <div className="레벨">Lv. 80</div>
               </div>
               <div className="이미지">
                 <img
                   src={
                     process.env.PUBLIC_URL +
-                    "/png/lightcone/어떤 에이언즈의 몰락.png"
+                    "/png/lightcone/댄스! 댄스! 댄스!.png"
                   }
                   alt="광추 이미지"
                 />

@@ -5,16 +5,15 @@ import NavRelic from "./NavRelic";
 import "../css/Nav.css";
 
 export default class Nav extends Component {
+  state = {
+    filterCharacter: {},
+  };
   constructor(props) {
     super(props);
-    var localData = localStorage.getItem("filterCharacter");
-    if (localData) {
+    var localFilterCharacter = localStorage.getItem("filterCharacter");
+    if (localFilterCharacter) {
       this.state = {
-        filterCharacter: JSON.parse(localData),
-      };
-    } else {
-      this.state = {
-        filterCharacter: {},
+        filterCharacter: JSON.parse(localFilterCharacter),
       };
     }
   }
@@ -33,19 +32,18 @@ export default class Nav extends Component {
         return (
           <NavCharacter
             filterCharacter={this.state.filterCharacter}
-            onFilterCharacter={function (element) {
-              var _currentFilter = this.state.filterCharacter;
-              if (_currentFilter[element] === "hide") {
-                _currentFilter[element] = "show";
-                this.setState({ filterCharacter: _currentFilter });
-                // localStorage.setItem("filterCharacter", JSON.stringify(_currentFilter));
-                localStorage.filterCharacter = JSON.stringify(_currentFilter);
-              } else {
-                _currentFilter[element] = "hide";
-                this.setState({ filterCharacter: _currentFilter });
-                // localStorage.setItem("filterCharacter", JSON.stringify(_currentFilter));
-                localStorage.filterCharacter = JSON.stringify(_currentFilter);
+            onUpdateFilterCharacter={function (element) {
+              let currentFilter = Object.assign(this.state.filterCharacter);
+              console.log(currentFilter[element]);
+              switch (currentFilter[element]) {
+                case false:
+                  currentFilter[element] = true;
+                  break;
+                default:
+                  currentFilter[element] = false;
+                  break;
               }
+              this.setState({ filterCharacter: currentFilter });
             }.bind(this)}
           />
         );
@@ -91,5 +89,14 @@ export default class Nav extends Component {
         </nav>
       </footer>
     );
+  }
+  componentDidUpdate() {
+    console.log("Nav did update");
+
+    localStorage.setItem(
+      "filterCharacter",
+      JSON.stringify(this.state.filterCharacter)
+    );
+    console.log(localStorage.getItem("filterCharacter"));
   }
 }
