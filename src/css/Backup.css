@@ -1,6 +1,5 @@
 #backup {
   padding: 0 0.5rem;
-  padding-bottom: calc(7rem + max(0.5rem, env(safe-area-inset-bottom)));
   display: flex;
   justify-content: center;
   gap: 0.5rem;

@@ -10,7 +10,7 @@ footer {
     25rem - env(safe-area-inset-left) - env(safe-area-inset-right)
   );
 
-  background-color: color(display-p3 0 0 0 / 0.8);
+  backdrop-filter: blur(1rem);
 
   display: flex;
   flex-direction: column;
@@ -25,12 +25,12 @@ footer {
       border-radius: 0;
     }
     li:first-child {
-      border-top-left-radius: 3rem;
-      border-bottom-left-radius: 3rem;
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
     }
     li:last-child {
-      border-top-right-radius: 3rem;
-      border-bottom-right-radius: 3rem;
+      border-top-right-radius: 1rem;
+      border-bottom-right-radius: 1rem;
     }
   }
   nav {
@@ -43,7 +43,7 @@ footer {
         height: 3rem;
         width: 100%;
 
-        border-radius: 3rem;
+        border-radius: 1rem;
 
         font-size: 1rem;
         font-weight: bolder;
@@ -58,6 +58,7 @@ footer {
       }
       li[data-selected="false"] {
         border: 0.1rem solid var(--theme-color);
+        background-color: black;
       }
     }
   }
@@ -67,11 +68,12 @@ footer {
     }
   }
 }
-@media (min-width: 50rem) {
+@media (min-width: min(
+  50rem,
+  calc(100vw - env(safe-area-inset-left) - env(safe-area-inset-right))
+)) {
   footer {
-    max-width: calc(
-      50rem - env(safe-area-inset-left) - env(safe-area-inset-right)
-    );
+    max-width: 50rem;
   }
 }
 @media (min-width: 75rem) {

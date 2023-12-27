@@ -5,19 +5,15 @@ import NavRelic from "./NavRelic";
 import "../css/Nav.css";
 
 export default class NavSecondary extends Component {
-  state = {
-    filterCharacter: {},
-    filterLightcone: {},
-    filterRelic: {},
-  };
+  state = {};
   constructor(props) {
     super(props);
     const filters = ["filterCharacter", "filterLightcone", "filterRelic"];
     for (let i in filters) {
       let filter = filters[i];
-      var localFilter = localStorage.getItem(filter);
-      if (localFilter) {
-        this.state[filter] = JSON.parse(localFilter);
+      var storedFilter = localStorage.getItem(filter);
+      if (storedFilter) {
+        this.state[filter] = JSON.parse(storedFilter);
       }
     }
   }
@@ -52,8 +48,17 @@ export default class NavSecondary extends Component {
         return (
           <NavLightcone
             filter={this.state.filterLightcone}
-            onUpdateFilter={function () {
-              this.setState();
+            onUpdateFilter={function (path) {
+              let currentFilter = Object.assign(this.state.filterLightcone);
+              switch (currentFilter[path]) {
+                case false:
+                  currentFilter[path] = true;
+                  break;
+                default:
+                  currentFilter[path] = false;
+                  break;
+              }
+              this.setState({ filterLightcone: currentFilter });
             }.bind(this)}
           />
         );
@@ -61,8 +66,17 @@ export default class NavSecondary extends Component {
         return (
           <NavRelic
             filter={this.state.filterRelic}
-            onUpdateFilter={function () {
-              this.setState();
+            onUpdateFilter={function (slot) {
+              let currentFilter = Object.assign(this.state.filterRelic);
+              switch (currentFilter[slot]) {
+                case false:
+                  currentFilter[slot] = true;
+                  break;
+                default:
+                  currentFilter[slot] = false;
+                  break;
+              }
+              this.setState({ filterRelic: currentFilter });
             }.bind(this)}
           />
         );

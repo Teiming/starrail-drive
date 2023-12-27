@@ -9,6 +9,11 @@
 
   --theme-color: color(display-p3 0.25 0 1);
   --theme-color-shadow: color(display-p3 0.2 0 0.8);
+
+  --safe-top: env(safe-area-inset-top);
+  --safe-right: env(safe-area-inset-right);
+  --safe-bottom: env(safe-area-inset-bottom);
+  --safe-left: env(safe-area-inset-left);
 }
 
 * {
@@ -20,24 +25,32 @@
 }
 
 body {
-  margin: auto;
-
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
 
+  height: 100vh;
+
+  overflow: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-padding: 0.5rem;
+}
+
+div#root {
+  margin: auto;
+
   max-width: 25rem;
 }
+
 @media (min-width: 50rem) {
-  body {
-    max-width: 50rem;
-  }
-}
-@media (min-width: 75rem) {
-  body {
-    max-width: 75rem;
+  div#root {
+    max-width: calc(50rem);
   }
 }
 
-main {
-  scroll-snap-type: y mandatory;
+@media (min-width: 75rem) {
+  div#root {
+    max-width: calc(
+      75rem - env(safe-area-inset-left) - env(safe-area-inset-right)
+    );
+  }
 }

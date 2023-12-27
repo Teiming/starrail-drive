@@ -3,10 +3,10 @@ import { Component } from "react";
 export default class Trailblazer extends Component {
   render() {
     const everyElement = { 물리: "파멸", 화염: "보존" };
-    var innerTB = [];
+    var innerTrailblazer = [];
     for (const key in everyElement) {
       if (key === this.props.currentElement) {
-        innerTB.push(
+        innerTrailblazer.push(
           <div id="현재" key={key}>
             <span>
               {key} - {everyElement[key]}
@@ -14,7 +14,7 @@ export default class Trailblazer extends Component {
           </div>
         );
       } else {
-        innerTB.push(
+        innerTrailblazer.push(
           <div
             key={key}
             onClick={function () {
@@ -32,6 +32,6 @@ export default class Trailblazer extends Component {
         );
       }
     }
-    return <section id="trailblazer">{innerTB}</section>;
+    return <section id="trailblazer">{innerTrailblazer}</section>;
   }
 }

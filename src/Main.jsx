@@ -1,9 +1,9 @@
 import { Component } from "react";
-import Character from "./Character";
-import CharacterNew from "./CharacterNew";
-import CharacterDetail from "./CharacterDetail";
-import Lightcone from "./Lightcone";
-import Relic from "./Relic";
+import Character from "./Character/Character";
+import CharacterNew from "./Character/CharacterNew";
+import CharacterDetail from "./Character/CharacterDetail";
+import Lightcone from "./components/Lightcone";
+import Relic from "./components/Relic";
 
 export default class Main extends Component {
   state = {
@@ -32,16 +32,16 @@ export default class Main extends Component {
       case "캐릭터":
         return (
           <Character
-            currentFilter={this.state.filterCharacter}
-            onNewCharacter={function (_mode) {
-              this.props.onNewItem(_mode);
+            characterFilter={this.state.filterCharacter}
+            onCharacterAdd={function () {
+              this.props.onCharacterAdd();
             }.bind(this)}
             onCharacterDetail={function (name) {
               this.props.onCharacterDetail(name);
             }.bind(this)}
           />
         );
-      case "캐릭터생성":
+      case "캐릭터추가":
         return (
           <CharacterNew
             currentCharacterSet={this.state.캐릭터}
@@ -63,7 +63,6 @@ export default class Main extends Component {
     }
   }
   componentDidUpdate() {
-    localStorage.setItem("캐릭터", JSON.stringify(this.state.캐릭터));
     localStorage.setItem("광추", JSON.stringify(this.state.광추));
     localStorage.setItem("유물", JSON.stringify(this.state.유물));
   }

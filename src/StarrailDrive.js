@@ -1,14 +1,13 @@
 import { Component } from "react";
-import Main from "./components/Main";
+import Main from "./Main";
 import Nav from "./components/Nav";
-import Backup from "./Backup";
 
 export default class StarrailDrive extends Component {
   constructor(props) {
     super(props);
 
-    let currentMode = JSON.parse(localStorage.getItem("mode"));
-    switch (currentMode) {
+    let getLocalMode = localStorage.getItem("mode");
+    switch (getLocalMode) {
       case null:
       case "캐릭터상세":
         this.state = {
@@ -17,7 +16,7 @@ export default class StarrailDrive extends Component {
         break;
       default:
         this.state = {
-          mode: currentMode,
+          mode: getLocalMode,
         };
         break;
     }
@@ -28,14 +27,13 @@ export default class StarrailDrive extends Component {
         <Main
           mode={this.state.mode}
           selectedCharacter={this.state.selectedCharacter}
-          onNewItem={function (_mode) {
-            this.setState({ mode: _mode });
+          onCharacterAdd={function () {
+            this.setState({ mode: "캐릭터추가" });
           }.bind(this)}
           onCharacterDetail={function (name) {
             this.setState({ mode: "캐릭터상세", selectedCharacter: name });
           }.bind(this)}
         />
-        <Backup />
         <Nav
           mode={this.state.mode}
           onUpdateFilter={function (where, data) {
@@ -66,6 +64,6 @@ export default class StarrailDrive extends Component {
     }
   }
   componentDidUpdate() {
-    localStorage.setItem("mode", JSON.stringify(this.state.mode));
+    localStorage.setItem("mode", this.state.mode);
   }
 }

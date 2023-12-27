@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "../css/Character.css";
+import "css/Character.css";
 
 export default class CardTrace extends Component {
   render() {

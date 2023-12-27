@@ -1,6 +1,6 @@
 import { Component } from "react";
-import everyCharacterData from "../raw/everyCharacterData.json";
-import "../css/Character.css";
+import everyCharacterData from "raw/everyCharacterData.json";
+import "css/Character.css";
 
 export default class CardHeader extends Component {
   render() {

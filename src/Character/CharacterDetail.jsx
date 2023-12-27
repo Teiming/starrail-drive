@@ -1,5 +1,5 @@
 import { Component } from "react";
-import Trailblazer from "../Trailblazer";
+import Trailblazer from "./Detail/Trailblazer";
 import "../css/CharacterDetail.css";
 
 export default class CharacterDetail extends Component {
