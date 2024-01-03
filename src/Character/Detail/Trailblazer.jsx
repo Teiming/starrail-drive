@@ -5,7 +5,7 @@ export default class Trailblazer extends Component {
     const everyElement = { 물리: "파멸", 화염: "보존" };
     var innerTrailblazer = [];
     for (const key in everyElement) {
-      if (key === this.props.currentElement) {
+      if (key === this.props.element) {
         innerTrailblazer.push(
           <div id="현재" key={key}>
             <span>

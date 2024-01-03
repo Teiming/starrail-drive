@@ -1,19 +1,19 @@
 import { Component } from "react";
-import everyCharacterData from "../raw/everyCharacterData.json";
-import "../css/CharacterNew.css";
+import store from "store";
+import { addCharacter } from "slice/characterSlice";
+import "css/CharacterNew.css";
 
 export default class CharacterNew extends Component {
   state = {
-    everyCharacterName: Object.keys(everyCharacterData),
+    everyCharacter: [],
   };
   render() {
-    var every = this.state.everyCharacterName;
-    var current = Object.keys(this.props.currentCharacterSet);
-    var difference = every.filter((name) => !current.includes(name));
+    let everyCharacter = this.state.everyCharacter;
+    let current = Object.keys(this.props.character);
+    let diffSet = everyCharacter.filter((name) => !current.includes(name));
 
-    var output = [];
-    for (let i = 0; i < difference.length; i++) {
-      const name = difference[i];
+    let output = [];
+    for (let name of diffSet) {
       output.push(
         <div key={name} className="캐릭터_신규">
           <a
@@ -21,8 +21,8 @@ export default class CharacterNew extends Component {
             href="/"
             onClick={function (e) {
               e.preventDefault();
-              this.props.onAddCharacter(name);
-            }.bind(this)}
+              store.dispatch(addCharacter(name));
+            }}
           >
             <img
               src={process.env.PUBLIC_URL + "/png/character/" + name + ".png"}
@@ -33,6 +33,23 @@ export default class CharacterNew extends Component {
         </div>
       );
     }
-    return <main id="캐릭터_추가">{output}</main>;
+    return <section id="캐릭터_추가">{output}</section>;
+  }
+  componentDidMount() {
+    fetch("../raw/everyCharacterData.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      method: "post",
+    })
+      .then((result) => {
+        return result.json();
+      })
+      .then(
+        function (json) {
+          this.setState({ everyCharacter: Object.keys(json) });
+        }.bind(this)
+      );
   }
 }

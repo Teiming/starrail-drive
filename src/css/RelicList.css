@@ -1,29 +1,22 @@
-#characterList {
+.RelicList {
   padding: 0.5rem;
 
   display: grid;
-  gap: 0.5rem;
   grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
 }
 @media (min-width: 45.5rem) {
-  #characterList {
+  .RelicList {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 @media (min-width: 58rem) {
-  #characterList {
+  .RelicList {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 @media (min-width: 83rem) {
-  #characterList {
+  .RelicList {
     grid-template-columns: repeat(6, 1fr);
   }
-}
-
-.캐릭터[data-filter="false"] {
-  display: none;
-}
-article.캐릭터:hover {
-  opacity: 0.8;
 }

@@ -1,19 +1,12 @@
 import { Component } from "react";
-import everyCharacterData from "raw/everyCharacterData.json";
 import "css/Character.css";
 
 export default class CardHeader extends Component {
   render() {
-    const name = this.props.name;
-    let element, path;
-    if (name === "개척자") {
-      const everyElement = { 물리: "파멸", 화염: "보존" };
-      element = JSON.parse(localStorage.getItem("캐릭터"))["개척자"]["속성"];
-      path = everyElement[element];
-    } else {
-      element = everyCharacterData[name][0];
-      path = everyCharacterData[name][1];
-    }
+    let name = this.props.name;
+    let element = this.props.element;
+    let path = this.props.path;
+
     return (
       <div className="캐릭터_상단">
         <div className="캐릭터_이미지">

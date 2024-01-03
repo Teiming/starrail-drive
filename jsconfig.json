@@ -4,7 +4,9 @@
     "paths": {
       "@css/*": ["css/*"],
       "@raw/*": ["raw/*"],
-      "@Character/*": ["Character/*"]
+      "@Character/*": ["Character/*"],
+      "@Lightcone/*": ["Lightcone/*"],
+      "@Relic/*": ["Relic/*"]
     }
   }
 }

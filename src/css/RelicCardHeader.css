@@ -1,0 +1,15 @@
+.RelicCardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+
+  .RelicSetName {
+    font-size: 0.9rem;
+    font-weight: bolder;
+  }
+  .RelicLevel {
+    font-size: 0.75rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+}

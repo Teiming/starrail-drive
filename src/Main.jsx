@@ -1,69 +1,33 @@
 import { Component } from "react";
 import Character from "./Character/Character";
-import CharacterNew from "./Character/CharacterNew";
-import CharacterDetail from "./Character/CharacterDetail";
 import Lightcone from "./components/Lightcone";
-import Relic from "./components/Relic";
+import Relic from "./Relic/Relic";
+import store from "store";
 
 export default class Main extends Component {
   state = {
-    캐릭터: {},
-    광추: {},
-    유물: {},
-
-    filterCharacter: {},
-    filterLightcone: {},
-    filterRelic: {},
+    mode: store.getState().modeSlice.mode,
   };
-  constructor(props) {
-    super(props);
-    if (localStorage.getItem("캐릭터")) {
-      this.state["캐릭터"] = JSON.parse(localStorage.getItem("캐릭터"));
-    } else {
-      var defaultCharacter = {
-        개척자: { 속성: "물리", 레벨: 1, 성혼: 0 },
-      };
-      this.state["currentCharacterSet"] = defaultCharacter;
-      localStorage.setItem("캐릭터", JSON.stringify(defaultCharacter));
-    }
-  }
   render() {
-    switch (this.props.mode) {
+    let innerMain = "";
+    switch (this.state.mode) {
       case "캐릭터":
-        return (
-          <Character
-            characterFilter={this.state.filterCharacter}
-            onCharacterAdd={function () {
-              this.props.onCharacterAdd();
-            }.bind(this)}
-            onCharacterDetail={function (name) {
-              this.props.onCharacterDetail(name);
-            }.bind(this)}
-          />
-        );
-      case "캐릭터추가":
-        return (
-          <CharacterNew
-            currentCharacterSet={this.state.캐릭터}
-            onAddCharacter={function (name) {
-              let oldCharacter = JSON.parse(localStorage.getItem("캐릭터"));
-              let newCharacter = Object.assign(oldCharacter, {
-                [name]: { 레벨: 1, 성혼: 0 },
-              });
-              this.setState({ 캐릭터: newCharacter });
-            }.bind(this)}
-          />
-        );
-      case "캐릭터상세":
-        return <CharacterDetail name={this.props.selectedCharacter} />;
+        innerMain = <Character />;
+        break;
       case "광추":
-        return <Lightcone />;
+        innerMain = <Lightcone />;
+        break;
       default:
-        return <Relic />;
+        innerMain = <Relic />;
+        break;
     }
+    return innerMain;
   }
-  componentDidUpdate() {
-    localStorage.setItem("광추", JSON.stringify(this.state.광추));
-    localStorage.setItem("유물", JSON.stringify(this.state.유물));
+  componentDidMount() {
+    store.subscribe(
+      function () {
+        this.setState({ mode: store.getState().modeSlice.mode });
+      }.bind(this)
+    );
   }
 }

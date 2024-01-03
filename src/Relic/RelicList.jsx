@@ -1,23 +1,29 @@
 import { Component } from "react";
-import RelicItem from "./RelicItem";
-import "../css/Relic.css";
+import RelicCard from "./Card/RelicCard";
+import "css/RelicList.css";
+import store from "store";
+import { subMode } from "slice/modeSlice";
 
-class Relic extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+export default class RelicList extends Component {
+  state = {
+    filter: store.getState().filterSlice.relic,
+  };
   render() {
     return (
-      <main id="유물">
-        <div id="addRelic">
+      <div className="RelicList">
+        <div
+          className="controler"
+          onClick={() => {
+            store.dispatch(subMode("추가"));
+          }}
+        >
           <span>+</span>
         </div>
-        <RelicItem
+        <RelicCard
           set="dfsf"
           slot="다리"
           level="15"
-          owner="단항_음월"
+          equip="단항_음월"
           main="공격력"
           sub1="dfsf"
           sub2="dfsf"
@@ -27,73 +33,85 @@ class Relic extends Component {
           sub2_value="0.22"
           sub3_value="0.23"
           sub4_value="0.24"
+          isSelected={this.state.filter["다리"]}
         />
-        <RelicItem
+        <RelicCard
           set="들이삭과 동행하는 거너"
           slot="다리"
-          owner="정운"
+          equip="정운"
           main="공격력"
           sub1="dfsf"
           sub2="dfsf"
           sub3="dfsfdfdf"
           sub4="2123"
           sub4_value="0.23"
+          isSelected={this.state.filter["다리"]}
         />
-        <RelicItem
+        <RelicCard
           set="들이삭과 동행하는 거너"
           slot="다리"
-          owner="정운"
+          equip="정운"
           main="공격력"
           sub1="dfsf"
           sub2="dfsf"
           sub3="dfsfdfdf"
           sub4="2123"
           sub4_value="0.23"
+          isSelected={this.state.filter["다리"]}
         />
-        <RelicItem
+        <RelicCard
           set="들이삭과 동행하는 거너"
           slot="다리"
-          owner="정운"
+          equip="정운"
           main="공격력"
           sub1="dfsf"
           sub2="dfsf"
           sub3="dfsfdfdf"
           sub4="2123"
           sub4_value="0.23"
+          isSelected={this.state.filter["다리"]}
         />
-        <RelicItem
+        <RelicCard
           set="dfsf"
           slot="다리"
-          owner="부현"
+          equip="부현"
           main="HP"
           sub1="dfsf"
           sub2="dfsf"
           sub3="dfsfdfdf"
           sub4="2123"
+          isSelected={this.state.filter["다리"]}
         />
-        <RelicItem
+        <RelicCard
           set="dfsf"
           slot="머리"
-          owner="정운"
+          equip="정운"
           main="HP"
           sub1="dfsf"
           sub2="dfsf"
           sub3="dfsfdfdf"
           sub4="2123"
+          isSelected={this.state.filter["머리"]}
         />
-        <RelicItem
+        <RelicCard
           set="dfsf"
           slot="몸통"
-          owner="정운"
+          equip="정운"
           main="HP"
           sub1="dfsf"
           sub2="dfsf"
           sub3="dfsfdfdf"
           sub4="2123"
+          isSelected={this.state.filter["몸통"]}
         />
-      </main>
+      </div>
+    );
+  }
+  componentDidMount() {
+    store.subscribe(
+      function () {
+        this.setState({ filter: store.getState().filterSlice.relic });
+      }.bind(this)
     );
   }
 }
-
-export default Relic;

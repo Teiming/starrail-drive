@@ -10,8 +10,12 @@ export default class Backup extends Component {
           onClick={function () {
             let backup = prompt("백업한 내용을 입력하세요.");
             if (backup) {
-              console.log(JSON.parse(backup));
-              console.log(JSON.parse(backup)["캐릭터"]);
+              let origin = JSON.parse(backup);
+              debugger;
+              localStorage.setItem("캐릭터", JSON.stringify(origin.캐릭터));
+              localStorage.setItem("광추", JSON.stringify(origin.광추));
+              localStorage.setItem("유물", JSON.stringify(origin.유물));
+              window.location.reload();
             }
           }}
         >
@@ -21,7 +25,7 @@ export default class Backup extends Component {
           className="export"
           onClick={function () {
             let backup = {
-              스타레일_드라이브: localStorage.getItem("스타레일_드라이브"),
+              스타레일_드라이브: "0.0.1",
               캐릭터: JSON.parse(localStorage.getItem("캐릭터")),
               광추: JSON.parse(localStorage.getItem("광추")),
               유물: JSON.parse(localStorage.getItem("유물")),

@@ -6,9 +6,7 @@ footer {
   padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
 
   width: 100%;
-  max-width: calc(
-    25rem - env(safe-area-inset-left) - env(safe-area-inset-right)
-  );
+  max-width: 25rem;
 
   backdrop-filter: blur(1rem);
 
@@ -18,9 +16,7 @@ footer {
 
   list-style-type: none;
 
-  #NavCharacter,
-  #NavLightcone,
-  #NavRelic {
+  #NavSecondary {
     li {
       border-radius: 0;
     }
@@ -66,20 +62,5 @@ footer {
     ul {
       gap: 0.5rem;
     }
-  }
-}
-@media (min-width: min(
-  50rem,
-  calc(100vw - env(safe-area-inset-left) - env(safe-area-inset-right))
-)) {
-  footer {
-    max-width: 50rem;
-  }
-}
-@media (min-width: 75rem) {
-  footer {
-    max-width: calc(
-      75rem - env(safe-area-inset-left) - env(safe-area-inset-right)
-    );
   }
 }

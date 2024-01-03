@@ -1,39 +1,41 @@
 {
-  "name": "스타레일 드라이브",
+  "name": "스타레일 드라이브 | 붕괴: 스타레일 데미지 계산기",
+  "short_name": "스타레일 드라이브",
+  "display": "fullscreen",
+  "theme_color": "#30f",
+  "background_color": "#000",
+  "start_url": ".",
   "icons": [
     {
-      "src": "logo-64.png",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo-64.png",
+      "src": "starrail-drive-64.png",
       "type": "image/png",
       "sizes": "64x64"
     },
     {
-      "src": "logo-64@2x.png",
+      "src": "starrail-drive-64@2x.png",
       "type": "image/png",
       "sizes": "128x128"
     },
     {
-      "src": "logo-64@3x.png",
+      "src": "starrail-drive-64@3x.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo-256.png",
+      "src": "starrail-drive-256.png",
       "type": "image/png",
       "sizes": "256x256"
     },
     {
-      "src": "logo-256@2x.png",
+      "src": "starrail-drive-256@2x.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "starrail-drive-512.svg",
+      "type": "image/svg",
+      "sizes": "150x150"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#40f",
-  "background_color": "#40f"
+  ]
 }

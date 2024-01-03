@@ -1,36 +1,24 @@
 import { Component } from "react";
-import CharacterPreview from "./Preview/CharacterPreview";
+import CharacterCard from "./Card/CharacterCard";
+import store from "store";
+import { subMode } from "slice/modeSlice";
 import "../css/CharacterList.css";
 
 export default class CharacterList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      캐릭터: this.props.캐릭터,
-      filter: this.props.filter,
-    };
-  }
-
-  updateFilter(element) {
-    switch (this.props.characterFilter[element]) {
-      case false:
-        return false;
-      default:
-        return true;
-    }
-  }
+  state = {
+    filter: store.getState().filterSlice.character,
+    everyCharacter: {},
+  };
   render() {
-    var 캐릭터 = this.state.캐릭터;
-    var innerCharacter = [];
-    for (const key in 캐릭터) {
+    let characterSet = this.props.character;
+    let innerCharacter = [];
+    for (const name in characterSet) {
       innerCharacter.push(
-        <CharacterPreview
-          key={key}
-          name={key}
-          data={캐릭터[key]}
-          onCharacterDetail={function (name) {
-            this.props.onCharacterDetail(name);
-          }.bind(this)}
+        <CharacterCard
+          key={name}
+          name={name}
+          data={characterSet[name]}
+          everyCharacter={this.state.everyCharacter[name]}
         />
       );
     }
@@ -38,14 +26,31 @@ export default class CharacterList extends Component {
       <section id="characterList">
         {innerCharacter}
         <div
-          id="addCharacter"
-          onClick={function () {
-            this.props.onCharacterAdd();
-          }.bind(this)}
+          className="controler"
+          onClick={() => {
+            store.dispatch(subMode("추가"));
+          }}
         >
           <span>+</span>
         </div>
       </section>
     );
+  }
+  componentDidMount() {
+    fetch("../raw/everyCharacterData.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      method: "post",
+    })
+      .then((result) => {
+        return result.json();
+      })
+      .then(
+        function (json) {
+          this.setState({ everyCharacter: json });
+        }.bind(this)
+      );
   }
 }

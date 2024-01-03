@@ -1,0 +1,13 @@
+.RelicCard {
+  background-color: var(--theme-color);
+
+  border-radius: 1rem;
+
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  scroll-snap-align: start;
+}

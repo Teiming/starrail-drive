@@ -1,42 +1,60 @@
 import { Component } from "react";
 import "../css/Character.css";
 import CharacterList from "./CharacterList";
-import Empty from "../Empty";
-import Backup from "../Backup";
+import Empty from "Empty";
+import Backup from "Backup";
+import store from "store";
+import CharacterNew from "./CharacterNew";
+import CharacterDetail from "./Detail/CharacterDetail";
 
 export default class Character extends Component {
-  constructor(props) {
-    super(props);
-    let getLocalCharacter = localStorage.getItem("캐릭터");
-    if (getLocalCharacter) {
-      this.state = {
-        캐릭터: JSON.parse(getLocalCharacter),
-      };
-    } else {
-      let trailblazer = { 개척자: { 속성: "물리", 레벨: 1, 성혼: 0 } };
-      this.state = { 캐릭터: trailblazer };
-      localStorage.setItem("캐릭터", JSON.stringify(trailblazer));
-    }
-  }
+  state = {
+    character: store.getState().characterSlice,
+    subMode: store.getState().modeSlice.subMode,
+  };
   render() {
+    let innerCharacter = "";
+    let emptyLine = 1;
+    switch (this.state.subMode) {
+      case "상세":
+        innerCharacter = <CharacterDetail />;
+        break;
+      case "추가":
+        innerCharacter = <CharacterNew character={this.state.character} />;
+        break;
+      default:
+        emptyLine = 2;
+        innerCharacter = (
+          <CharacterList
+            character={this.state.character}
+            filter={this.props.filter}
+            onCharacterAdd={function () {
+              this.props.onCharacterAdd();
+            }.bind(this)}
+            onCharacterDetail={function (name) {
+              this.props.onCharacterDetail(name);
+            }.bind(this)}
+          />
+        );
+        break;
+    }
     return (
       <main id="캐릭터">
-        <CharacterList
-          캐릭터={this.state.캐릭터}
-          characterFilter={this.props.characterFilter}
-          onCharacterAdd={function () {
-            this.props.onCharacterAdd();
-          }.bind(this)}
-          onCharacterDetail={function (name) {
-            this.props.onCharacterDetail(name);
-          }.bind(this)}
-        />
+        {innerCharacter}
         <Backup />
-        <Empty line="2" />
+        <Empty line={emptyLine} />
       </main>
     );
   }
+  componentDidMount() {
+    store.subscribe(
+      function () {
+        this.setState({ character: store.getState().characterSlice });
+        this.setState({ subMode: store.getState().modeSlice.subMode });
+      }.bind(this)
+    );
+  }
   componentDidUpdate() {
-    localStorage.setItem("캐릭터", JSON.stringify(this.state.캐릭터));
+    localStorage.setItem("캐릭터", JSON.stringify(this.state.character));
   }
 }
