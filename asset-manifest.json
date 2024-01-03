@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/starrail-drive/static/css/main.85a38510.css",
-    "main.js": "/starrail-drive/static/js/main.6ce695c0.js",
+    "main.css": "/starrail-drive/static/css/main.d070189e.css",
+    "main.js": "/starrail-drive/static/js/main.153d21a4.js",
     "static/media/SCDream8.woff2": "/starrail-drive/static/media/SCDream8.5d878c5ad8dfa78f49ee.woff2",
     "static/media/SCDream7.woff2": "/starrail-drive/static/media/SCDream7.bebaac341968358ecc34.woff2",
     "static/media/SCDream3.woff2": "/starrail-drive/static/media/SCDream3.91dcf0ee2b928af5da4f.woff2",
@@ -12,11 +12,11 @@
     "static/media/SCDream6.woff2": "/starrail-drive/static/media/SCDream6.df435877af61052a0249.woff2",
     "static/media/SCDream1.woff2": "/starrail-drive/static/media/SCDream1.4b6875a51d8086635c91.woff2",
     "index.html": "/starrail-drive/index.html",
-    "main.85a38510.css.map": "/starrail-drive/static/css/main.85a38510.css.map",
-    "main.6ce695c0.js.map": "/starrail-drive/static/js/main.6ce695c0.js.map"
+    "main.d070189e.css.map": "/starrail-drive/static/css/main.d070189e.css.map",
+    "main.153d21a4.js.map": "/starrail-drive/static/js/main.153d21a4.js.map"
   },
   "entrypoints": [
-    "static/css/main.85a38510.css",
-    "static/js/main.6ce695c0.js"
+    "static/css/main.d070189e.css",
+    "static/js/main.153d21a4.js"
   ]
 }
