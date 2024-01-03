@@ -8,7 +8,7 @@ export default class RelicCardHeader extends Component {
         <div className="RelicSetName">{this.props.set}</div>
         <div className="RelicLevel">
           <span>{this.props.slot}</span>
-          <span>+{this.props.level}</span>
+          <span>{this.props.level}</span>
         </div>
       </section>
     );

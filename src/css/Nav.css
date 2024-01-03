@@ -47,13 +47,13 @@ footer {
         display: flex;
         justify-content: center;
         align-items: center;
+        border: 0.1rem solid var(--theme-color);
       }
 
       li[data-selected="true"] {
         background-color: var(--theme-color);
       }
       li[data-selected="false"] {
-        border: 0.1rem solid var(--theme-color);
         background-color: black;
       }
     }

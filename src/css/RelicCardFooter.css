@@ -1,0 +1,44 @@
+.RelicCardFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+
+  select {
+    border: 1px solid white;
+    padding: 0.3rem;
+    width: 100%;
+    border-radius: 1rem;
+
+    font-size: 1rem;
+
+    background-color: var(--theme-color-shadow);
+    color: white;
+    text-align-last: center;
+  }
+  .RelicControl {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+    input {
+      border-radius: 0rem;
+      padding: 0.3rem;
+      border: none;
+      font-size: 1rem;
+    }
+    .RelicEdit {
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+      color: var(--theme-color-shadow);
+      background-color: white;
+    }
+    .RelicDelete {
+      border-top-right-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+      background-color: #f03;
+      color: black;
+    }
+    input:hover {
+      opacity: 0.5;
+    }
+  }
+}

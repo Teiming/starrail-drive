@@ -3,8 +3,6 @@
 :root {
   background-color: black;
 
-  font-family: SCDream, -apple-system, sans-serif;
-
   color: white;
 
   --theme-color: color(display-p3 0.25 0 1);
@@ -17,6 +15,7 @@
   box-sizing: border-box;
   appearance: none;
   word-break: keep-all;
+  font-family: SCDream, -apple-system, sans-serif;
 }
 
 body {

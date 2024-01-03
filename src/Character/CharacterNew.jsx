@@ -36,12 +36,12 @@ export default class CharacterNew extends Component {
     return <section id="캐릭터_추가">{output}</section>;
   }
   componentDidMount() {
-    fetch("../raw/everyCharacterData.json", {
+    fetch("raw/everyCharacterData.json", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      method: "post",
+      method: "get",
     })
       .then((result) => {
         return result.json();

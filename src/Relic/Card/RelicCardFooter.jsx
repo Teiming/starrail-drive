@@ -7,21 +7,17 @@ export default class RelicCardFooter extends Component {
     characterList: Object.keys(store.getState().characterSlice),
   };
   render() {
-    let innerOption = [];
+    let innerOption = [
+      <option key="미장착" value="미장착">
+        미장착
+      </option>,
+    ];
     for (const name of this.state.characterList) {
-      if (name === this.props.equip) {
-        innerOption.push(
-          <option key={name} value={name} selected>
-            {name}
-          </option>
-        );
-      } else {
-        innerOption.push(
-          <option key={name} value={name}>
-            {name}
-          </option>
-        );
-      }
+      innerOption.push(
+        <option key={name} value={name}>
+          {name}
+        </option>
+      );
     }
     return (
       <section className="RelicCardFooter">
@@ -30,15 +26,31 @@ export default class RelicCardFooter extends Component {
             name="equiv"
             defaultValue={this.props.equip}
             onChange={function (e) {
-              console.log(e);
+              console.log(e.target.value);
             }.bind(this)}
           >
             {innerOption}
           </select>
         </div>
-        <div className="RelicEdit">
-          <input type="button" value="수정"></input>
-          <input type="button" value="삭제"></input>
+        <div className="RelicControl">
+          <input
+            type="button"
+            value="수정"
+            className="RelicEdit"
+            onClick={function () {
+              if (window.alert("개발중인 기능")) {
+              }
+            }}
+          ></input>
+          <input
+            type="button"
+            value="삭제"
+            className="RelicDelete"
+            onClick={function () {
+              if (window.confirm("정말 삭제하겠습니까?")) {
+              }
+            }}
+          ></input>
         </div>
       </section>
     );

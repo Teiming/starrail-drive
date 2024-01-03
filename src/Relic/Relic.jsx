@@ -4,7 +4,7 @@ import RelicList from "./RelicList";
 import Backup from "Backup";
 import Empty from "Empty";
 import store from "store";
-import RelicAdd from "./RelicAdd";
+import RelicAdd from "./Add/RelicAdd";
 
 export default class Relic extends Component {
   render() {

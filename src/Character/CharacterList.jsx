@@ -37,12 +37,12 @@ export default class CharacterList extends Component {
     );
   }
   componentDidMount() {
-    fetch("../raw/everyCharacterData.json", {
+    fetch("raw/everyCharacterData.json", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      method: "post",
+      method: "get",
     })
       .then((result) => {
         return result.json();

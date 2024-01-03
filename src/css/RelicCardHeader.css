@@ -4,12 +4,15 @@
   gap: 0.3rem;
 
   .RelicSetName {
-    font-size: 0.9rem;
-    font-weight: bolder;
+    font-size: 0.8rem;
   }
+
   .RelicLevel {
     font-size: 0.75rem;
     display: flex;
     gap: 0.5rem;
+  }
+  .RelicLevel span:last-child::before {
+    content: "Lv ";
   }
 }
