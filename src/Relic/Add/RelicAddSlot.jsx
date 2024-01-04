@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./RelicAddSlot.css";
 
 export default class RelicAddSlot extends Component {
   render() {
@@ -18,11 +19,16 @@ export default class RelicAddSlot extends Component {
         />
       );
       result.push(
-        <label key={slot + "1"} htmlFor={slot}>
+        <label key={slot + " label"} htmlFor={slot}>
           {slot}
         </label>
       );
     }
-    return <section className="defineSlot">{result}</section>;
+    return (
+      <section className="RelicAddSlot">
+        <h3>부위</h3>
+        <div className="radio">{result}</div>
+      </section>
+    );
   }
 }

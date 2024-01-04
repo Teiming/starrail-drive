@@ -1,8 +1,8 @@
 import { Component } from "react";
 import RelicCard from "./Card/RelicCard";
-import "css/RelicList.css";
 import store from "store";
 import { subMode } from "slice/modeSlice";
+import "./RelicList.css";
 
 export default class RelicList extends Component {
   state = {

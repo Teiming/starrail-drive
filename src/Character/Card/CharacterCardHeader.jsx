@@ -1,15 +1,15 @@
 import { Component } from "react";
-import "css/Character.css";
+import "./CharacterCardHeader.css";
 
-export default class CardHeader extends Component {
+export default class CharacterCardHeader extends Component {
   render() {
     let name = this.props.name;
     let element = this.props.element;
     let path = this.props.path;
 
     return (
-      <div className="캐릭터_상단">
-        <div className="캐릭터_이미지">
+      <section className="CharacterCardHeader">
+        <div className="CharacterCardThumbnail">
           <img
             src={process.env.PUBLIC_URL + "/png/character/" + name + ".png"}
             alt={name + " 썸네일"}
@@ -22,7 +22,7 @@ export default class CardHeader extends Component {
             {element} / {path}
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 }

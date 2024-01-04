@@ -1,6 +1,5 @@
 import { Component } from "react";
 import NavItem from "./NavItem";
-import "css/Nav.css";
 import store from "store";
 import { toggleFilter } from "slice/filterSlice";
 

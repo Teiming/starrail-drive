@@ -1,6 +1,6 @@
 import { Component } from "react";
-import "css/RelicCardFooter.css";
 import store from "store";
+import "./RelicCardFooter.css";
 
 export default class RelicCardFooter extends Component {
   state = {

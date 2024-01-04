@@ -1,10 +1,10 @@
 import { Component } from "react";
-import "css/Relic.css";
 import RelicList from "./RelicList";
 import Backup from "Backup";
 import Empty from "Empty";
 import store from "store";
 import RelicAdd from "./Add/RelicAdd";
+import "./Relic.css";
 
 export default class Relic extends Component {
   render() {

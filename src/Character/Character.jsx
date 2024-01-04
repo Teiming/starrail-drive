@@ -1,11 +1,11 @@
 import { Component } from "react";
-import "../css/Character.css";
 import CharacterList from "./CharacterList";
 import Empty from "Empty";
 import Backup from "Backup";
 import store from "store";
 import CharacterNew from "./CharacterNew";
 import CharacterDetail from "./Detail/CharacterDetail";
+import "./Character.css";
 
 export default class Character extends Component {
   state = {

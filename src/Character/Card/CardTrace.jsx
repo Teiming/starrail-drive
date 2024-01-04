@@ -1,7 +1,7 @@
 import { Component } from "react";
-import "css/Character.css";
+import "./CharacterCardTrace.css";
 
-export default class CardTrace extends Component {
+export default class CharacterCardTrace extends Component {
   render() {
     let levels = this.props.lv;
 

@@ -1,11 +1,11 @@
 import { Component } from "react";
-import CardHeader from "./CardHeader";
+import CardHeader from "./CharacterCardHeader";
 import CardLightcone from "./CardLightcone";
 import CardTrace from "./CardTrace";
-import CardRelic from "./CardRelic";
+import CharacterCardRelic from "./CharacterCardRelic";
 import CardEidolon from "./CardEidolon";
 import store from "store";
-import "css/CharacterCard.css";
+import "./CharacterCard.css";
 
 export default class CharacterCard extends Component {
   state = {
@@ -46,7 +46,7 @@ export default class CharacterCard extends Component {
 
     return (
       <article
-        className="캐릭터"
+        className="CharacterCard"
         data-filter={isSelected}
         onClick={function () {
           this.props.onCharacterDetail(name);
@@ -54,12 +54,12 @@ export default class CharacterCard extends Component {
       >
         <CardHeader name={name} level={level} element={element} path={path} />
         <hr />
-        <section className="캐릭터_하단">
+        <section className="CharacterCardBody">
           <CardLightcone id="0" />
           <CardTrace
             lv={[trace.basic, trace.skill, trace.ulti, trace.talent]}
           />
-          <CardRelic id={[1, 2, 3, 4, 5, 6]} />
+          <CharacterCardRelic id={[1, 2, 3, 4, 5, 6]} />
           <CardEidolon characterEidolon={this.state["성혼"]} />
         </section>
       </article>

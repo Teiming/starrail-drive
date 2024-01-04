@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "css/RelicAddSet.css";
+import "./RelicAddSet.css";
 
 export default class RelicAddSet extends Component {
   state = {
@@ -7,18 +7,21 @@ export default class RelicAddSet extends Component {
     차원: [],
   };
   render() {
-    let preUseSet = ["-"];
-    let useSet;
+    let useSet = [];
     switch (this.props.slot) {
       case "구체":
       case "매듭":
-        useSet = preUseSet.concat(this.state.차원);
+        useSet = this.state.차원;
         break;
       default:
-        useSet = preUseSet.concat(this.state.터널);
+        useSet = this.state.터널;
         break;
     }
-    let innerSelect = [""];
+    let innerSelect = [
+      <option key="-" value="">
+        -
+      </option>,
+    ];
     for (const set of useSet) {
       innerSelect.push(
         <option key={set} value={set}>

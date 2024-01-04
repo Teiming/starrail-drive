@@ -1,8 +1,8 @@
 import { Component } from "react";
 import NavSecondary from "./NavSecondary";
 import store from "store";
-import "css/Nav.css";
 import { changeMode } from "slice/modeSlice";
+import "./Nav.css";
 
 export default class Nav extends Component {
   state = {

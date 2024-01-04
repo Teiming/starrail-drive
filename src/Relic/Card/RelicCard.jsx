@@ -1,10 +1,9 @@
 import { Component } from "react";
-import RelicItemCharacterList from "../RelicItemCharacterList";
 import store from "store";
 import RelicCardHeader from "./RelicCardHeader";
 import RelicCardBody from "./RelicCardBody";
 import RelicCardFooter from "./RelicCardFooter";
-import "css/RelicCard.css";
+import "./RelicCard.css";
 
 export default class RelicCard extends Component {
   static defaultProps = {
@@ -36,14 +35,6 @@ export default class RelicCard extends Component {
     } else {
       return number;
     }
-  }
-  makeSelector() {
-    var cList = this.state.characterList;
-    var temp = [];
-    for (let i = 0; i < cList.length; i++) {
-      temp.push(<RelicItemCharacterList key={i} value={cList[i]} />);
-    }
-    return temp;
   }
   render() {
     if (this.props.isSelected) {

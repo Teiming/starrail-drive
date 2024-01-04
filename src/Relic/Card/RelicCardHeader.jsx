@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "css/RelicCardHeader.css";
+import "./RelicCardHeader.css";
 
 export default class RelicCardHeader extends Component {
   render() {

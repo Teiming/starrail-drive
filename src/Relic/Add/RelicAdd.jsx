@@ -1,12 +1,22 @@
 import { Component } from "react";
-import "css/RelicAdd.css";
 import RelicAddSlot from "./RelicAddSlot";
 import RelicAddSet from "./RelicAddSet";
+import RelicAddMain from "./RelicAddMain";
+import "./RelicAdd.css";
 
 export default class RelicAdd extends Component {
   state = {
     slot: "",
     set: "",
+    level: 0,
+    main: "",
+    sub: [
+      { key: "", value: 0 },
+      { key: "", value: 0 },
+      { key: "", value: 0 },
+      { key: "", value: 0 },
+    ],
+    equip: "",
   };
   render() {
     return (
@@ -14,12 +24,22 @@ export default class RelicAdd extends Component {
         className="RelicAdd"
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(this.state.slot, this.state.set);
+          console.log(
+            e.target.slot.value,
+            e.target.set.value,
+            e.target.main.value,
+            e.target.level.value
+          );
         }}
       >
         <RelicAddSlot
           onChecked={function (slot) {
             this.setState({ slot });
+            if (slot === "머리") {
+              this.setState({ main: "HP" });
+            } else if (slot === "팔") {
+              this.setState({ main: "공격력" });
+            }
           }.bind(this)}
         />
         <RelicAddSet
@@ -28,7 +48,16 @@ export default class RelicAdd extends Component {
             this.setState({ set });
           }.bind(this)}
         />
-        <section className="defineMain"></section>
+        <RelicAddMain
+          slot={this.state.slot}
+          level={this.state.level}
+          onMainOpt={function (main) {
+            this.setState({ main });
+          }.bind(this)}
+          onLevel={function (level) {
+            this.setState({ level });
+          }.bind(this)}
+        />
         <section className="defineSub"></section>
         <section className="defineEquip"></section>
         <section className="controler">

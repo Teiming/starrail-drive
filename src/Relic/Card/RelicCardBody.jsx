@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "css/RelicCardBody.css";
+import "./RelicCardBody.css";
 
 export default class RelicCardBody extends Component {
   render() {

@@ -2,7 +2,7 @@ import { Component } from "react";
 import CharacterCard from "./Card/CharacterCard";
 import store from "store";
 import { subMode } from "slice/modeSlice";
-import "../css/CharacterList.css";
+import "./CharacterList.css";
 
 export default class CharacterList extends Component {
   state = {
@@ -23,7 +23,7 @@ export default class CharacterList extends Component {
       );
     }
     return (
-      <section id="characterList">
+      <section class="characterList">
         {innerCharacter}
         <div
           className="controler"
