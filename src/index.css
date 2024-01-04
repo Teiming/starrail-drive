@@ -21,7 +21,6 @@
 body {
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
-  height: 100vh;
 }
 
 div#root {
@@ -30,30 +29,51 @@ div#root {
   overflow: scroll;
   margin: auto;
 
-  max-width: 25rem;
-  height: 100vh;
+  height: 100dvh;
 }
-
-@media (min-width: 45.5rem) {
-  div#root,
-  footer {
-    max-width: 37.5rem;
+main {
+  max-width: 12rem;
+  margin: auto;
+}
+@media (min-width: 23rem) {
+  main,
+  footer nav {
+    max-width: 23rem;
   }
 }
-@media (min-width: 58rem) {
-  div#root,
-  footer {
-    max-width: 50rem;
+@media (min-width: 36rem) {
+  main,
+  footer nav {
+    max-width: 36rem;
   }
 }
-@media (min-width: 83rem) {
-  div#root,
-  footer {
-    max-width: 75rem;
+@media (min-width: 48rem) {
+  main,
+  footer nav {
+    max-width: 48rem;
+  }
+}
+@media (min-width: 72rem) {
+  main,
+  footer nav {
+    max-width: 72rem;
+  }
+}
+@media (min-width: 96rem) {
+  main,
+  footer nav {
+    max-width: 96rem;
+  }
+}
+@media (min-width: 144rem) {
+  main,
+  footer nav {
+    max-width: 144rem;
   }
 }
 
 div.controler {
+  scroll-snap-align: start;
   background-color: white;
   border-radius: 1rem;
 
@@ -65,4 +85,11 @@ div.controler {
     color: var(--theme-color);
     font-size: 6rem;
   }
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }

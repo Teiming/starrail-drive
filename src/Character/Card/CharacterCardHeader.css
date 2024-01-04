@@ -1,0 +1,32 @@
+.CharacterCardHeader {
+  display: flex;
+  justify-content: space-between;
+
+  .CharacterCardThumbnail {
+    flex-shrink: 0;
+    width: 4.5rem;
+    height: 4.5rem;
+
+    overflow: hidden;
+
+    border-radius: 1rem;
+    background-color: var(--theme-color-shadow);
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .캐릭터_요약 {
+    text-align: right;
+    font-size: 0.8rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .캐릭터_이름 {
+      font-weight: bolder;
+    }
+  }
+}

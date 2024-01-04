@@ -1,0 +1,37 @@
+.characterList {
+  width: 100%;
+  padding: 0.5rem;
+
+  display: grid;
+  gap: 0.5rem;
+}
+@media (min-width: 23rem) {
+  .characterList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 36rem) {
+  .characterList {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 48rem) {
+  .characterList {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 72rem) {
+  .characterList {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+@media (min-width: 96rem) {
+  .characterList {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+@media (min-width: 144rem) {
+  .characterList {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}

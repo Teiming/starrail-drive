@@ -1,0 +1,31 @@
+.RelicAddSlot {
+  .radio {
+    display: flex;
+    justify-content: space-between;
+  }
+  input[type="radio"] {
+    position: absolute;
+  }
+  label {
+    border: 0.1rem solid var(--theme-color);
+
+    width: 100%;
+
+    padding: 1rem 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  label:nth-child(2) {
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+  }
+  label:last-child {
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+  }
+  input:checked + label {
+    background-color: var(--theme-color);
+  }
+}
