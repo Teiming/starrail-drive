@@ -13,7 +13,7 @@
 .RelicAddSubPalette {
   display: grid;
 
-  label {
+  div {
     font-size: 0.75rem;
     padding: 1rem 0;
     border: 0.1rem solid var(--theme-color);
@@ -28,15 +28,10 @@
       display: none;
     }
   }
-  @media (min-width: 23rem) {
-    label {
-      font-size: 0.8rem;
-    }
-  }
-  label:has(input:checked) {
+  div[data-selected="true"] {
     background-color: var(--theme-color);
   }
-  label:has(input:disabled) {
+  div[data-selected="disabled"] {
     background-color: #2088;
     color: #8888;
   }
@@ -60,6 +55,10 @@
   .RelicAddSubPalette {
     grid-template: repeat(4, 1fr) / repeat(3, 1fr);
     grid-auto-flow: row;
+
+    label {
+      font-size: 0.8rem;
+    }
     :first-child {
       border-top-left-radius: 1rem;
     }

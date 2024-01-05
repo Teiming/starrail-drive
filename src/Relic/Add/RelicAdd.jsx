@@ -11,6 +11,7 @@ export default class RelicAdd extends Component {
     slot: "",
     set: "",
     level: 0,
+    maxLine: 0,
     main: "",
     sub: [
       { key: "", value: 0 },
@@ -31,7 +32,12 @@ export default class RelicAdd extends Component {
             세트: e.target.set.value,
             레벨: e.target.level.value,
             주옵션: e.target.main.value,
-            부옵션: {},
+            부옵션: {
+              [e.target.sub1.value]: "",
+              [e.target.sub2.value]: "",
+              [e.target.sub3.value]: "",
+              [e.target.sub4.value]: "",
+            },
           });
         }}
       >
@@ -61,9 +67,10 @@ export default class RelicAdd extends Component {
           }.bind(this)}
           onLevel={function (level) {
             this.setState({ level });
+            this.setState({ maxLine: 1 + Math.floor(level / 3) });
           }.bind(this)}
         />
-        <RelicAddSub main={this.state.main} />
+        <RelicAddSub main={this.state.main} maxLine={this.state.maxLine} />
         <RelicAddEquip />
         <section className="RelicAddSubmit">
           <input type="submit" value="추가" />

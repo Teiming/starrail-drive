@@ -89,7 +89,7 @@ export default class RelicAddMain extends Component {
               } else if (level > 15) {
                 this.props.onLevel(15);
               } else {
-                this.props.onLevel(level);
+                this.props.onLevel(Number(level));
               }
             }.bind(this)}
           />
