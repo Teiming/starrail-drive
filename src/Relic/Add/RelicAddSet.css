@@ -10,7 +10,7 @@
     border: none;
 
     background-color: black;
-    border: 0.2rem solid var(--theme-color);
+    border: 0.1rem solid var(--theme-color);
 
     color: white;
   }
