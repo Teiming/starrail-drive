@@ -9,7 +9,7 @@
   div {
     color: white;
     padding: 1rem;
-    background-color: var(--theme-color-shadow);
+    background-color: color(display-p3 0.125 0 0.5);
     border-radius: 1rem;
     width: 100%;
     text-align: center;
