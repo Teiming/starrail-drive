@@ -1,5 +1,6 @@
 .RelicAddSlot {
-  .radio {
+  grid-area: slot;
+
     display: flex;
     justify-content: space-between;
   }

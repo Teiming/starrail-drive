@@ -1,4 +1,5 @@
 .RelicAddMain {
+  grid-area: main;
   display: flex;
   .RelicAddMainKey {
     flex: 2;

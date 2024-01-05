@@ -1,4 +1,5 @@
 .RelicAddSet {
+  grid-area: set;
   select {
     width: 100%;
     padding: 1rem;
