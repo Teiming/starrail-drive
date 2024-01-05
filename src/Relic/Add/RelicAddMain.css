@@ -4,19 +4,22 @@
   .RelicAddMainKey {
     flex: 2;
     select {
+      font-size: 1rem;
       width: 100%;
       background-color: black;
       border: 0.1rem solid var(--theme-color);
       color: white;
       text-align-last: center;
+      border-radius: 0;
       border-top-left-radius: 1rem;
       border-bottom-left-radius: 1rem;
-      padding: 0.5rem;
+      padding: 1rem;
     }
   }
   .RelicAddLevel {
     flex: 1;
     input {
+      font-size: 1rem;
       width: 100%;
       background-color: black;
       border: 0.1rem solid var(--theme-color);
@@ -24,7 +27,7 @@
       text-align-last: center;
       border-top-right-radius: 1rem;
       border-bottom-right-radius: 1rem;
-      padding: 0.5rem;
+      padding: 1rem;
     }
   }
 }
