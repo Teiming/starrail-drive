@@ -2,21 +2,35 @@
   padding: 0.5rem;
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
 }
-@media (min-width: 45.5rem) {
+@media (min-width: 23rem) {
+  .RelicList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 36rem) {
   .RelicList {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-@media (min-width: 58rem) {
+@media (min-width: 48rem) {
   .RelicList {
     grid-template-columns: repeat(4, 1fr);
   }
 }
-@media (min-width: 83rem) {
+@media (min-width: 72rem) {
   .RelicList {
     grid-template-columns: repeat(6, 1fr);
+  }
+}
+@media (min-width: 96rem) {
+  .RelicList {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+@media (min-width: 144rem) {
+  .RelicList {
+    grid-template-columns: repeat(12, 1fr);
   }
 }
