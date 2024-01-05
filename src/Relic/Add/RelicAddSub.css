@@ -1,0 +1,89 @@
+.RelicAddSub {
+  grid-area: sub;
+
+  .RelicAddSubContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    position: relative;
+  }
+}
+
+.RelicAddSubPalette {
+  display: grid;
+
+  label {
+    font-size: 0.75rem;
+    padding: 1rem 0;
+    border: 0.1rem solid var(--theme-color);
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    span:first-child {
+      display: none;
+    }
+    span:last-child {
+      display: none;
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+  }
+  @media (min-width: 23rem) {
+    label {
+      font-size: 0.8rem;
+    }
+  }
+  label:has(input:checked) {
+    background-color: var(--theme-color);
+  }
+  label:has(input:disabled) {
+    background-color: #2088;
+    color: #8888;
+  }
+
+  grid-template: repeat(6, 1fr) / repeat(2, 1fr);
+  grid-auto-flow: column;
+  :first-child {
+    border-top-left-radius: 1rem;
+  }
+  :nth-child(6) {
+    border-bottom-left-radius: 1rem;
+  }
+  :nth-last-child(6) {
+    border-top-right-radius: 1rem;
+  }
+  :last-child {
+    border-bottom-right-radius: 1rem;
+  }
+}
+@media (min-width: 23rem) {
+  .RelicAddSubPalette {
+    grid-template: repeat(4, 1fr) / repeat(3, 1fr);
+    grid-auto-flow: row;
+    :first-child {
+      border-top-left-radius: 1rem;
+    }
+    :nth-child(3) {
+      border-top-right-radius: 1rem;
+    }
+    :nth-child(6) {
+      border-radius: 0;
+    }
+    :nth-last-child(6) {
+      border-radius: 0;
+    }
+    :nth-last-child(3) {
+      border-bottom-left-radius: 1rem;
+    }
+    :last-child {
+      border-bottom-right-radius: 1rem;
+    }
+  }
+}
