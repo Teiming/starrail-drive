@@ -23,7 +23,7 @@ export default class CharacterList extends Component {
       );
     }
     return (
-      <section class="characterList">
+      <section className="characterList">
         {innerCharacter}
         <div
           className="controler"
