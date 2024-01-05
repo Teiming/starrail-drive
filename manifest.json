@@ -7,30 +7,60 @@
   "start_url": ".",
   "icons": [
     {
-      "src": "starrail-drive-64.png",
+      "src": "starrail-drive-16@2x.png",
       "type": "image/png",
-      "sizes": "64x64"
+      "sizes": "32x32"
     },
     {
-      "src": "starrail-drive-64@2x.png",
+      "src": "starrail-drive-29@2x.png",
       "type": "image/png",
-      "sizes": "128x128"
+      "sizes": "58x58"
     },
     {
-      "src": "starrail-drive-64@3x.png",
+      "src": "starrail-drive-38@2x.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "76x76"
     },
     {
-      "src": "starrail-drive-256.png",
+      "src": "starrail-drive-40@2x.png",
       "type": "image/png",
-      "sizes": "256x256"
+      "sizes": "80x80"
+    },
+    {
+      "src": "starrail-drive-29@3x.png",
+      "type": "image/png",
+      "sizes": "87x87"
+    },
+    {
+      "src": "starrail-drive-38@3x.png",
+      "type": "image/png",
+      "sizes": "114x114"
+    },
+    {
+      "src": "starrail-drive-40@3x.png",
+      "type": "image/png",
+      "sizes": "120x120"
+    },
+    {
+      "src": "starrail-drive-83.5@2x.png",
+      "type": "image/png",
+      "sizes": "168x168"
+    },
+    {
+      "src": "starrail-drive-60@3x.png",
+      "type": "image/png",
+      "sizes": "180x180"
     },
     {
       "src": "starrail-drive-256@2x.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
+    },
+    {
+      "src": "starrail-drive-512@2x.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
     },
     {
       "src": "starrail-drive-512.svg",
