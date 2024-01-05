@@ -62,7 +62,7 @@ export default class RelicAdd extends Component {
         />
         <RelicAddSub main={this.state.main} />
         <section className="defineEquip"></section>
-        <section className="controler">
+        <section className="RelicAddSubmit">
           <input type="submit" value="추가" />
         </section>
       </form>
