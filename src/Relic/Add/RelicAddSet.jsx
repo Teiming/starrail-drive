@@ -17,11 +17,7 @@ export default class RelicAddSet extends Component {
         useSet = this.state.터널;
         break;
     }
-    let innerSelect = [
-      <option key="-" value="">
-        -
-      </option>,
-    ];
+    let innerSelect = [];
     for (const set of useSet) {
       innerSelect.push(
         <option key={set} value={set}>
