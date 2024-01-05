@@ -20,7 +20,7 @@ export default class Relic extends Component {
         break;
     }
     return (
-      <main id="유물">
+      <main id="Relic">
         {innerRelic}
         <Backup />
         <Empty line={emptyLine} />
