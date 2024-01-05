@@ -49,10 +49,12 @@ export default class Nav extends Component {
     }
     return (
       <footer>
-        {innerNavSecondary}
-        <nav id="NavMain">
-          <ul>{innerNav}</ul>
-        </nav>
+        <div className="NavContainer">
+          {innerNavSecondary}
+          <nav id="NavMain">
+            <ul>{innerNav}</ul>
+          </nav>
+        </div>
       </footer>
     );
   }
