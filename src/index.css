@@ -36,37 +36,37 @@ main {
 }
 @media (min-width: 23rem) {
   main,
-  footer nav {
+  .NavContainer {
     max-width: 23rem;
   }
 }
 @media (min-width: 36rem) {
   main,
-  footer nav {
+  .NavContainer {
     max-width: 36rem;
   }
 }
 @media (min-width: 48rem) {
   main,
-  footer nav {
+  .NavContainer {
     max-width: 48rem;
   }
 }
 @media (min-width: 72rem) {
   main,
-  footer nav {
+  .NavContainer {
     max-width: 72rem;
   }
 }
 @media (min-width: 96rem) {
   main,
-  footer nav {
+  .NavContainer {
     max-width: 96rem;
   }
 }
 @media (min-width: 144rem) {
   main,
-  footer nav {
+  .NavContainer {
     max-width: 144rem;
   }
 }
