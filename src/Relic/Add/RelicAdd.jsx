@@ -2,7 +2,9 @@ import { Component } from "react";
 import RelicAddSlot from "./RelicAddSlot";
 import RelicAddSet from "./RelicAddSet";
 import RelicAddMain from "./RelicAddMain";
+import RelicAddSub from "./RelicAddSub";
 import "./RelicAdd.css";
+import RelicAddEquip from "./RelicAddEquip";
 
 export default class RelicAdd extends Component {
   state = {
@@ -24,12 +26,13 @@ export default class RelicAdd extends Component {
         className="RelicAdd"
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(
-            e.target.slot.value,
-            e.target.set.value,
-            e.target.main.value,
-            e.target.level.value
-          );
+          console.log({
+            부위: e.target.slot.value,
+            세트: e.target.set.value,
+            레벨: e.target.level.value,
+            주옵션: e.target.main.value,
+            부옵션: {},
+          });
         }}
       >
         <RelicAddSlot
