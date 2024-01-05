@@ -39,6 +39,8 @@ export default class RelicAdd extends Component {
               this.setState({ main: "HP" });
             } else if (slot === "팔") {
               this.setState({ main: "공격력" });
+            } else {
+              this.setState({ main: "HP%" });
             }
           }.bind(this)}
         />
