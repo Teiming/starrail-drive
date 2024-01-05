@@ -5,6 +5,9 @@
 
   color: white;
 
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+
   --theme-color: color(display-p3 0.25 0 1);
   --theme-color-shadow: color(display-p3 0.2 0 0.8);
 }
@@ -18,11 +21,6 @@
   font-family: SCDream, -apple-system, sans-serif;
 }
 
-body {
-  padding-left: env(safe-area-inset-left);
-  padding-right: env(safe-area-inset-right);
-}
-
 div#root {
   scroll-snap-type: y mandatory;
   scroll-padding: 0.5rem;
@@ -31,6 +29,7 @@ div#root {
 
   height: 100dvh;
 }
+
 main {
   max-width: 12rem;
   margin: auto;
