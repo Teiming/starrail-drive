@@ -1,8 +1,8 @@
 .RelicAddSlot {
   grid-area: slot;
 
+  .RelicAddSlotRadio {
     display: flex;
-    justify-content: space-between;
   }
   input[type="radio"] {
     position: absolute;
@@ -18,15 +18,23 @@
     justify-content: center;
     align-items: center;
   }
-  label:nth-child(2) {
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
-  }
-  label:last-child {
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-  }
-  input:checked + label {
+  label:has(input:checked) {
     background-color: var(--theme-color);
+  }
+  .RelicAddSlotRadio:first-child {
+    label:first-child {
+      border-top-left-radius: 1rem;
+    }
+    label:last-child {
+      border-top-right-radius: 1rem;
+    }
+  }
+  .RelicAddSlotRadio:last-child {
+    label:first-child {
+      border-bottom-left-radius: 1rem;
+    }
+    label:last-child {
+      border-bottom-right-radius: 1rem;
+    }
   }
 }
