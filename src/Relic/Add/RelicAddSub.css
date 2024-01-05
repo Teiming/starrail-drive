@@ -24,13 +24,6 @@
 
     text-align: center;
 
-    span:first-child {
-      display: none;
-    }
-    span:last-child {
-      display: none;
-    }
-
     input[type="checkbox"] {
       display: none;
     }
