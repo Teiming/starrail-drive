@@ -1,9 +1,9 @@
 import { Component } from "react";
 import CardHeader from "./CharacterCardHeader";
-import CardLightcone from "./CardLightcone";
-import CardTrace from "./CardTrace";
+import CharacterCardLightcone from "./CharacterCardLightcone";
+import CardTrace from "./CharacterCardTrace";
 import CharacterCardRelic from "./CharacterCardRelic";
-import CardEidolon from "./CardEidolon";
+import CharacterCardEidolon from "./CharacterCardEidolon";
 import store from "store";
 import "./CharacterCard.css";
 
@@ -55,12 +55,11 @@ export default class CharacterCard extends Component {
         <CardHeader name={name} level={level} element={element} path={path} />
         <hr />
         <section className="CharacterCardBody">
-          <CardLightcone id="0" />
-          <CardTrace
-            lv={[trace.basic, trace.skill, trace.ulti, trace.talent]}
-          />
+          <CharacterCardLightcone id="lightconeId" />
+          <hr />
+          <CardTrace lv={[trace.basic, trace.skill, trace.ulti, trace.talent]} />
           <CharacterCardRelic id={[1, 2, 3, 4, 5, 6]} />
-          <CardEidolon characterEidolon={this.state["성혼"]} />
+          <CharacterCardEidolon characterEidolon={this.state["성혼"]} />
         </section>
       </article>
     );
