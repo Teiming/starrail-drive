@@ -1,21 +1,21 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-const name = "modeSlice";
+const name = 'modeSlice';
 
-let initialState = { mode: "캐릭터", subMode: "" };
+let initialState = { mode: '캐릭터', subMode: '' };
 
-const storedMode = localStorage.getItem("mode");
+const storedMode = localStorage.getItem('mode');
 if (storedMode) {
-  initialState = { mode: storedMode, subMode: "" };
+  initialState = { mode: storedMode, subMode: '' };
 }
 const reducers = {
-  changeMode: (state, action) => {
+  changeMode: (state: typeof initialState, action: { payload: string }) => {
     let _mode = action.payload;
     state.mode = _mode;
-    state.subMode = "";
-    localStorage.setItem("mode", _mode);
+    state.subMode = '';
+    localStorage.setItem('mode', _mode);
   },
-  subMode: (state, action) => {
+  subMode: (state: typeof initialState, action: { payload: string }) => {
     state.subMode = action.payload;
   },
 };

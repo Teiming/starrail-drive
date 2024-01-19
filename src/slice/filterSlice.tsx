@@ -1,7 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-const name = "filterSlice";
-let initialState = {
+interface fileters {
+  character: fileter;
+  lightcone: fileter;
+  relic: fileter;
+}
+interface fileter {
+  [key: string]: boolean;
+}
+
+const name = 'filterSlice';
+let initialState: fileters = {
   character: {
     물리: true,
     화염: true,
@@ -29,24 +38,27 @@ let initialState = {
     매듭: true,
   },
 };
-const storedFilter = sessionStorage.getItem("filter");
+const storedFilter = sessionStorage.getItem('filter');
 if (storedFilter) {
   initialState = JSON.parse(storedFilter);
 }
 const reducers = {
-  toggleFilter: (state, action) => {
+  toggleFilter: (
+    state: typeof initialState,
+    action: { payload: { mode: string; target: string; isSelected: boolean } }
+  ) => {
     switch (action.payload.mode) {
-      case "캐릭터":
+      case '캐릭터':
         state.character[action.payload.target] = action.payload.isSelected;
         break;
-      case "광추":
+      case '광추':
         state.lightcone[action.payload.target] = action.payload.isSelected;
         break;
       default:
         state.relic[action.payload.target] = action.payload.isSelected;
         break;
     }
-    sessionStorage.setItem("filter", JSON.stringify(state));
+    sessionStorage.setItem('filter', JSON.stringify(state));
   },
 };
 const filterSlice = createSlice({ name, initialState, reducers });

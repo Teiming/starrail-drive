@@ -1,52 +1,56 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+import Relic from 'types/relic';
+import { RelicSubopt } from 'types/relic';
 
-const name = "relicSlice";
+const name = 'relicSlice';
 
-let initialState = { relic: {} };
+let initialState: { relics: { [id: string]: Relic } } = { relics: {} };
 
-const storedRelic = localStorage.getItem("유물");
+const storedRelic = localStorage.getItem('유물');
 if (storedRelic) {
-  initialState = { relic: JSON.parse(storedRelic) };
+  initialState = { relics: JSON.parse(storedRelic) };
 }
 
-const saveRelic = (relic) => {
-  localStorage.setItem("유물", JSON.stringify(relic));
+const saveRelic = (relic: {}) => {
+  localStorage.setItem('유물', JSON.stringify(relic));
 };
 
 const reducers = {
-  addRelic: (state, action) => {
-    state.relic[action.payload.id] = action.payload.relicData;
-    saveRelic(state.relic);
+  addRelic: (state: typeof initialState, action: { payload: { id: string; relicData: Relic } }) => {
+    state.relics[action.payload.id] = action.payload.relicData;
+    saveRelic(state.relics);
   },
-  updateRelicLevel: (state, action) => {
-    state.relic[action.payload.relicID]["레벨"] = action.payload.level;
-    state.relic[action.payload.relicID]["부옵션"] = action.payload.sub;
-    saveRelic(state.relic);
+  updateRelicLevel: (
+    state: typeof initialState,
+    action: { payload: { id: string; level: number } }
+  ) => {
+    state.relics[action.payload.id]['레벨'] = action.payload.level;
+    saveRelic(state.relics);
   },
-  updateRelic: (state, action) => {
-    state.relic[action.payload.relicID]["레벨"] = action.payload.level;
-    state.relic[action.payload.relicID]["부옵션"] = action.payload.sub;
-    saveRelic(state.relic);
+  updateRelicSubopt: (
+    state: typeof initialState,
+    action: { payload: { id: string; sub: RelicSubopt } }
+  ) => {
+    state.relics[action.payload.id]['부옵션'] = action.payload.sub;
+    saveRelic(state.relics);
   },
-  updateRelicEquip: (state, action) => {
-    state.relic[action.payload.id]["장착"] = action.payload.newEquip;
-    saveRelic(state.relic);
+  updateRelicEquip: (
+    state: typeof initialState,
+    action: { payload: { id: string; newEquip: string } }
+  ) => {
+    state.relics[action.payload.id]['착용'] = action.payload.newEquip;
+    saveRelic(state.relics);
   },
-  deleteRelic: (state, action) => {
-    let _relic = Object.assign({}, state.relic);
+  deleteRelic: (state: typeof initialState, action: { payload: string }) => {
+    let _relic = Object.assign({}, state.relics);
     delete _relic[action.payload];
-    state.relic = _relic;
-    saveRelic(state.relic);
+    state.relics = _relic;
+    saveRelic(state.relics);
   },
 };
 
 const relicSlice = createSlice({ name, initialState, reducers });
 
-export const {
-  addRelic,
-  updateRelicLevel,
-  updateRelic,
-  updateRelicEquip,
-  deleteRelic,
-} = relicSlice.actions;
+export const { addRelic, updateRelicLevel, updateRelicSubopt, updateRelicEquip, deleteRelic } =
+  relicSlice.actions;
 export default relicSlice.reducer;
