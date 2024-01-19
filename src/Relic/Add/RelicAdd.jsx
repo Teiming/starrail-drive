@@ -3,8 +3,11 @@ import RelicAddSlot from "./RelicAddSlot";
 import RelicAddSet from "./RelicAddSet";
 import RelicAddMain from "./RelicAddMain";
 import RelicAddSub from "./RelicAddSub";
-import "./RelicAdd.css";
 import RelicAddEquip from "./RelicAddEquip";
+import store from "store";
+import "./RelicAdd.css";
+import { addRelic } from "slice/relicSlice";
+import { subMode } from "slice/modeSlice";
 
 export default class RelicAdd extends Component {
   state = {
@@ -20,6 +23,7 @@ export default class RelicAdd extends Component {
       { key: "", value: 0 },
     ],
     equip: "",
+    relicCode: "",
   };
   render() {
     return (
@@ -27,20 +31,32 @@ export default class RelicAdd extends Component {
         className="RelicAdd"
         onSubmit={(e) => {
           e.preventDefault();
-          console.log({
-            부위: e.target.slot.value,
-            세트: e.target.set.value,
-            레벨: e.target.level.value,
-            주옵션: e.target.main.value,
-            부옵션: {
-              [e.target.sub1.value]: "",
-              [e.target.sub2.value]: "",
-              [e.target.sub3.value]: "",
-              [e.target.sub4.value]: "",
-            },
-          });
+          store.dispatch(
+            addRelic({
+              id: e.target.relicId.value,
+              relicData: {
+                세트: e.target.set.value,
+                부위: e.target.slot.value,
+                주옵션: e.target.main.value,
+                레벨: e.target.level.value,
+                부옵션: {
+                  [e.target.sub1.value]: "",
+                  [e.target.sub2.value]: "",
+                  [e.target.sub3.value]: "",
+                  [e.target.sub4.value]: "",
+                },
+                장착: e.target.equip.value,
+              },
+            })
+          );
+          store.dispatch(subMode(""));
         }}
       >
+        <input
+          type="hidden"
+          name="relicId"
+          value={"유물_" + this.state.relicCode}
+        />
         <RelicAddSlot
           onChecked={function (slot) {
             this.setState({ slot });
@@ -76,6 +92,20 @@ export default class RelicAdd extends Component {
           <input type="submit" value="추가" />
         </section>
       </form>
+    );
+  }
+  componentDidMount() {
+    const newId = () => {
+      const createId = Math.round(Math.random() * 10000);
+      return createId;
+    };
+    this.setState({ relicNumber: newId() + "-" + newId() });
+    store.subscribe(
+      function () {
+        this.setState({
+          relicNumber: Object.keys(store.getState().relicSlice).length,
+        });
+      }.bind(this)
     );
   }
 }
