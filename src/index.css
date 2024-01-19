@@ -9,7 +9,21 @@
   padding-right: env(safe-area-inset-right);
 
   --theme-color: color(display-p3 0.25 0 1);
-  --theme-color-shadow: color(display-p3 0.2 0 0.8);
+
+  --primary-tint-100: color(display-p3 0.95 0.8 1);
+  --primary-tint-200: color(display-p3 0.7 0.6 1);
+  --primary-tint-300: color(display-p3 0.55 0.4 1);
+  --primary-tint-400: color(display-p3 0.4 0.2 1);
+  --primary-tint-500: color(display-p3 0.25 0 1);
+  --primary: var(var(--theme-color));
+  --primary-shade-500: color(display-p3 0.25 0 1);
+  --primary-shade-400: color(display-p3 0.2 0 0.8);
+  --primary-shade-300: color(display-p3 0.15 0 0.6);
+  --primary-shade-200: color(display-p3 0.1 0 0.4);
+  --primary-shade-100: color(display-p3 0.05 0 0.2);
+
+  --on-tint: black;
+  --on-shade: white;
 }
 
 * {
