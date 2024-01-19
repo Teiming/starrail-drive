@@ -1,0 +1,32 @@
+.CharacterCardTrace {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+
+  .TraceItem {
+    width: 2rem;
+    height: 2rem;
+
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+
+    span {
+      padding-top: 0.1rem;
+    }
+
+    :first-child {
+      background-color: white;
+      color: var(--theme-color);
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+    }
+    :last-child {
+      border: 0.1rem solid white;
+      border-top: none;
+      border-bottom-left-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
+    }
+  }
+}

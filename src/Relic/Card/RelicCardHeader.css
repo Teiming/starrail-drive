@@ -1,4 +1,5 @@
 .RelicCardHeader {
+  margin-bottom: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
@@ -8,11 +9,14 @@
   }
 
   .RelicLevel {
+    opacity: 0.75;
     font-size: 0.75rem;
     display: flex;
-    gap: 0.5rem;
-  }
-  .RelicLevel span:last-child::before {
-    content: "Lv ";
+    justify-content: space-between;
+    width: 100%;
+
+    span:last-child::before {
+      content: " +";
+    }
   }
 }

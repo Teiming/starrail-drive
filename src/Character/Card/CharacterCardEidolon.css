@@ -1,0 +1,40 @@
+.CharacterCardEidolon {
+  margin-top: 0.5rem;
+
+  display: flex;
+  width: 100%;
+  height: 1rem;
+  gap: 0.5rem;
+
+  .CharacterCardEidolonTitle {
+    padding-top: 0.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .CharacterCardEidolonStatus {
+    flex-grow: 1;
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.1rem;
+
+    border: 0.1rem solid white;
+    border-radius: 1rem;
+    background-color: white;
+
+    .EidolonItem {
+      background-color: var(--theme-color);
+    }
+
+    :first-child {
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+    }
+    :last-child {
+      border-top-right-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+    }
+  }
+}

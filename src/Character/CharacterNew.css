@@ -2,15 +2,17 @@
   padding: 0.5rem;
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.8rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.4rem;
 
   .캐릭터_신규 {
+    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 
     align-items: center;
+    text-align: center;
     font-size: 0.75rem;
 
     .썸네일 {
@@ -19,6 +21,7 @@
       border-radius: 1rem;
       overflow: hidden;
       background-color: var(--theme-color);
+
       img {
         width: 100%;
       }
@@ -28,17 +31,22 @@
     display: none;
   }
 }
-@media (min-width: 45.5rem) {
+@media (min-width: 23rem) {
+  #캐릭터_추가 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 36rem) {
   #캐릭터_추가 {
     grid-template-columns: repeat(6, 1fr);
   }
 }
-@media (min-width: 58rem) {
+@media (min-width: 48rem) {
   #캐릭터_추가 {
     grid-template-columns: repeat(8, 1fr);
   }
 }
-@media (min-width: 83rem) {
+@media (min-width: 72rem) {
   #캐릭터_추가 {
     grid-template-columns: repeat(12, 1fr);
   }

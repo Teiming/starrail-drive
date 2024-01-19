@@ -2,7 +2,7 @@
   display: grid;
   width: 100%;
   gap: 0.2rem;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas: "머리 다리 매듭" "팔 몸통 구체";
   grid-auto-flow: column;
 
   .부위 {
@@ -12,6 +12,26 @@
     min-height: 2.5rem;
     background-color: var(--theme-color-shadow);
 
-    font-size: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  :nth-child(1) {
+    grid-area: 머리;
+  }
+  :nth-child(2) {
+    grid-area: 팔;
+  }
+  :nth-child(3) {
+    grid-area: 몸통;
+  }
+  :nth-child(4) {
+    grid-area: 다리;
+  }
+  :nth-child(5) {
+    grid-area: 구체;
+  }
+  :nth-child(6) {
+    grid-area: 매듭;
   }
 }

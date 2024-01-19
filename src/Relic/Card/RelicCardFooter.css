@@ -1,44 +1,82 @@
 .RelicCardFooter {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.5rem;
 
-  select {
-    border: 1px solid white;
-    padding: 0.3rem;
-    width: 100%;
-    border-radius: 1rem;
+  .RelicEquip {
+    margin: 0 -0.25rem;
+    display: flex;
 
-    font-size: 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
 
-    background-color: var(--theme-color-shadow);
-    color: white;
-    text-align-last: center;
+    height: 2rem;
+
+    .RelicEquipThumbnail {
+      position: absolute;
+      padding: 0.2rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      div {
+        background-color: var(--theme-color-shadow);
+        border-radius: 0.3rem;
+        height: 1.6rem;
+        width: 1.6rem;
+
+        overflow: hidden;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .RelicEquipSelect {
+      font-weight: bolder;
+      z-index: 1;
+      grid-column: span 2;
+      border-radius: 0.5rem;
+      background-color: #0000;
+      padding: 0 0.5rem;
+      padding-top: 0.1rem;
+      width: 100%;
+      border: none;
+
+      font-size: 1rem;
+
+      color: var(--theme-color-shadow);
+      text-align-last: right;
+    }
   }
   .RelicControl {
+    margin: -0.25rem;
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 8fr 5fr;
+    gap: 0.2rem;
+    height: 2rem;
 
     input {
-      border-radius: 0rem;
+      border-radius: 0.5rem;
       padding: 0.3rem;
       border: none;
       font-size: 1rem;
     }
     .RelicEdit {
-      border-top-left-radius: 1rem;
-      border-bottom-left-radius: 1rem;
-      color: var(--theme-color-shadow);
-      background-color: white;
+      background-color: var(--theme-color-deep);
+      color: white;
+    }
+    .RelicEdit:hover {
+      box-shadow: 0 0 0.5rem var(--theme-color-deep);
     }
     .RelicDelete {
-      border-top-right-radius: 1rem;
-      border-bottom-right-radius: 1rem;
       background-color: #f03;
       color: black;
     }
-    input:hover {
-      opacity: 0.5;
+    .RelicDelete:hover {
+      box-shadow: 0 0 0.5rem #f03;
     }
   }
 }
