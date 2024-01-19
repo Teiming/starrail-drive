@@ -1,7 +1,7 @@
 import { Component } from "react";
 import store from "store";
 import { addCharacter } from "slice/characterSlice";
-import "css/CharacterNew.css";
+import "./CharacterNew.css";
 
 export default class CharacterNew extends Component {
   state = {
