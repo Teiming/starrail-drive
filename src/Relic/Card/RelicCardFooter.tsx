@@ -1,12 +1,19 @@
 import { Component } from "react";
 import store from "store";
 import "./RelicCardFooter.css";
+import { subMode } from "slice/modeSlice";
 
 export default class RelicCardFooter extends Component {
   state = {
     characterList: Object.keys(store.getState().characterSlice),
   };
   render() {
+    let thumbnail = process.env.PUBLIC_URL + "/unavailable-dark.svg";
+    const equip = this.props.equip;
+    if (equip !== "미장착") {
+      thumbnail = process.env.PUBLIC_URL + "/png/character/" + equip + ".png";
+    }
+
     let innerOption = [
       <option key="미장착" value="미장착">
         미장착
@@ -21,12 +28,18 @@ export default class RelicCardFooter extends Component {
     }
     return (
       <section className="RelicCardFooter">
-        <div className="RelicEquiv">
+        <div className="RelicEquip">
+          <div className="RelicEquipThumbnail">
+            <div>
+              <img type="image/" src={thumbnail} alt="thumbnail" />
+            </div>
+          </div>
           <select
-            name="equiv"
+            className="RelicEquipSelect"
+            name="equip"
             defaultValue={this.props.equip}
             onChange={function (e) {
-              console.log(e.target.value);
+              this.props.onChangeEquip(e.target.value);
             }.bind(this)}
           >
             {innerOption}
@@ -38,8 +51,7 @@ export default class RelicCardFooter extends Component {
             value="수정"
             className="RelicEdit"
             onClick={function () {
-              if (window.alert("개발중인 기능")) {
-              }
+              store.dispatch(subMode("수정"));
             }}
           ></input>
           <input
@@ -47,9 +59,10 @@ export default class RelicCardFooter extends Component {
             value="삭제"
             className="RelicDelete"
             onClick={function () {
-              if (window.confirm("정말 삭제하겠습니까?")) {
+              if (window.confirm("정말 삭제하시겠습니까?")) {
+                this.props.onDelete();
               }
-            }}
+            }.bind(this)}
           ></input>
         </div>
       </section>

@@ -1,8 +1,8 @@
 import { Component } from "react";
-import store from "store";
 import RelicCardHeader from "./RelicCardHeader";
 import RelicCardBody from "./RelicCardBody";
 import RelicCardFooter from "./RelicCardFooter";
+import store from "store";
 import "./RelicCard.css";
 
 export default class RelicCard extends Component {
@@ -17,17 +17,9 @@ export default class RelicCard extends Component {
     sub3_value: 0.23,
     sub4_value: 0.24,
   };
-  constructor(props) {
-    super(props);
-    this.state = {
-      주옵1유형: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 0, 0.432],
-      main공퍼: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0, 0.432, 0, 0, 0.432],
-      main속도: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0, 0.432, 0, 0, 25],
-      main치확: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0, 0.432, 0, 0, 0.432],
-      main치피: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0, 0.432, 0, 0, 0.432],
-      characterList: Object.keys(store.getState().characterSlice),
-    };
-  }
+  state = {
+    characterList: Object.keys(store.getState().characterSlice),
+  };
   makePercent(number) {
     if (number < 1) {
       var _number = 100 * Number(number);
@@ -37,6 +29,7 @@ export default class RelicCard extends Component {
     }
   }
   render() {
+    let relicData = this.props.relicData;
     if (this.props.isSelected) {
       return (
         <div
@@ -46,18 +39,26 @@ export default class RelicCard extends Component {
           data-main-option={this.props.main}
         >
           <RelicCardHeader
-            set={this.props.set}
-            slot={this.props.slot}
-            level={this.props.level}
+            set={relicData["세트"]}
+            slot={relicData["부위"]}
+            level={relicData["레벨"]}
           />
+          {/* <hr /> */}
           <RelicCardBody
-            main={[
-              this.props.main,
-              this.makePercent(this.state.주옵1유형[this.props.level]),
-            ]}
+            level={relicData["레벨"]}
+            main={relicData["주옵션"]}
+            sub={relicData["부옵션"]}
             subA={[]}
           />
-          <RelicCardFooter equip={this.props.equip} />
+          <RelicCardFooter
+            equip={relicData["장착"]}
+            onDelete={function () {
+              this.props.onDelete();
+            }.bind(this)}
+            onChangeEquip={function (newEquip) {
+              this.props.onChangeEquip(newEquip);
+            }.bind(this)}
+          />
         </div>
       );
     } else {
