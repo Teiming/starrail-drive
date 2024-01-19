@@ -106,3 +106,17 @@ input::-webkit-inner-spin-button {
 input::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
+
+hr {
+  margin: 0.5rem -0.75rem;
+  border: none;
+  height: 0.1rem;
+  background: linear-gradient(
+    to right,
+    var(--theme-color),
+    25%,
+    var(--theme-color-shadow),
+    75%,
+    var(--theme-color)
+  );
+}
