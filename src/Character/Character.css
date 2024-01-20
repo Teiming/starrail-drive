@@ -1,7 +1,7 @@
-main#캐릭터 {
+main#Character {
   width: 100%;
 }
 
-.캐릭터[data-filter="false"] {
+.캐릭터[data-filter='false'] {
   display: none;
 }

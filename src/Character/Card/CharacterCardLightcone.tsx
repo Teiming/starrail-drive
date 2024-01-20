@@ -1,22 +1,22 @@
-import { Component } from "react";
+import React from 'react';
 
-export default class CharacterCardLightcone extends Component {
-  render() {
-    return (
-      <section className="CharacterCardLightcone">
-        <div className="요약">
-          <div className="이름">댄스! 댄스! 댄스!</div>
-          <div className="레벨">Lv. 80</div>
-        </div>
-        <div className="이미지">
-          <img
-            src={
-              process.env.PUBLIC_URL + "/png/lightcone/댄스! 댄스! 댄스!.png"
-            }
-            alt="광추 이미지"
-          />
-        </div>
-      </section>
-    );
-  }
+interface Props {
+  id: string;
+}
+
+export default function CharacterCardLightcone(props: Props) {
+  return (
+    <section className='CharacterCardLightcone'>
+      <div className='요약'>
+        <div className='이름'>댄스! 댄스! 댄스!</div>
+        <div className='레벨'>Lv. 80</div>
+      </div>
+      <div className='이미지'>
+        <img
+          src={process.env.PUBLIC_URL + '/png/lightcone/댄스! 댄스! 댄스!.png'}
+          alt='광추 이미지'
+        />
+      </div>
+    </section>
+  );
 }

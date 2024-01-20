@@ -10,7 +10,7 @@
     overflow: hidden;
 
     border-radius: 0.75rem;
-    background-color: var(--theme-color-shadow);
+    background-color: var(--primary-shade-400);
 
     img {
       width: 100%;

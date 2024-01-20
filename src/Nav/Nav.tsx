@@ -1,69 +1,52 @@
-import { Component } from "react";
-import NavSecondary from "./NavSecondary";
-import store from "store";
-import { changeMode } from "slice/modeSlice";
-import "./Nav.css";
+import React, { ReactElement } from 'react';
+import NavSecondary from './NavSecondary';
+import { useSelector } from 'react-redux';
+import { dispatch, State } from 'store';
+import { changeMode } from 'slice/modeSlice';
+import { everyMode } from 'types/mode';
+import './Nav.css';
 
-export default class Nav extends Component {
-  state = {
-    mode: store.getState().modeSlice.mode,
-    subMode: store.getState().modeSlice.subMode,
-  };
-  render() {
-    const mode = this.state.mode;
-    const navItems = ["캐릭터", "광추", "유물"];
+export default function Nav() {
+  const mode = useSelector((state: State) => state.modeSlice.mode);
+  const subMode = useSelector((state: State) => state.modeSlice.subMode);
 
-    let innerNav = [];
-    let innerNavSecondary = "";
-    for (const page of navItems) {
-      let isSelected = false;
-      if (mode === page) {
-        isSelected = true;
-      }
-      innerNav.push(
-        <li
-          key={page}
-          data-selected={isSelected}
-          onClick={() => {
-            store.dispatch(changeMode(page));
-          }}
-        >
-          <span>{page}</span>
-        </li>
-      );
+  let innerNav: ReactElement[] = [];
+  for (const navItem of everyMode) {
+    let isSelected: boolean = false;
+    if (navItem === mode) {
+      isSelected = true;
     }
-    switch (this.state.subMode) {
-      case "추가":
-      case "상세":
-        break;
-      default:
-        innerNavSecondary = (
-          <NavSecondary
-            mode={mode}
-            onUpdateFilter={function (_filter) {
-              this.props.onUpdateFilter(_filter);
-            }.bind(this)}
-          />
-        );
-        break;
-    }
-    return (
-      <footer>
-        <div className="NavContainer">
-          {innerNavSecondary}
-          <nav id="NavMain">
-            <ul>{innerNav}</ul>
-          </nav>
-        </div>
-      </footer>
+    innerNav.push(
+      <li
+        key={navItem}
+        data-selected={isSelected}
+        onClick={() => {
+          dispatch(changeMode(navItem));
+        }}
+      >
+        {navItem}
+      </li>
     );
   }
-  componentDidMount() {
-    store.subscribe(
-      function () {
-        this.setState({ mode: store.getState().modeSlice.mode });
-        this.setState({ subMode: store.getState().modeSlice.subMode });
-      }.bind(this)
-    );
+
+  let innerNavSecondary: ReactElement = <></>;
+  switch (subMode) {
+    case '추가':
+    case '상세':
+      break;
+    default:
+      innerNavSecondary = <NavSecondary />;
+      break;
   }
+
+  return (
+    <footer>
+      <div className='NavContainer'>
+        {innerNavSecondary}
+        <nav id='NavMain'>
+          <ul>{innerNav}</ul>
+        </nav>
+      </div>
+    </footer>
+  );
 }

@@ -1,19 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
+import Mode from 'types/mode';
 
 const name = 'modeSlice';
 
-let initialState = { mode: '캐릭터', subMode: '' };
+let initialState: { mode: Mode; subMode: string } = { mode: '캐릭터', subMode: '' };
 
-const storedMode = localStorage.getItem('mode');
+const storedMode = sessionStorage.getItem('mode') as Mode;
 if (storedMode) {
   initialState = { mode: storedMode, subMode: '' };
 }
 const reducers = {
-  changeMode: (state: typeof initialState, action: { payload: string }) => {
-    let _mode = action.payload;
+  changeMode: (state: typeof initialState, action: { payload: Mode }) => {
+    const _mode = action.payload;
     state.mode = _mode;
     state.subMode = '';
-    localStorage.setItem('mode', _mode);
+    sessionStorage.setItem('mode', _mode);
   },
   subMode: (state: typeof initialState, action: { payload: string }) => {
     state.subMode = action.payload;

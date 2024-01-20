@@ -1,4 +1,4 @@
-#캐릭터_추가 {
+#AddCharacter {
   padding: 0.5rem;
 
   display: grid;
@@ -27,27 +27,27 @@
       }
     }
   }
-  .캐릭터_신규[data-already="true"] {
+  .캐릭터_신규[data-already='true'] {
     display: none;
   }
 }
 @media (min-width: 23rem) {
-  #캐릭터_추가 {
+  #AddCharacter {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 @media (min-width: 36rem) {
-  #캐릭터_추가 {
+  #AddCharacter {
     grid-template-columns: repeat(6, 1fr);
   }
 }
 @media (min-width: 48rem) {
-  #캐릭터_추가 {
+  #AddCharacter {
     grid-template-columns: repeat(8, 1fr);
   }
 }
 @media (min-width: 72rem) {
-  #캐릭터_추가 {
+  #AddCharacter {
     grid-template-columns: repeat(12, 1fr);
   }
 }

@@ -2,7 +2,7 @@
   display: grid;
   width: 100%;
   gap: 0.2rem;
-  grid-template-areas: "머리 다리 매듭" "팔 몸통 구체";
+  grid-template-areas: '머리 다리 매듭' '팔 몸통 구체';
   grid-auto-flow: column;
 
   .부위 {
@@ -10,7 +10,7 @@
     border-radius: 100%;
     min-width: 2.5rem;
     min-height: 2.5rem;
-    background-color: var(--theme-color-shadow);
+    background-color: var(--primary-shade-400);
 
     display: flex;
     justify-content: center;

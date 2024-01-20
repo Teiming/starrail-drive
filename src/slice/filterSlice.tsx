@@ -6,7 +6,7 @@ interface fileters {
   relic: fileter;
 }
 interface fileter {
-  [key: string]: boolean;
+  [key: string]: true | false;
 }
 
 const name = 'filterSlice';
@@ -45,7 +45,9 @@ if (storedFilter) {
 const reducers = {
   toggleFilter: (
     state: typeof initialState,
-    action: { payload: { mode: string; target: string; isSelected: boolean } }
+    action: {
+      payload: { mode: string; target: string; isSelected: true | false };
+    }
   ) => {
     switch (action.payload.mode) {
       case '캐릭터':

@@ -7,7 +7,7 @@
   scroll-snap-align: start;
 }
 
-.CharacterCard[data-filter="false"] {
+.CharacterCard[data-filter='false'] {
   display: none;
 }
 
@@ -41,7 +41,7 @@
       width: 3rem;
       height: 3rem;
 
-      background-color: var(--theme-color-shadow);
+      background-color: var(--primary-shade-400);
       overflow: hidden;
       img {
         width: 100%;

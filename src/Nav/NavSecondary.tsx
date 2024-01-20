@@ -1,58 +1,39 @@
-import { Component } from "react";
-import NavItem from "./NavItem";
-import store from "store";
-import { toggleFilter } from "slice/filterSlice";
+import React, { ReactElement } from 'react';
+import NavItem from './NavItem';
+import { State } from 'store';
+import { useSelector } from 'react-redux';
+import { EveryElement, EveryPath, EveryRelicSlot } from 'types/union';
 
-export default class NavSecondary extends Component {
-  constructor(props) {
-    super(props);
+export default function NavSecondary() {
+  const mode = useSelector((state: State) => state.modeSlice.mode);
+  const filters = useSelector((state: State) => state.filterSlice);
 
-    const sessionFilter = JSON.parse(sessionStorage.getItem("filter"));
-    this.state = {
-      filter: Object.assign({}, sessionFilter),
-    };
+  let filter: { [key: string]: boolean } = {};
+  switch (mode) {
+    case '캐릭터':
+      filter = filters.character;
+      break;
+    case '광추':
+      filter = filters.lightcone;
+      break;
+    default:
+      filter = filters.relic;
+      break;
   }
-  render() {
-    const mode = store.getState().modeSlice.mode;
-    let filter;
-    switch (mode) {
-      case "캐릭터":
-        filter = store.getState().filterSlice.character;
-        break;
-      case "광추":
-        filter = store.getState().filterSlice.lightcone;
-        break;
-      default:
-        filter = store.getState().filterSlice.relic;
-        break;
-    }
 
-    let innerNavSecondary = [];
-    for (const target in filter) {
-      let isSelected = filter[target];
-      innerNavSecondary.push(
-        <NavItem
-          key={target}
-          mode={mode}
-          content={target}
-          isSelected={isSelected}
-          onUpdateFilter={function (mode, target, isSelected) {
-            store.dispatch(toggleFilter({ mode, target, isSelected }));
-          }}
-        />
-      );
-    }
-    return (
-      <nav id="NavSecondary">
-        <ul>{innerNavSecondary}</ul>
-      </nav>
+  let innerNavSecondary: ReactElement[] = [];
+  for (const key in filter) {
+    let isSelected = filter[key];
+    type EveryTarget = string;
+    const content: EveryTarget = key;
+    innerNavSecondary.push(
+      <NavItem key={key} mode={mode} content={content} isSelected={isSelected} />
     );
   }
-  componentDidMount() {
-    store.subscribe(
-      function () {
-        this.setState(this.setState({ filter: store.getState().filterSlice }));
-      }.bind(this)
-    );
-  }
+
+  return (
+    <nav id='NavSecondary'>
+      <ul>{innerNavSecondary}</ul>
+    </nav>
+  );
 }
