@@ -11,6 +11,7 @@
 }
 
 .RelicAddSubPalette {
+  padding: 0 0.5rem;
   display: grid;
 
   div {
@@ -24,14 +25,14 @@
 
     text-align: center;
 
-    input[type="checkbox"] {
+    input[type='checkbox'] {
       display: none;
     }
   }
-  div[data-selected="true"] {
+  div[data-selected='true'] {
     background-color: var(--theme-color);
   }
-  div[data-selected="disabled"] {
+  div[data-selected='disabled'] {
     background-color: #2088;
     color: #8888;
   }

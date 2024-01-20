@@ -12,7 +12,7 @@
   }
   span {
     padding: 0 1rem;
-    background-color: var(--theme-color-shadow);
+    background-color: var(--theme-color);
 
     font-size: 1rem;
     display: flex;
