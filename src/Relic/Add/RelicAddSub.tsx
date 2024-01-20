@@ -1,99 +1,82 @@
-import { Component } from "react";
-import RelicAddSubBody from "./RelicAddSubBody";
-import "./RelicAddSub.css";
+import React, { ReactElement, useState } from 'react';
+import RelicAddSubBody from './RelicAddSubBody';
+import { everySubOptionList } from 'types/relic';
+import './RelicAddSub.css';
 
-export default class RelicAddSub extends Component {
-  state = {
-    selected: 0,
-    subOpt: {
-      HP: false,
-      공격력: false,
-      방어력: false,
-      "HP%": false,
-      "공격력%": false,
-      "방어력%": false,
-      속도: false,
-      "치명타 확률": false,
-      "치명타 피해": false,
-      "효과 명중": false,
-      "효과 저항": false,
-      "격파 특수효과": false,
-    },
+interface Props {
+  main: string;
+  maxLine: number;
+}
+export default function RelicAddSub(props: Props) {
+  const defaultSelect: { [key in (typeof everySubOptionList)[number]]: boolean } = {
+    HP: false,
+    공격력: false,
+    방어력: false,
+    'HP%': false,
+    '공격력%': false,
+    '방어력%': false,
+    속도: false,
+    '치명타 확률': false,
+    '치명타 피해': false,
+    '효과 명중': false,
+    '효과 저항': false,
+    '격파 특수효과': false,
   };
-  render() {
-    const subList = [
-      "HP",
-      "공격력",
-      "방어력",
-      "HP%",
-      "공격력%",
-      "방어력%",
-      "속도",
-      "치명타 확률",
-      "치명타 피해",
-      "효과 명중",
-      "효과 저항",
-      "격파 특수효과",
-    ];
-    let innerPalette = [];
-    for (const sub of subList) {
-      let selected;
-      if (sub === this.props.main) {
-        selected = "disabled";
-      } else {
-        selected = this.state.subOpt[sub];
-      }
-      innerPalette.push(
-        <div
-          key={sub}
-          id={sub}
-          data-selected={selected}
-          onClick={function (e) {
-            const id = e.target.id;
-            const currentState = this.state.subOpt;
-            const currentSelected = this.state.subOpt[id];
-            const selectedNumber = this.state.selected;
-            if (!currentSelected) {
-              if (selectedNumber < 4) {
-                this.setState({ selected: selectedNumber + 1 });
-                this.setState({
-                  subOpt: Object.assign({}, currentState, {
-                    [id]: !currentSelected,
-                  }),
-                });
-              }
-            } else {
-              this.setState({ selected: selectedNumber - 1 });
-              this.setState({
-                subOpt: Object.assign({}, currentState, {
-                  [id]: !currentSelected,
-                }),
-              });
-            }
-          }.bind(this)}
-        >
-          {sub}
-        </div>
-      );
+  const [selectedCount, setSelectedCount] = useState(0);
+  const [selectedSubOption, setSelectedSubOption] = useState(defaultSelect);
+
+  let innerPalette: ReactElement[] = [];
+  for (const subOption of everySubOptionList) {
+    let selected;
+    if (subOption === props.main) {
+      selected = 'disabled';
+    } else {
+      selected = selectedSubOption[subOption];
     }
-    return (
-      <section className="RelicAddSub">
-        <h3>부 옵션</h3>
-        <div className="RelicAddSubContent">
-          <RelicAddSubBody subOpt={this.state.subOpt} />
-          <div className="RelicAddSubPalette">{innerPalette}</div>
-        </div>
-      </section>
+    innerPalette.push(
+      <div
+        key={subOption}
+        id={subOption}
+        data-selected={selected}
+        onClick={(e) => {
+          const target = e.target as HTMLElement;
+          const id = target.id;
+          if (selectedSubOption[id]) {
+            setSelectedCount(selectedCount - 1);
+            setSelectedSubOption(Object.assign({}, selectedSubOption, { [id]: false }));
+          } else {
+            if (selectedCount < 4) {
+              setSelectedCount(selectedCount + 1);
+              setSelectedSubOption(Object.assign({}, selectedSubOption, { [id]: true }));
+            }
+          }
+        }}
+      >
+        {subOption}
+      </div>
     );
   }
-  componentDidUpdate() {
-    if (this.state.subOpt[this.props.main]) {
-      this.setState({ selected: this.state.selected - 1 });
-      this.setState({
-        subOpt: Object.assign({}, this.state.subOpt, {
-          [this.props.main]: false,
-        }),
-      });
-    }
-  }
+  return (
+    <section className='RelicAddSub'>
+      <h3>부 옵션</h3>
+      <div className='RelicAddSubContent'>
+        <RelicAddSubBody selectedSubOption={selectedSubOption} />
+        <div className='RelicAddSubPalette'>{innerPalette}</div>
+      </div>
+    </section>
+  );
 }
+
+// export default class RelicAddSub extends Component {
+//   render() {
+//   componentDidUpdate() {
+//     if (this.state.subOpt[this.props.main]) {
+//       this.setState({ selected: this.state.selected - 1 });
+//       this.setState({
+//         subOpt: Object.assign({}, this.state.subOpt, {
+//           [this.props.main]: false,
+//         }),
+//       });
+//     }
+//   }
+// }

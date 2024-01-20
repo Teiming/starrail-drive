@@ -1,37 +1,42 @@
-import { Component } from "react";
+import React from 'react';
+import { State } from 'store';
+import './RelicAddEquip.css';
+import { useSelector } from 'react-redux';
 
-import "./RelicAddEquip.css";
-import store from "store";
+interface Props {
+  onEquip(key: string): void;
+}
 
-export default class RelicAddEquip extends Component {
-  state = {
-    characterList: [],
-  };
-  render() {
-    let innerSelect = [
-      <option key="미장착" value="">
-        미장착
-      </option>,
-    ];
-    for (const name of this.state.characterList) {
-      innerSelect.push(
-        <option key={name} value={name}>
-          {name}
-        </option>
-      );
-    }
-    return (
-      <section className="RelicAddEquip">
-        <span>캐릭터</span>
-        <select name="equip" id="RelicAddEquipSelect" defaultValue="">
-          {innerSelect}
-        </select>
-      </section>
+export default function RelicAddEquip(props: Props) {
+  const list = useSelector((state: State) => state.characterSlice);
+
+  let innerSelect = [
+    <option key='미장착' value=''>
+      미장착
+    </option>,
+  ];
+
+  for (const name of Object.keys(list)) {
+    innerSelect.push(
+      <option key={name} value={name}>
+        {name}
+      </option>
     );
   }
-  componentDidMount() {
-    this.setState({
-      characterList: Object.keys(store.getState().characterSlice),
-    });
-  }
+
+  return (
+    <section className='RelicAddEquip'>
+      <span>캐릭터</span>
+      <select
+        name='equip'
+        id='RelicAddEquipSelect'
+        defaultValue=''
+        onChange={(e) => {
+          props.onEquip(e.target.value);
+        }}
+      >
+        {innerSelect}
+      </select>
+    </section>
+  );
 }

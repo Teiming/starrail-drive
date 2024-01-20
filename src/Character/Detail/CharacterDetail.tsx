@@ -11,7 +11,7 @@ import { Eidolon } from 'types/character';
 interface Props {
   name: string;
 }
-export default function (props: Props) {
+export default function CharacterDetail(props: Props) {
   const name = props.name;
   const data = useSelector((state: State) => state.characterSlice[name]);
   return (

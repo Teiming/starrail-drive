@@ -1,74 +1,32 @@
-import { Component } from "react";
-import "./RelicAddSubBody.css";
+import React, { ReactElement } from 'react';
+import { everySubOptionList } from 'types/relic';
+import './RelicAddSubBody.css';
 
-export default class RelicAddSubBody extends Component {
-  state = {
-    sub1: ["", []],
-    sub2: ["", []],
-    sub3: ["", []],
-    sub4: ["", []],
-  };
-  render() {
-    let selected = [""];
-    let subOpt = this.props.subOpt;
-    for (const name in subOpt) {
-      if (subOpt[name]) {
-        selected.push(name);
-      }
+interface Props {
+  selectedSubOption: { [key in (typeof everySubOptionList)[number]]: boolean };
+}
+export default function RelicAddSubBody(props: Props) {
+  const selectedSubOption = props.selectedSubOption;
+
+  let selected: string[] = [''];
+  for (const subOption in selectedSubOption) {
+    if (selectedSubOption[subOption]) {
+      selected.push(subOption);
     }
-    let innerBody = [];
-    for (let i = 1; i <= 4; i++) {
-      let opt = "";
-      if (selected[i]) {
-        opt = selected[i];
-      }
-      innerBody.push(
-        <div key={"subOpt" + i}>
-          <input type="text" name={"sub" + i} value={opt} readOnly />
-          <select name="" id=""></select>
-        </div>
-      );
-    }
-    return (
-      <section className="RelicAddSubBody">
-        {innerBody}
-        {/* <div>
-          <input
-            type="text"
-            name="sub1"
-            // value={this.state.subOpt[0][0]}
-            readOnly
-          />
-          <select name="" id=""></select>
-        </div>
-        <div>
-          <input
-            type="text"
-            name="sub2"
-            // value={this.state.subOpt[1][0]}
-            readOnly
-          />
-          <select name="" id=""></select>
-        </div>
-        <div>
-          <input
-            type="text"
-            name="sub3"
-            // value={this.state.subOpt[2][0]}
-            readOnly
-          />
-          <select name="" id=""></select>
-        </div>
-        <div>
-          <input
-            type="text"
-            name="sub4"
-            // value={this.state.subOpt[3][0]}
-            readOnly
-          />
-          <select name="" id=""></select>
-        </div> */}
-      </section>
-    );
   }
+
+  let innerBody: ReactElement[] = [];
+  [1, 2, 3, 4].forEach((i) => {
+    let subOption = '';
+    if (selected[i]) {
+      subOption = selected[i];
+    }
+    innerBody.push(
+      <div key={'부옵션' + i}>
+        <input type='text' name={'sub' + i} value={subOption} readOnly />
+        <select name='' id=''></select>
+      </div>
+    );
+  });
+  return <section className='RelicAddSubBody'>{innerBody}</section>;
 }

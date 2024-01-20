@@ -6,7 +6,7 @@ interface Props {
   onChange(n: number): void;
 }
 
-export default function (props: Props) {
+export default function DetailEidolon(props: Props) {
   return (
     <section id='eidolon'>
       <label htmlFor='#eidolon'>성혼</label>

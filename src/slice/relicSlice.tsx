@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import Relic from 'types/relic';
-import { RelicSubopt } from 'types/relic';
+import { RelicSubOption } from 'types/relic';
 
 const name = 'relicSlice';
 
@@ -29,7 +29,7 @@ const reducers = {
   },
   updateRelicSubopt: (
     state: typeof initialState,
-    action: { payload: { id: string; sub: RelicSubopt } }
+    action: { payload: { id: string; sub: RelicSubOption } }
   ) => {
     state.relics[action.payload.id]['부옵션'] = action.payload.sub;
     saveRelic(state.relics);

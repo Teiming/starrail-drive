@@ -1,58 +1,34 @@
-import { Component } from "react";
-import "./RelicAddSet.css";
+import React, { ReactElement } from 'react';
+import { EveryRelicSlot } from 'types/union';
+import './RelicAddSet.css';
+import { everyPlanetarySet, everyRelicSet } from 'types/relic-set';
 
-export default class RelicAddSet extends Component {
-  state = {
-    터널: [],
-    차원: [],
-  };
-  render() {
-    let useSet = [];
-    switch (this.props.slot) {
-      case "구체":
-      case "매듭":
-        useSet = this.state.차원;
-        break;
+interface Props {
+  slot: EveryRelicSlot;
+}
+
+export default function RelicAddSet(props: Props) {
+  const getSet = (slot: EveryRelicSlot) => {
+    switch (slot) {
+      case '구체':
+      case '매듭':
+        return everyPlanetarySet;
       default:
-        useSet = this.state.터널;
-        break;
+        return everyRelicSet;
     }
-    let innerSelect = [];
-    for (const set of useSet) {
-      innerSelect.push(
-        <option key={set} value={set}>
-          {set}
-        </option>
-      );
-    }
-    return (
-      <section className="RelicAddSet">
-        <h3>세트</h3>
-        <select
-          name="set"
-          onChange={function (e) {
-            this.props.onChange(e.target.value);
-          }.bind(this)}
-        >
-          {innerSelect}
-        </select>
-      </section>
+  };
+  let innerSelect: ReactElement[] = [];
+  for (const set of getSet(props.slot)) {
+    innerSelect.push(
+      <option key={set} value={set}>
+        {set}
+      </option>
     );
   }
-  componentDidMount() {
-    fetch("raw/relic.json", {
-      headers: {
-        Accept: "application/json",
-      },
-      method: "get",
-    })
-      .then((result) => {
-        return result.json();
-      })
-      .then(
-        function (relicSet) {
-          this.setState({ 터널: relicSet.터널, 차원: relicSet.차원 });
-        }.bind(this)
-      );
-  }
+  return (
+    <section className='RelicAddSet'>
+      <h3>세트</h3>
+      <select name='set'>{innerSelect}</select>
+    </section>
+  );
 }
