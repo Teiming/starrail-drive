@@ -37,7 +37,7 @@ export default function RelicAdd() {
               주옵션: target.main.value,
               레벨: level,
               부옵션: sub,
-              착용: equip,
+              착용: target.equip.value,
             },
           })
         );

@@ -1,58 +1,42 @@
-import { Component } from "react";
-import RelicCard from "./Card/RelicCard";
-import store from "store";
-import { subMode } from "slice/modeSlice";
-import { deleteRelic, updateRelicEquip } from "slice/relicSlice";
-import "./RelicList.css";
+import React, { ReactElement } from 'react';
+import RelicCard from './Card/RelicCard';
+import { useSelector } from 'react-redux';
+import { State, dispatch } from 'store';
+import { subMode } from 'slice/modeSlice';
+import { deleteRelic, updateRelicEquip } from 'slice/relicSlice';
+import './RelicList.css';
 
-export default class RelicList extends Component {
-  state = {
-    filter: store.getState().filterSlice.relic,
-    relicData: store.getState().relicSlice.relic,
-  };
-  render() {
-    const relicData = this.state.relicData;
-    let innerList = [];
-    for (const id in relicData) {
-      innerList.push(
-        <RelicCard
-          key={id}
-          isSelected={this.state.filter[relicData[id]["부위"]]}
-          relicData={relicData[id]}
-          onDelete={() => {
-            store.dispatch(deleteRelic(id));
-          }}
-          onChangeEquip={(newEquip) => {
-            store.dispatch(updateRelicEquip({ id, newEquip }));
-          }}
-        />
-      );
-    }
-    return (
-      <article className="RelicList">
-        <div
-          className="controler"
-          onClick={() => {
-            store.dispatch(subMode("추가"));
-          }}
-        >
-          <span>+</span>
-        </div>
-        {innerList}
-      </article>
+export default function RelicList() {
+  const filter = useSelector((state: State) => state.filterSlice.relic);
+  const relics = useSelector((state: State) => state.relicSlice.relics);
+
+  let innerList: ReactElement[] = [];
+  for (const id in relics) {
+    innerList.push(
+      <RelicCard
+        key={id}
+        isSelected={filter[relics[id]['부위']]}
+        relicDB={relics[id]}
+        onEquip={(newEquip: string) => {
+          dispatch(updateRelicEquip({ id, newEquip }));
+        }}
+        onDelete={() => {
+          dispatch(deleteRelic(id));
+        }}
+      />
     );
   }
-  componentDidMount() {
-    store.subscribe(
-      function () {
-        this.setState({ filter: store.getState().filterSlice.relic });
-      }.bind(this)
-    );
-    store.subscribe(
-      function () {
-        const relicData = Object.assign({}, store.getState().relicSlice.relic);
-        this.setState({ relicData });
-      }.bind(this)
-    );
-  }
+  return (
+    <article className='RelicList'>
+      <div
+        className='controler'
+        onClick={() => {
+          dispatch(subMode('추가'));
+        }}
+      >
+        <span>+</span>
+      </div>
+      {innerList}
+    </article>
+  );
 }

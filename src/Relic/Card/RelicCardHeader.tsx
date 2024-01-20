@@ -1,16 +1,21 @@
-import { Component } from "react";
-import "./RelicCardHeader.css";
+import React from 'react';
+import { EveryRelicSlot } from 'types/union';
+import './RelicCardHeader.css';
 
-export default class RelicCardHeader extends Component {
-  render() {
-    return (
-      <section className="RelicCardHeader">
-        <div className="RelicSetName">{this.props.set}</div>
-        <div className="RelicLevel">
-          <span>{this.props.slot}</span>
-          <span>{this.props.level}</span>
-        </div>
-      </section>
-    );
-  }
+interface Props {
+  set: string;
+  slot: EveryRelicSlot;
+  level: number;
+}
+
+export default function RelicCardHeader(props: Props) {
+  return (
+    <section className='RelicCardHeader'>
+      <div className='RelicSetName'>{props.set}</div>
+      <div className='RelicLevel'>
+        <span>{props.slot}</span>
+        <span>{props.level}</span>
+      </div>
+    </section>
+  );
 }
