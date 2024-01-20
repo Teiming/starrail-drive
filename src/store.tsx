@@ -12,6 +12,6 @@ const reducer = {
 };
 const store = configureStore({ reducer });
 
-export const { getState, dispatch, subscribe } = store;
+export const { dispatch } = store;
 export type State = ReturnType<typeof store.getState>;
 export default store;
