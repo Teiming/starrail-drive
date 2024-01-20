@@ -2,7 +2,6 @@ import React, { ReactElement } from 'react';
 import NavItem from './NavItem';
 import { State } from 'store';
 import { useSelector } from 'react-redux';
-import { EveryElement, EveryPath, EveryRelicSlot } from 'types/union';
 
 export default function NavSecondary() {
   const mode = useSelector((state: State) => state.modeSlice.mode);
