@@ -9,8 +9,15 @@ interface Props {
 }
 
 export default function RelicCardBody(props: Props) {
-  const main = props.main;
-  let mainZero, mainDiff, mainValue;
+  const makePercent = (params: number) => {
+    if (params < 1) {
+      const _number = 100 * Number(params);
+      return _number + '%';
+    } else {
+      return params;
+    }
+  };
+  let mainValue;
   return (
     <section className='RelicCardBody'>
       <div className='RelicMain'>
@@ -21,7 +28,7 @@ export default function RelicCardBody(props: Props) {
         <dt>wndhq</dt>
         <dd>0.0044</dd>
         <dt>wndhq</dt>
-        <dd>0.0044</dd>
+        <dd>{makePercent(0.0044)}</dd>
         <dt>wndhq</dt>
         <dd>0.0044</dd>
         <dt>wndhq</dt>

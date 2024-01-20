@@ -6,6 +6,7 @@ import './RelicAddSub.css';
 interface Props {
   main: string;
   maxLine: number;
+  onSub(): void;
 }
 export default function RelicAddSub(props: Props) {
   const defaultSelect: { [key in (typeof everySubOptionList)[number]]: boolean } = {

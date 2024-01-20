@@ -2,8 +2,6 @@ import React from 'react';
 import RelicCardHeader from './RelicCardHeader';
 import RelicCardBody from './RelicCardBody';
 import RelicCardFooter from './RelicCardFooter';
-import { useSelector } from 'react-redux';
-import { State } from 'store';
 import Relic from 'types/relic';
 import './RelicCard.css';
 
@@ -13,15 +11,8 @@ interface Props {
   onEquip(name: string): void;
   onDelete(): void;
 }
-export default function (props: Props) {
-  const makePercent = (params: number) => {
-    if (params < 1) {
-      const _number = 100 * Number(params);
-      return _number + '%';
-    } else {
-      return params;
-    }
-  };
+
+export default function RelicCard(props: Props) {
   let relicDB = props.relicDB;
   if (props.isSelected) {
     return (

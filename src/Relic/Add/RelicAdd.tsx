@@ -37,7 +37,7 @@ export default function RelicAdd() {
               주옵션: target.main.value,
               레벨: level,
               부옵션: sub,
-              착용: target.equip.value,
+              착용: equip,
             },
           })
         );
@@ -69,7 +69,13 @@ export default function RelicAdd() {
           setMaxLine(1 + Math.floor(level / 3));
         }}
       />
-      <RelicAddSub main={main} maxLine={maxLine} />
+      <RelicAddSub
+        main={main}
+        maxLine={maxLine}
+        onSub={() => {
+          setSub({});
+        }}
+      />
       <RelicAddEquip
         onEquip={(name: string) => {
           setEquip(name);
