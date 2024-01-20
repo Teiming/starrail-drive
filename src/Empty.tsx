@@ -1,8 +1,10 @@
-import { Component } from "react";
-import "./css/Empty.css";
+import React from 'react';
+import 'css/Empty.css';
 
-export default class Empty extends Component {
-  render() {
-    return <section id="Empty" data-line={this.props.line}></section>;
-  }
+interface EmptyProps {
+  line: 1 | 2;
+}
+
+export default function Empty(props: EmptyProps) {
+  return <section id='Empty' data-line={props.line}></section>;
 }
