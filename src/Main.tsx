@@ -1,33 +1,21 @@
-import { Component } from "react";
-import Character from "./Character/Character";
-import Lightcone from "./components/Lightcone";
-import Relic from "./Relic/Relic";
-import store from "store";
+import React from 'react';
+import Character from 'Character/Character';
+import Lightcone from './components/Lightcone';
+import Relic from 'Relic/Relic';
+import { useSelector } from 'react-redux';
+import { State } from 'store';
 
-export default class Main extends Component {
-  state = {
-    mode: store.getState().modeSlice.mode,
-  };
-  render() {
-    let innerMain = "";
-    switch (this.state.mode) {
-      case "캐릭터":
-        innerMain = <Character />;
-        break;
-      case "광추":
-        innerMain = <Lightcone />;
-        break;
-      default:
-        innerMain = <Relic />;
-        break;
-    }
-    return innerMain;
-  }
-  componentDidMount() {
-    store.subscribe(
-      function () {
-        this.setState({ mode: store.getState().modeSlice.mode });
-      }.bind(this)
-    );
+export default function Main() {
+  const mode = useSelector((state: State) => state.modeSlice.mode);
+
+  switch (mode) {
+    case '캐릭터':
+      return <Character />;
+    case '광추':
+      return <Lightcone />;
+    case '유물':
+      return <Relic />;
+    default:
+      return <></>;
   }
 }
