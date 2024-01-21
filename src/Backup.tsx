@@ -25,11 +25,26 @@ export default class Backup extends Component {
         <div
           className='export'
           onClick={function () {
+            const character = localStorage.getItem('캐릭터');
+            const lightcone = localStorage.getItem('광추');
+            const relic = localStorage.getItem('유물');
+            let innerC = '';
+            let innerL = '';
+            let innerR = '';
+            if (character) {
+              innerC = character;
+            }
+            if (lightcone) {
+              innerL = lightcone;
+            }
+            if (relic) {
+              innerR = relic;
+            }
             let backup = {
               스타레일_드라이브: '0.0.1',
-              캐릭터: JSON.parse(localStorage.getItem('캐릭터') as string),
-              광추: JSON.parse(localStorage.getItem('광추') as string),
-              유물: JSON.parse(localStorage.getItem('유물') as string),
+              캐릭터: JSON.parse(innerC),
+              광추: JSON.parse(innerL),
+              유물: JSON.parse(innerR),
             };
             prompt('아래 내용을 백업하세요.', JSON.stringify(backup));
           }}

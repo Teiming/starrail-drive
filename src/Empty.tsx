@@ -1,10 +1,6 @@
 import React from 'react';
 import 'css/Empty.css';
 
-interface EmptyProps {
-  line: 1 | 2;
-}
-
-export default function Empty(props: EmptyProps) {
+export default function Empty(props: { line: 1 | 2 }) {
   return <section id='Empty' data-line={props.line}></section>;
 }
