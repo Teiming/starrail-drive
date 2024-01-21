@@ -1,10 +1,10 @@
 import React from 'react';
 import { toggleFilter } from 'slice/filterSlice';
 import { dispatch } from 'store';
-import Mode from 'types/mode';
+import { EveryMode } from 'types/mode';
 
 interface NavItemProps {
-  mode: Mode;
+  mode: EveryMode;
   content: string;
   isSelected: boolean;
 }
@@ -23,18 +23,3 @@ export default function NavItem(props: NavItemProps) {
     </li>
   );
 }
-
-// export default class NavItem extends Component {
-//   render() {
-//     return (
-//       <li
-//       // data-selected={isSelected}
-//       // onClick={function () {
-//       //   this.props.onUpdateFilter(this.props.mode, content, !isSelected);
-//       // }.bind(this)}
-//       >
-//         {/* <span>{content}</span> */}
-//       </li>
-//     );
-//   }
-// }

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { EveryElement, EveryPath, EveryRelicSlot } from 'types/union';
 
 interface fileters {
   character: fileter;
@@ -46,7 +47,11 @@ const reducers = {
   toggleFilter: (
     state: typeof initialState,
     action: {
-      payload: { mode: string; target: string; isSelected: true | false };
+      payload: {
+        mode: string;
+        target: string;
+        isSelected: true | false;
+      };
     }
   ) => {
     switch (action.payload.mode) {
