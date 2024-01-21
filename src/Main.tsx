@@ -1,6 +1,6 @@
 import React from 'react';
 import Character from 'Character/Character';
-import Lightcone from './components/Lightcone';
+import Lightcone from 'Lightcone/Lightcone';
 import Relic from 'Relic/Relic';
 import { useSelector } from 'react-redux';
 import { State } from 'store';
