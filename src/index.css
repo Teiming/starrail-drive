@@ -15,7 +15,7 @@
   --primary-tint-300: color(display-p3 0.55 0.4 1);
   --primary-tint-400: color(display-p3 0.4 0.2 1);
   --primary-tint-500: color(display-p3 0.25 0 1);
-  --primary: var(var(--theme-color));
+  --primary: var(--theme-color);
   --primary-shade-500: color(display-p3 0.25 0 1);
   --primary-shade-400: color(display-p3 0.2 0 0.8);
   --primary-shade-300: color(display-p3 0.15 0 0.6);
@@ -30,7 +30,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  appearance: none;
   word-break: keep-all;
   font-family: SCDream, -apple-system, sans-serif;
 }
@@ -98,6 +97,10 @@ div.controler {
     color: var(--theme-color);
     font-size: 6rem;
   }
+}
+
+input {
+  appearance: none;
 }
 
 input::-webkit-inner-spin-button {
