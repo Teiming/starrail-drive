@@ -4,7 +4,7 @@ interface Props {
   id: string;
 }
 
-export default function CharacterCardLightcone(props: Props) {
+export default function Lightcone(props: Props) {
   return (
     <section className='CharacterCardLightcone'>
       <div className='요약'>

@@ -2,7 +2,7 @@ import type { EveryElement, EveryPath } from 'types/every';
 import type { Character, CharacterTrailblazer } from 'types/character';
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
-import CharacterCardLightcone from './CharacterCardLightcone';
+import Lightcone from './Lightcone';
 import CharacterCardTrace from './CharacterCardTrace';
 import CharacterCardRelic from './CharacterCardRelic';
 import CharacterCardEidolon from './CharacterCardEidolon';
@@ -60,7 +60,7 @@ export default function CharacterCard(props: Props) {
       <Header name={name} level={level} element={element} path={path} />
       <hr />
       <section className='CharacterCardBody'>
-        <CharacterCardLightcone id='lightconeId' />
+        <Lightcone id='lightconeId' />
         <hr />
         <CharacterCardTrace trace={trace} />
         <CharacterCardRelic id={[1, 2, 3, 4, 5, 6]} />
