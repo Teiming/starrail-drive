@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from 'react';
 import RelicAddSubBody from './RelicAddSubBody';
-import { everySubOptionList } from 'types/relic';
+import { everySubOption } from 'types/relic';
 import './RelicAddSub.css';
 
 interface Props {
@@ -27,7 +27,7 @@ export default function RelicAddSub(props: Props) {
   const [selectedSubOption, setSelectedSubOption] = useState(defaultSelect);
 
   let innerPalette: ReactElement[] = [];
-  for (const subOption of everySubOptionList) {
+  for (const subOption of everySubOption) {
     let selected;
     if (subOption === props.main) {
       selected = 'disabled';
