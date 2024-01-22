@@ -99,7 +99,8 @@ div.controler {
   }
 }
 
-input {
+input,
+select {
   appearance: none;
 }
 
