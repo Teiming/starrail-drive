@@ -1,3 +1,5 @@
+import type { EveryElement, EveryPath } from 'types/every';
+import type { Character, CharacterTrailblazer } from 'types/character';
 import React, { useEffect, useState } from 'react';
 import CardHeader from './CharacterCardHeader';
 import CharacterCardLightcone from './CharacterCardLightcone';
@@ -7,15 +9,13 @@ import CharacterCardEidolon from './CharacterCardEidolon';
 import { useSelector } from 'react-redux';
 import { State, dispatch } from 'store';
 import { subMode } from 'slice/modeSlice';
-import { EveryElement, EveryPath } from 'types/every';
-import Character, { CharacterTrailblazer } from 'types/character';
 import './CharacterCard.css';
 
 interface Props {
   name: string;
   data: Character | CharacterTrailblazer;
   add: [EveryElement, EveryPath];
-  element?: string;
+  element?: EveryElement;
   onDetail(name: string): void;
 }
 
@@ -24,7 +24,7 @@ export default function CharacterCard(props: Props) {
   const [element, setElement] = useState<EveryElement>('물리');
   const [path, setPath] = useState('파멸');
   const [level] = useState(props.data.레벨);
-  const [trace] = useState(props.data.특성);
+  const [trace] = useState(props.data.행적);
   const [eidolon] = useState(props.data.성혼);
   const filter = useSelector((state: State) => state.filterSlice.character);
   const isSelected = filter[element];
@@ -62,7 +62,7 @@ export default function CharacterCard(props: Props) {
       <section className='CharacterCardBody'>
         <CharacterCardLightcone id='lightconeId' />
         <hr />
-        <CharacterCardTrace level={trace} />
+        <CharacterCardTrace trace={trace} />
         <CharacterCardRelic id={[1, 2, 3, 4, 5, 6]} />
         <CharacterCardEidolon eidolon={eidolon} />
       </section>

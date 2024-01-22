@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Characters, Eidolon } from 'types/character';
+import type { Characters, Eidolon } from 'types/character';
 
 const name = 'characterSlice';
 
@@ -7,7 +7,7 @@ let initialState: Characters = {
   개척자: {
     속성: '물리',
     레벨: 1,
-    특성: { 일반공격: 1, 전투스킬: 1, 필살기: 1, 특성: 1 },
+    행적: { 일반공격: 1, 전투스킬: 1, 필살기: 1, 특성: 1 },
     성혼: 0,
   },
 };
@@ -21,7 +21,7 @@ const reducers = {
   addCharacter: (state: Characters, action: { payload: string }) => {
     state[action.payload] = {
       레벨: 1,
-      특성: { 일반공격: 1, 전투스킬: 1, 필살기: 1, 특성: 1 },
+      행적: { 일반공격: 1, 전투스킬: 1, 필살기: 1, 특성: 1 },
       성혼: 0,
     };
   },
