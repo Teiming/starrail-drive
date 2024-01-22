@@ -13,7 +13,7 @@ export default interface Relic {
   착용: string;
 }
 
-export const everySubOptionList = [
+export const everySubOption = [
   'HP',
   '공격력',
   '방어력',
@@ -26,4 +26,5 @@ export const everySubOptionList = [
   '효과 명중',
   '효과 저항',
   '격파 특수효과',
-];
+] as const;
+export type EverySubOption = (typeof everySubOption)[number];
