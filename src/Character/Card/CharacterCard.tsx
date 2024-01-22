@@ -1,7 +1,7 @@
 import type { EveryElement, EveryPath } from 'types/every';
 import type { Character, CharacterTrailblazer } from 'types/character';
 import React, { useEffect, useState } from 'react';
-import CardHeader from './CharacterCardHeader';
+import Header from './Header';
 import CharacterCardLightcone from './CharacterCardLightcone';
 import CharacterCardTrace from './CharacterCardTrace';
 import CharacterCardRelic from './CharacterCardRelic';
@@ -57,7 +57,7 @@ export default function CharacterCard(props: Props) {
         dispatch(subMode('상세'));
       }}
     >
-      <CardHeader name={name} level={level} element={element} path={path} />
+      <Header name={name} level={level} element={element} path={path} />
       <hr />
       <section className='CharacterCardBody'>
         <CharacterCardLightcone id='lightconeId' />

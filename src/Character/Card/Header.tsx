@@ -8,7 +8,7 @@ interface Props {
   path: string;
 }
 
-export default function CharacterCardHeader(props: Props) {
+export default function Header(props: Props) {
   return (
     <section className='CharacterCardHeader'>
       <div className='CharacterCardThumbnail'>
