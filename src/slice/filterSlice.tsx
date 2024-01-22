@@ -1,17 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { EveryElement, EveryPath, EveryRelicSlot } from 'types/union';
+import { EveryElement, EveryPath, EveryRelicSlot } from 'types/every';
 
-interface fileters {
-  character: fileter;
-  lightcone: fileter;
-  relic: fileter;
+type Filter<T extends string> = {
+  [key in T]: true | false;
+};
+interface Fileters {
+  character: Filter<EveryElement>;
+  lightcone: Filter<EveryPath>;
+  relic: Filter<EveryRelicSlot>;
 }
-interface fileter {
-  [key: string]: true | false;
-}
-
 const name = 'filterSlice';
-let initialState: fileters = {
+let initialState: Fileters = {
   character: {
     물리: true,
     화염: true,
@@ -45,7 +44,7 @@ if (storedFilter) {
 }
 const reducers = {
   toggleFilter: (
-    state: typeof initialState,
+    state: Fileters,
     action: {
       payload: {
         mode: string;
@@ -56,13 +55,13 @@ const reducers = {
   ) => {
     switch (action.payload.mode) {
       case '캐릭터':
-        state.character[action.payload.target] = action.payload.isSelected;
+        state.character[action.payload.target as EveryElement] = action.payload.isSelected;
         break;
       case '광추':
-        state.lightcone[action.payload.target] = action.payload.isSelected;
+        state.lightcone[action.payload.target as EveryPath] = action.payload.isSelected;
         break;
       default:
-        state.relic[action.payload.target] = action.payload.isSelected;
+        state.relic[action.payload.target as EveryRelicSlot] = action.payload.isSelected;
         break;
     }
     sessionStorage.setItem('filter', JSON.stringify(state));
