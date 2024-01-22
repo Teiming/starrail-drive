@@ -3,12 +3,12 @@ import RelicCard from './Card/RelicCard';
 import { useSelector } from 'react-redux';
 import { State, dispatch } from 'store';
 import { subMode } from 'slice/modeSlice';
-import { deleteRelic, updateRelicEquip } from 'slice/relicSlice';
-import './RelicList.css';
+import { deleteRelics, updateRelicsEquip } from 'slice/relicsSlice';
+import './RelicsList.css';
 
-export default function RelicList() {
+export default function RelicsList() {
   const filter = useSelector((state: State) => state.filterSlice.relic);
-  const relics = useSelector((state: State) => state.relicSlice.relics);
+  const relics = useSelector((state: State) => state.relicsSlice.relics);
 
   let innerList: ReactElement[] = [];
   for (const id in relics) {
@@ -18,10 +18,10 @@ export default function RelicList() {
         isSelected={filter[relics[id]['부위']]}
         relicDB={relics[id]}
         onEquip={(newEquip: string) => {
-          dispatch(updateRelicEquip({ id, newEquip }));
+          dispatch(updateRelicsEquip({ id, newEquip }));
         }}
         onDelete={() => {
-          dispatch(deleteRelic(id));
+          dispatch(deleteRelics(id));
         }}
       />
     );

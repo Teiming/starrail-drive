@@ -4,7 +4,7 @@ export interface RelicSubOption {
   [key: string]: number;
 }
 
-export default interface Relic {
+export default interface Relics {
   레벨: number;
   세트: string;
   부위: EveryRelicSlot;

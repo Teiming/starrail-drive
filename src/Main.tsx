@@ -1,7 +1,7 @@
 import React from 'react';
 import Character from 'Character/Character';
 import Lightcone from 'Lightcone/Lightcone';
-import Relic from 'Relic/Relic';
+import Relics from 'Relics/Relics';
 import { useSelector } from 'react-redux';
 import { State } from 'store';
 
@@ -13,7 +13,7 @@ export default function Main() {
     case '광추':
       return <Lightcone />;
     case '유물':
-      return <Relic />;
+      return <Relics />;
     default:
       return <></>;
   }

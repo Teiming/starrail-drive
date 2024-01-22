@@ -2,13 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import modeSlice from 'slice/modeSlice';
 import filterSlice from 'slice/filterSlice';
 import characterSlice from 'slice/characterSlice';
-import relicSlice from 'slice/relicSlice';
+import relicsSlice from 'slice/relicsSlice';
 
 const reducer = {
   modeSlice,
   filterSlice,
   characterSlice,
-  relicSlice,
+  relicsSlice,
 };
 const store = configureStore({ reducer });
 

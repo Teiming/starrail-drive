@@ -2,12 +2,12 @@ import React from 'react';
 import RelicCardHeader from './RelicCardHeader';
 import RelicCardBody from './RelicCardBody';
 import RelicCardFooter from './RelicCardFooter';
-import Relic from 'types/relic';
+import Relics from 'types/relics';
 import './RelicCard.css';
 
 interface Props {
   isSelected: true | false;
-  relicDB: Relic;
+  relicDB: Relics;
   onEquip(name: string): void;
   onDelete(): void;
 }

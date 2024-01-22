@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from 'react';
 import RelicAddSubBody from './RelicAddSubBody';
-import { EverySubOption, everySubOption } from 'types/relic';
+import { EverySubOption, everySubOption } from 'types/relics';
 import './RelicAddSub.css';
 
 interface Props {

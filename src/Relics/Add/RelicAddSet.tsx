@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { EveryRelicSlot } from 'types/every';
 import './RelicAddSet.css';
-import { everyPlanetarySet, everyRelicSet } from 'types/relic-set';
+import { everyPlanetarySet, everyRelicSet } from 'types/relics-set';
 
 interface Props {
   slot: EveryRelicSlot;

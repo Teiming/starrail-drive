@@ -1,28 +1,28 @@
 import React from 'react';
-import RelicList from './RelicList';
+import RelicList from './RelicsList';
 import RelicAdd from './Add/RelicAdd';
 import Backup from 'Backup';
 import Empty from 'Empty';
 import { State } from 'store';
-import './Relic.css';
+import './Relics.css';
 import { useSelector } from 'react-redux';
 
-export default function Relic() {
+export default function Relics() {
   const subMode = useSelector((state: State) => state.modeSlice.subMode);
   let emptyLine: 1 | 2 = 1;
-  let innerRelic;
+  let innerRelics;
   switch (subMode) {
     case '추가':
-      innerRelic = <RelicAdd />;
+      innerRelics = <RelicAdd />;
       break;
     default:
-      innerRelic = <RelicList />;
+      innerRelics = <RelicList />;
       emptyLine = 2;
       break;
   }
   return (
-    <main id='Relic'>
-      {innerRelic}
+    <main id='Relics'>
+      {innerRelics}
       <Backup />
       <Empty line={emptyLine} />
     </main>

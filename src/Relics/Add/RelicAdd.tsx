@@ -6,9 +6,9 @@ import RelicAddSub from './RelicAddSub';
 import RelicAddEquip from './RelicAddEquip';
 import { dispatch } from 'store';
 import { subMode } from 'slice/modeSlice';
-import { addRelic } from 'slice/relicSlice';
+import { addRelics } from 'slice/relicsSlice';
 import { EveryRelicSlot } from 'types/every';
-import { RelicSubOption } from 'types/relic';
+import { RelicSubOption } from 'types/relics';
 import './RelicAdd.css';
 
 export default function RelicAdd() {
@@ -29,7 +29,7 @@ export default function RelicAdd() {
         e.preventDefault();
         const target = e.target as HTMLFormElement;
         dispatch(
-          addRelic({
+          addRelics({
             id: '유물_' + newID,
             relicData: {
               세트: target.set.value,

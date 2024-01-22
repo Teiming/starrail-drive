@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { EverySubOption } from 'types/relic';
+import { EverySubOption } from 'types/relics';
 import './RelicAddSubBody.css';
 
 interface Props {

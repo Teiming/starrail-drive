@@ -1,5 +1,5 @@
 import React from 'react';
-import { RelicSubOption } from 'types/relic';
+import { RelicSubOption } from 'types/relics';
 import './RelicCardBody.css';
 
 interface Props {
