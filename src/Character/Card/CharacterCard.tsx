@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CardHeader from './CharacterCardHeader';
 import CharacterCardLightcone from './CharacterCardLightcone';
 import CharacterCardTrace from './CharacterCardTrace';
@@ -7,44 +7,47 @@ import CharacterCardEidolon from './CharacterCardEidolon';
 import { useSelector } from 'react-redux';
 import { State, dispatch } from 'store';
 import { subMode } from 'slice/modeSlice';
+import { EveryElement, EveryPath } from 'types/every';
 import Character, { CharacterTrailblazer } from 'types/character';
 import './CharacterCard.css';
 
-interface CharacterCardProps {
+interface Props {
   name: string;
   data: Character | CharacterTrailblazer;
-  add: string[];
+  add: [EveryElement, EveryPath];
   element?: string;
   onDetail(name: string): void;
 }
 
-export default function CharacterCard(props: CharacterCardProps) {
+export default function CharacterCard(props: Props) {
   const [name] = useState(props.name);
-  const [element, setElement] = useState('물리');
-  const [path] = useState('파멸');
+  const [element, setElement] = useState<EveryElement>('물리');
+  const [path, setPath] = useState('파멸');
   const [level] = useState(props.data.레벨);
   const [trace] = useState(props.data.특성);
-  const [eidolon, setEidolon] = useState(props.data.성혼);
+  const [eidolon] = useState(props.data.성혼);
   const filter = useSelector((state: State) => state.filterSlice.character);
   const isSelected = filter[element];
 
-  if (props.element) {
-    // setElement(props.element);
-    // switch (element) {
-    //   case '화염':
-    //     setPath('보존');
-    //     break;
-    //   default:
-    //     setPath('파멸');
-    //     break;
-    // }
-  } else {
-    let everyCharacter = props.add;
-    if (everyCharacter) {
-      // setElement(everyCharacter[0]);
-      // setPath(everyCharacter[1]);
+  useEffect(() => {
+    if (props.element) {
+      setElement(props.element as EveryElement);
+      switch (props.element) {
+        case '화염':
+          setPath('보존');
+          break;
+        default:
+          setPath('파멸');
+          break;
+      }
+    } else {
+      let everyCharacter = props.add;
+      if (everyCharacter) {
+        setElement(everyCharacter[0]);
+        setPath(everyCharacter[1]);
+      }
     }
-  }
+  }, [props]);
   return (
     <article
       className='CharacterCard'

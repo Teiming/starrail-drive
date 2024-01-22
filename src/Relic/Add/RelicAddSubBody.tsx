@@ -1,16 +1,16 @@
 import React, { ReactElement } from 'react';
-import { everySubOptionList } from 'types/relic';
+import { EverySubOption } from 'types/relic';
 import './RelicAddSubBody.css';
 
 interface Props {
-  selectedSubOption: { [key in (typeof everySubOptionList)[number]]: boolean };
+  selectedSubOption: { [key in EverySubOption]: true | false };
 }
 export default function RelicAddSubBody(props: Props) {
   const selectedSubOption = props.selectedSubOption;
 
   let selected: string[] = [''];
   for (const subOption in selectedSubOption) {
-    if (selectedSubOption[subOption]) {
+    if (selectedSubOption[subOption as EverySubOption]) {
       selected.push(subOption);
     }
   }

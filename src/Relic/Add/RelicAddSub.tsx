@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from 'react';
 import RelicAddSubBody from './RelicAddSubBody';
-import { everySubOption } from 'types/relic';
+import { EverySubOption, everySubOption } from 'types/relic';
 import './RelicAddSub.css';
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
   onSub(): void;
 }
 export default function RelicAddSub(props: Props) {
-  const defaultSelect: { [key in (typeof everySubOptionList)[number]]: boolean } = {
+  const defaultSelect: { [key in EverySubOption]: boolean } = {
     HP: false,
     공격력: false,
     방어력: false,
@@ -42,7 +42,7 @@ export default function RelicAddSub(props: Props) {
         onClick={(e) => {
           const target = e.target as HTMLElement;
           const id = target.id;
-          if (selectedSubOption[id]) {
+          if (selectedSubOption[id as EverySubOption]) {
             setSelectedCount(selectedCount - 1);
             setSelectedSubOption(Object.assign({}, selectedSubOption, { [id]: false }));
           } else {
