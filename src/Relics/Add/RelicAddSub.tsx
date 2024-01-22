@@ -1,6 +1,6 @@
-import React, { ReactElement, useState } from 'react';
-import RelicAddSubBody from './RelicAddSubBody';
 import { EverySubOption, everySubOption } from 'types/relics';
+import React, { ReactElement, useEffect, useState } from 'react';
+import RelicAddSubBody from './RelicAddSubBody';
 import './RelicAddSub.css';
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
   onSub(): void;
 }
 export default function RelicAddSub(props: Props) {
-  const defaultSelect: { [key in EverySubOption]: boolean } = {
+  const defaultSelect: { [key in EverySubOption]: true | false } = {
     HP: false,
     공격력: false,
     방어력: false,
@@ -40,15 +40,16 @@ export default function RelicAddSub(props: Props) {
         id={subOption}
         data-selected={selected}
         onClick={(e) => {
-          const target = e.target as HTMLElement;
-          const id = target.id;
-          if (selectedSubOption[id as EverySubOption]) {
-            setSelectedCount(selectedCount - 1);
-            setSelectedSubOption(Object.assign({}, selectedSubOption, { [id]: false }));
-          } else {
-            if (selectedCount < 4) {
-              setSelectedCount(selectedCount + 1);
-              setSelectedSubOption(Object.assign({}, selectedSubOption, { [id]: true }));
+          if (e.target instanceof HTMLElement) {
+            const id = e.target.id as EverySubOption;
+            if (selectedSubOption[id]) {
+              setSelectedCount(selectedCount - 1);
+              setSelectedSubOption(Object.assign({}, selectedSubOption, { [id]: false }));
+            } else {
+              if (selectedCount < 4) {
+                setSelectedCount(selectedCount + 1);
+                setSelectedSubOption(Object.assign({}, selectedSubOption, { [id]: true }));
+              }
             }
           }
         }}
@@ -57,6 +58,28 @@ export default function RelicAddSub(props: Props) {
       </div>
     );
   }
+  useEffect(() => {
+    const mainOpt = props.main;
+    switch (mainOpt) {
+      case 'HP':
+      case '공격력':
+      case 'HP%':
+      case '공격력%':
+      case '방어력%':
+      case '속도':
+      case '치명타 확률':
+      case '치명타 피해':
+      case '효과 명중':
+      case '격파 특수효과':
+        if (selectedSubOption[mainOpt]) {
+          setSelectedCount(selectedCount - 1);
+          setSelectedSubOption(Object.assign({}, selectedSubOption, { [props.main]: false }));
+        }
+        break;
+      default:
+        break;
+    }
+  }, [props.main, selectedCount, selectedSubOption]);
   return (
     <section className='RelicAddSub'>
       <h3>부 옵션</h3>
@@ -67,17 +90,3 @@ export default function RelicAddSub(props: Props) {
     </section>
   );
 }
-
-// export default class RelicAddSub extends Component {
-//   render() {
-//   componentDidUpdate() {
-//     if (this.state.subOpt[this.props.main]) {
-//       this.setState({ selected: this.state.selected - 1 });
-//       this.setState({
-//         subOpt: Object.assign({}, this.state.subOpt, {
-//           [this.props.main]: false,
-//         }),
-//       });
-//     }
-//   }
-// }

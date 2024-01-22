@@ -1,13 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { State } from 'store';
 import './RelicAddEquip.css';
-import { useSelector } from 'react-redux';
 
-interface Props {
-  onEquip(key: string): void;
-}
-
-export default function RelicAddEquip(props: Props) {
+export default function RelicAddEquip(props: { onEquip(key: string): void }) {
   const list = useSelector((state: State) => state.characterSlice);
 
   let innerSelect = [

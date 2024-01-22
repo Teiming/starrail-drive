@@ -43,4 +43,4 @@ export const everyCharacter = {
   헤르타: ['얼음', '지식'],
   후크: ['화염', '파멸'],
   히메코: ['화염', '지식'],
-};
+} as const;
