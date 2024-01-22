@@ -15,7 +15,9 @@ export const everyRelicSet = [
   '가상공간을 누비는 메신저',
   '재와 뼈마저 불사르는 대공',
   '깊은 감옥에 수감된 죄수',
-];
+] as const;
+export type EveryRelicSet = (typeof everyRelicSet)[number];
+
 export const everyPlanetarySet = [
   '우주 봉인 정거장',
   '불로인의 선주',
@@ -29,5 +31,5 @@ export const everyPlanetarySet = [
   '부러진 용골',
   '창공 전선 그라모스',
   '꿈의 땅 페나코니',
-];
-export const everyRelicsSet = { 유물: everyRelicSet, 차원: everyPlanetarySet };
+] as const;
+export type EveryPlanetarySet = (typeof everyPlanetarySet)[number];
