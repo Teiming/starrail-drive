@@ -1,4 +1,4 @@
-import { EveryElement } from './union';
+import { EveryElement } from './every';
 export { everyCharacter } from './character-name';
 
 export interface Characters {

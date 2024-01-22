@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { EveryRelicSlot } from 'types/union';
+import { EveryRelicSlot } from 'types/every';
 import './RelicAddSlot.css';
 
 interface Props {

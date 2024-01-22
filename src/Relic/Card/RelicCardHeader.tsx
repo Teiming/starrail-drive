@@ -1,5 +1,5 @@
 import React from 'react';
-import { EveryRelicSlot } from 'types/union';
+import { EveryRelicSlot } from 'types/every';
 import './RelicCardHeader.css';
 
 interface Props {

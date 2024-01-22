@@ -7,7 +7,7 @@ import RelicAddEquip from './RelicAddEquip';
 import { dispatch } from 'store';
 import { subMode } from 'slice/modeSlice';
 import { addRelic } from 'slice/relicSlice';
-import { EveryRelicSlot } from 'types/union';
+import { EveryRelicSlot } from 'types/every';
 import { RelicSubOption } from 'types/relic';
 import './RelicAdd.css';
 

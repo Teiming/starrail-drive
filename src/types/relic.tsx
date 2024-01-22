@@ -1,4 +1,4 @@
-import { EveryRelicSlot } from './union';
+import { EveryRelicSlot } from './every';
 
 export interface RelicSubOption {
   [key: string]: number;
