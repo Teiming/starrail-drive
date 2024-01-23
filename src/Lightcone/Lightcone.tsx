@@ -1,4 +1,8 @@
 import React from 'react';
+import Add from './Add';
+import List from './List';
+import { useSelector } from 'react-redux';
+import { State } from 'store';
 
 export default function Lightcone() {
   // const level = 71;
@@ -17,5 +21,11 @@ export default function Lightcone() {
   // const takeATK = takeStat(2.4);
   // const takeDEF = takeStat(3.0);
 
-  return <main id='광추'>Lightcone</main>;
+  const subMode = useSelector((state: State) => state.modeSlice.subMode);
+  switch (subMode) {
+    case '추가':
+      return <Add />;
+    default:
+      return <List />;
+  }
 }

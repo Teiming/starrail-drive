@@ -8,7 +8,7 @@ import CharacterCardRelic from './CharacterCardRelic';
 import CharacterCardEidolon from './CharacterCardEidolon';
 import { useSelector } from 'react-redux';
 import { State, dispatch } from 'store';
-import { subMode } from 'slice/modeSlice';
+import { switchSubMode } from 'slice/modeSlice';
 import './CharacterCard.css';
 
 interface Props {
@@ -54,7 +54,7 @@ export default function CharacterCard(props: Props) {
       data-filter={isSelected}
       onClick={() => {
         props.onDetail(name);
-        dispatch(subMode('상세'));
+        dispatch(switchSubMode('상세'));
       }}
     >
       <Header name={name} level={level} element={element} path={path} />

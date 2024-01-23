@@ -1,26 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { EveryMode } from 'types/mode';
+import { EveryMode, EverySubMode, everyMode } from 'types/mode';
 
 const name = 'modeSlice';
 
-let initialState: { mode: EveryMode; subMode: string } = { mode: '캐릭터', subMode: '' };
+let initialState: { mode: EveryMode; subMode: EverySubMode } = { mode: '캐릭터', subMode: '' };
 
-const storedMode = sessionStorage.getItem('mode') as EveryMode;
+const storedMode = sessionStorage.getItem('mode');
 if (storedMode) {
-  initialState = { mode: storedMode, subMode: '' };
+  function modeCheck(value: string): value is EveryMode {
+    return everyMode.includes(value as EveryMode);
+  }
+  if (modeCheck(storedMode)) {
+    initialState = { mode: storedMode, subMode: '' };
+  }
 }
 const reducers = {
-  changeMode: (state: typeof initialState, action: { payload: EveryMode }) => {
+  switchMode: (state: typeof initialState, action: { payload: EveryMode }) => {
     const _mode = action.payload;
     state.mode = _mode;
     state.subMode = '';
     sessionStorage.setItem('mode', _mode);
   },
-  subMode: (state: typeof initialState, action: { payload: '' | '추가' | '수정' | '상세' }) => {
+  switchSubMode: (state: typeof initialState, action: { payload: EverySubMode }) => {
     state.subMode = action.payload;
   },
 };
 const modeSlice = createSlice({ name, initialState, reducers });
 
-export const { changeMode, subMode } = modeSlice.actions;
+export const { switchMode, switchSubMode } = modeSlice.actions;
 export default modeSlice.reducer;
