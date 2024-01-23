@@ -1,4 +1,4 @@
-import { EveryRelicSlot } from './every';
+import { EveryRelicsSlot } from './every';
 
 export interface RelicSubOption {
   [key: string]: number;
@@ -7,7 +7,7 @@ export interface RelicSubOption {
 export default interface Relics {
   레벨: number;
   세트: string;
-  부위: EveryRelicSlot;
+  부위: EveryRelicsSlot;
   주옵션: string;
   부옵션: RelicSubOption;
   장착: string;

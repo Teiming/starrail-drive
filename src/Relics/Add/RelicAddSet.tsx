@@ -1,14 +1,14 @@
 import React, { ReactElement } from 'react';
-import { EveryRelicSlot } from 'types/every';
+import { EveryRelicsSlot } from 'types/every';
 import './RelicAddSet.css';
 import { everyPlanetarySet, everyRelicSet } from 'types/relics-set';
 
 interface Props {
-  slot: EveryRelicSlot;
+  slot: EveryRelicsSlot;
 }
 
 export default function RelicAddSet(props: Props) {
-  const getSet = (slot: EveryRelicSlot) => {
+  const getSet = (slot: EveryRelicsSlot) => {
     switch (slot) {
       case '구체':
       case '매듭':

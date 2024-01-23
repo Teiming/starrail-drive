@@ -1,10 +1,10 @@
 import React from 'react';
-import { EveryRelicSlot } from 'types/every';
+import { EveryRelicsSlot } from 'types/every';
 import './RelicCardHeader.css';
 
 interface Props {
   set: string;
-  slot: EveryRelicSlot;
+  slot: EveryRelicsSlot;
   level: number;
 }
 

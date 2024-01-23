@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { EveryElement, EveryPath, EveryRelicSlot } from 'types/every';
+import { EveryElement, EveryPath, EveryRelicsSlot } from 'types/every';
 
 type Filter<T extends string> = {
   [key in T]: true | false;
@@ -7,7 +7,7 @@ type Filter<T extends string> = {
 interface Filters {
   character: Filter<EveryElement>;
   lightcone: Filter<EveryPath>;
-  relic: Filter<EveryRelicSlot>;
+  relic: Filter<EveryRelicsSlot>;
 }
 const name = 'filterSlice';
 let initialState: Filters = {
@@ -61,7 +61,7 @@ const reducers = {
         state.lightcone[action.payload.target as EveryPath] = action.payload.isSelected;
         break;
       default:
-        state.relic[action.payload.target as EveryRelicSlot] = action.payload.isSelected;
+        state.relic[action.payload.target as EveryRelicsSlot] = action.payload.isSelected;
         break;
     }
     sessionStorage.setItem('filter', JSON.stringify(state));

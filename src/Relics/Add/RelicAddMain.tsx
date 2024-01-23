@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
-import { EveryRelicSlot } from 'types/every';
+import { EveryRelicsSlot } from 'types/every';
 import './RelicAddMain.css';
 
 interface Props {
-  slot: EveryRelicSlot;
+  slot: EveryRelicsSlot;
   level: number;
   onMain(key: string): void;
   onLevel(key: number): void;

@@ -1,9 +1,9 @@
-import type { EveryRelicSlot } from 'types/every';
+import type { EveryRelicsSlot } from 'types/every';
 import React, { ReactElement } from 'react';
 import './RelicAddSlot.css';
 
 interface Props {
-  onChecked(key: EveryRelicSlot): void;
+  onChecked(key: EveryRelicsSlot): void;
 }
 
 export default function RelicAddSlot(props: Props) {
@@ -22,7 +22,7 @@ export default function RelicAddSlot(props: Props) {
           value={slot}
           id={slot}
           onChange={(e) => {
-            const value = e.target.value as EveryRelicSlot;
+            const value = e.target.value as EveryRelicsSlot;
             props.onChecked(value);
           }}
         />
@@ -40,7 +40,7 @@ export default function RelicAddSlot(props: Props) {
           value={slot}
           id={slot}
           onChange={(e) => {
-            const value = e.target.value as EveryRelicSlot;
+            const value = e.target.value as EveryRelicsSlot;
             props.onChecked(value);
           }}
         />
