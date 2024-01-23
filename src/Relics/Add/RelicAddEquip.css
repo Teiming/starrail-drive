@@ -1,7 +1,7 @@
 .RelicAddEquip {
   grid-area: equip;
-
   display: flex;
+
   :first-child {
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
