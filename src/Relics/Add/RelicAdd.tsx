@@ -5,7 +5,7 @@ import RelicAddMain from './RelicAddMain';
 import RelicAddSub from './RelicAddSub';
 import RelicAddEquip from './RelicAddEquip';
 import { dispatch } from 'store';
-import { subMode } from 'slice/modeSlice';
+import { switchSubMode } from 'slice/modeSlice';
 import { addRelics } from 'slice/relicsSlice';
 import { EveryRelicSlot } from 'types/every';
 import { RelicSubOption } from 'types/relics';
@@ -41,7 +41,7 @@ export default function RelicAdd() {
             },
           })
         );
-        dispatch(subMode(''));
+        dispatch(switchSubMode(''));
       }}
     >
       <input type='hidden' name='relicId' value={'유물_' + newID} />

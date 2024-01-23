@@ -4,13 +4,13 @@ import { EveryElement, EveryPath, EveryRelicSlot } from 'types/every';
 type Filter<T extends string> = {
   [key in T]: true | false;
 };
-interface Fileters {
+interface Filters {
   character: Filter<EveryElement>;
   lightcone: Filter<EveryPath>;
   relic: Filter<EveryRelicSlot>;
 }
 const name = 'filterSlice';
-let initialState: Fileters = {
+let initialState: Filters = {
   character: {
     물리: true,
     화염: true,
@@ -44,7 +44,7 @@ if (storedFilter) {
 }
 const reducers = {
   toggleFilter: (
-    state: Fileters,
+    state: Filters,
     action: {
       payload: {
         mode: string;

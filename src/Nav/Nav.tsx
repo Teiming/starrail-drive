@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import NavSecondary from './NavSecondary';
 import { useSelector } from 'react-redux';
 import { dispatch, State } from 'store';
-import { changeMode } from 'slice/modeSlice';
+import { switchMode } from 'slice/modeSlice';
 import { everyMode } from 'types/mode';
 import './Nav.css';
 
@@ -21,7 +21,7 @@ export default function Nav() {
         key={navItem}
         data-selected={isSelected}
         onClick={() => {
-          dispatch(changeMode(navItem));
+          dispatch(switchMode(navItem));
         }}
       >
         {navItem}

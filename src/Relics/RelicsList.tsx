@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import RelicCard from './Card/RelicCard';
 import { useSelector } from 'react-redux';
 import { State, dispatch } from 'store';
-import { subMode } from 'slice/modeSlice';
+import { switchSubMode } from 'slice/modeSlice';
 import { deleteRelics, updateRelicsEquip } from 'slice/relicsSlice';
 import './RelicsList.css';
 
@@ -31,7 +31,7 @@ export default function RelicsList() {
       <div
         className='controler'
         onClick={() => {
-          dispatch(subMode('추가'));
+          dispatch(switchSubMode('추가'));
         }}
       >
         <span>+</span>
