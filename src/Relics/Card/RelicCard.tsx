@@ -26,7 +26,7 @@ export default function RelicCard(props: Props) {
         {/* <hr /> */}
         <RelicCardBody level={relicDB['레벨']} main={relicDB['주옵션']} sub={relicDB['부옵션']} />
         <RelicCardFooter
-          equip={relicDB.착용}
+          equip={relicDB.장착}
           onDelete={() => {
             props.onDelete();
           }}

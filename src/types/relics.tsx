@@ -10,7 +10,7 @@ export default interface Relics {
   부위: EveryRelicSlot;
   주옵션: string;
   부옵션: RelicSubOption;
-  착용: string;
+  장착: string;
 }
 
 export const everySubOption = [

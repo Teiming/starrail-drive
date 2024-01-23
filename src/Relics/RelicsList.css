@@ -1,36 +1,36 @@
-.RelicList {
+#RelicsList {
   padding: 0.5rem;
 
   display: grid;
   gap: 0.5rem;
 }
 @media (min-width: 23rem) {
-  .RelicList {
+  #RelicsList {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (min-width: 36rem) {
-  .RelicList {
+  #RelicsList {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 @media (min-width: 48rem) {
-  .RelicList {
+  #RelicsList {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 @media (min-width: 72rem) {
-  .RelicList {
+  #RelicsList {
     grid-template-columns: repeat(6, 1fr);
   }
 }
 @media (min-width: 96rem) {
-  .RelicList {
+  #RelicsList {
     grid-template-columns: repeat(8, 1fr);
   }
 }
 @media (min-width: 144rem) {
-  .RelicList {
+  #RelicsList {
     grid-template-columns: repeat(12, 1fr);
   }
 }

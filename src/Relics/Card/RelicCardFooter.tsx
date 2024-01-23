@@ -15,7 +15,7 @@ export default function RelicCardFooter(props: Props) {
   const characterList = Object.keys(character);
   let thumbnail = process.env.PUBLIC_URL + '/unavailable-dark.svg';
   const equip = props.equip;
-  if (equip !== '') {
+  if (equip !== '미장착') {
     thumbnail = process.env.PUBLIC_URL + '/png/character/' + equip + '.png';
   }
   let innerOption = [
@@ -71,5 +71,4 @@ export default function RelicCardFooter(props: Props) {
       </div>
     </section>
   );
-  // }
 }

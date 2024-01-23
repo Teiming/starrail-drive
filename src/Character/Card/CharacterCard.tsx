@@ -16,7 +16,7 @@ interface Props {
   data: Character | CharacterTrailblazer;
   add: [EveryElement, EveryPath];
   element?: EveryElement;
-  onDetail(name: string): void;
+  onDetail: (name: string) => void;
 }
 
 export default function CharacterCard(props: Props) {

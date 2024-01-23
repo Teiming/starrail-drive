@@ -27,7 +27,7 @@ export default function RelicsList() {
     );
   }
   return (
-    <article className='RelicList'>
+    <main id='RelicsList'>
       <div
         className='controler'
         onClick={() => {
@@ -37,6 +37,6 @@ export default function RelicsList() {
         <span>+</span>
       </div>
       {innerList}
-    </article>
+    </main>
   );
 }

@@ -16,7 +16,7 @@ export default function RelicAdd() {
   const [level, setLevel] = useState(0);
   const [main, setMain] = useState('');
   const [sub, setSub] = useState<RelicSubOption>({});
-  const [equip, setEquip] = useState('');
+  const [equip, setEquip] = useState('미장착');
   const [maxLine, setMaxLine] = useState(1);
 
   const genID = () => Math.round(Math.random() * 10000).toString();
@@ -37,7 +37,7 @@ export default function RelicAdd() {
               주옵션: target.main.value,
               레벨: level,
               부옵션: sub,
-              착용: equip,
+              장착: equip,
             },
           })
         );

@@ -41,7 +41,7 @@ const reducers = {
     state: typeof initialState,
     action: { payload: { id: string; newEquip: string } }
   ) => {
-    state.relics[action.payload.id]['착용'] = action.payload.newEquip;
+    state.relics[action.payload.id]['장착'] = action.payload.newEquip;
     saveRelic(state.relics);
   },
   deleteRelics: (state: typeof initialState, action: { payload: string }) => {
