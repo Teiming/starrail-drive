@@ -7,6 +7,7 @@ import './RelicCardFooter.css';
 interface Props {
   equip: string;
   onChangeEquip(key: string): void;
+  select: () => void;
   onDelete(): void;
 }
 
@@ -42,7 +43,7 @@ export default function RelicCardFooter(props: Props) {
           className='RelicEquipSelect'
           name='equip'
           defaultValue={props.equip}
-          onChange={function (e) {
+          onChange={(e) => {
             props.onChangeEquip(e.target.value);
           }}
         >
@@ -54,7 +55,8 @@ export default function RelicCardFooter(props: Props) {
           type='button'
           value='수정'
           className='RelicEdit'
-          onClick={function () {
+          onClick={() => {
+            props.select();
             dispatch(switchSubMode('수정'));
           }}
         ></input>

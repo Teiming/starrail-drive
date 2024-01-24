@@ -3,8 +3,9 @@ import RelicCard from './Card/RelicCard';
 import { useSelector } from 'react-redux';
 import { State, dispatch } from 'store';
 import { switchSubMode } from 'slice/modeSlice';
-import { deleteRelics, updateRelicsEquip } from 'slice/relicsSlice';
+import { remove, select, updateRelicsEquip } from 'slice/relicsSlice';
 import './RelicsList.css';
+import { EveryCharacterWithTrailblazer } from 'types/character-name';
 
 export default function RelicsList() {
   const filter = useSelector((state: State) => state.filterSlice.relic);
@@ -17,11 +18,14 @@ export default function RelicsList() {
         key={id}
         isSelected={filter[relics[id]['부위']]}
         relicDB={relics[id]}
-        onEquip={(newEquip: string) => {
+        equip={(newEquip: '미장착' | EveryCharacterWithTrailblazer) => {
           dispatch(updateRelicsEquip({ id, newEquip }));
         }}
+        select={() => {
+          dispatch(select(id));
+        }}
         onDelete={() => {
-          dispatch(deleteRelics(id));
+          dispatch(remove(id));
         }}
       />
     );
