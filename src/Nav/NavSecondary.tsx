@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
-import NavItem from './NavItem';
-import { State } from 'store';
 import { useSelector } from 'react-redux';
+import { State, dispatch } from 'store';
+import { toggleFilter } from 'slice/filterSlice';
 
 export default function NavSecondary() {
   const mode = useSelector((state: State) => state.modeSlice.mode);
@@ -24,9 +24,17 @@ export default function NavSecondary() {
   for (const key in filter) {
     let isSelected = filter[key];
     type EveryTarget = string;
-    const content: EveryTarget = key;
+    const target: EveryTarget = key;
     innerNavSecondary.push(
-      <NavItem key={key} mode={mode} content={content} isSelected={isSelected} />
+      <li
+        key={target}
+        data-selected={isSelected}
+        onClick={() => {
+          dispatch(toggleFilter({ mode, target, isSelected: !isSelected }));
+        }}
+      >
+        {target}
+      </li>
     );
   }
 
