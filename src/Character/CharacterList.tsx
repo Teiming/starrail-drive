@@ -1,52 +1,68 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement } from 'react';
 import CharacterCard from './Card/CharacterCard';
 import { useSelector } from 'react-redux';
 import { State, dispatch } from 'store';
 import { switchSubMode } from 'slice/modeSlice';
+import { EveryElement } from 'types/every';
+import {
+  Character,
+  EveryCharacter,
+  everyCharacter,
+  everyCharacterDB,
+  templateCharacter,
+} from 'types/character';
 import './CharacterList.css';
-import { EveryElement, EveryPath } from 'types/every';
+import { checkCharacterName } from 'types/typeCheck';
 
 interface Props {
   onDetail(name: string): void;
 }
 
 export default function CharacterList(props: Props) {
-  const initState: { [key: string]: [EveryElement, EveryPath] } = {};
-  const [characterDB, setCharacterDB] = useState(initState);
   const characters = useSelector((state: State) => state.characterSlice);
 
   let innerCharacter: ReactElement[] = [];
   for (const name in characters) {
-    innerCharacter.push(
-      <CharacterCard
-        key={name}
-        name={name}
-        element={characters[name]['속성']}
-        data={characters[name]}
-        add={characterDB[name]}
-        onDetail={(name: string) => {
-          props.onDetail(name);
-        }}
-      />
-    );
+    let element: EveryElement = '물리';
+    let data: Character = templateCharacter;
+    if (checkCharacterName(name)) {
+      function nameCheck(name: string): name is EveryCharacter {
+        return everyCharacter.includes(name as EveryCharacter);
+      }
+      if (nameCheck(name)) {
+        element = everyCharacterDB[name][0];
+        if (Object.keys(characters).includes(name)) {
+          const preData = characters[name];
+          if (preData) {
+            data = preData;
+          }
+        }
+      }
+      innerCharacter.push(
+        <CharacterCard
+          key={name}
+          name={name}
+          element={element}
+          data={data}
+          onDetail={(name: string) => {
+            props.onDetail(name);
+          }}
+        />
+      );
+    } else if (name === '개척자') {
+      innerCharacter.push(
+        <CharacterCard
+          key={name}
+          name={name}
+          element={characters.개척자.속성}
+          data={characters.개척자}
+          onDetail={(name: string) => {
+            props.onDetail(name);
+          }}
+        />
+      );
+    }
   }
-
-  useEffect(() => {
-    fetch('raw/everyCharacterData.json', {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      method: 'get',
-    })
-      .then((result) => {
-        return result.json();
-      })
-      .then((json: typeof initState) => {
-        setCharacterDB(json);
-      });
-  }, []);
-
   return (
     <section className='characterList'>
       {innerCharacter}

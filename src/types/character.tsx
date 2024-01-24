@@ -1,10 +1,15 @@
+import { EveryCharacter } from './character-name';
 import type { EveryElement } from './every';
-export { everyCharacter } from './character-name';
 
-export interface Characters {
-  [key: string]: Character;
+export type { EveryCharacter, EveryCharacterWithTrailblazer } from './character-name';
+export { everyCharacterDB, everyCharacter } from './character-name';
+
+export type CharactersWithoutTrailblazer = {
+  [key in EveryCharacter]: Character;
+};
+export type Characters = CharactersWithoutTrailblazer & {
   개척자: CharacterTrailblazer;
-}
+};
 
 export type TraceMajor = [primary: true | false, secondary: true | false, tertiary: true | false];
 export type TraceMinor = Array<true | false>;
@@ -25,8 +30,20 @@ export interface Character {
   레벨: number;
   행적: Trace;
   성혼: Eidolon;
-  속성?: EveryElement;
 }
+
+export const templateCharacter: Character = {
+  레벨: 1,
+  행적: {
+    일반공격: 1,
+    전투스킬: 1,
+    필살기: 1,
+    특성: 1,
+    능력: [false, false, false],
+    속성: [],
+  },
+  성혼: 0,
+};
 
 export interface CharacterTrailblazer extends Character {
   속성: EveryElement;

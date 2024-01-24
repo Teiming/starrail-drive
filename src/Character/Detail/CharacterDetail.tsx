@@ -6,35 +6,42 @@ import './CharacterDetail.css';
 import { useSelector } from 'react-redux';
 import { State, dispatch } from 'store';
 import { changeEidolon, changeLevel } from 'slice/characterSlice';
-import { Eidolon } from 'types/character';
+import { Eidolon, EveryCharacterWithTrailblazer, templateCharacter } from 'types/character';
+import { checkCharacterName } from 'types/typeCheck';
 
-interface Props {
-  name: string;
-}
-export default function CharacterDetail(props: Props) {
+export default function CharacterDetail(props: { name: EveryCharacterWithTrailblazer }) {
   const name = props.name;
-  const data = useSelector((state: State) => state.characterSlice[name]);
-  return (
-    <main id={name} className='character_detail'>
-      <header>
-        <img src='' alt='' />
-      </header>
-      {/* {trailblazer(name)} */}
-      <main>{name} 상세보기</main>
-      <Level
-        level={data.레벨}
-        changeLevel={(level: number) => {
-          dispatch(changeLevel({ name, level }));
-        }}
-      />
-      <DetailEidolon
-        eidolon={data.성혼}
-        onChange={(eidolon: Eidolon) => {
-          dispatch(changeEidolon({ name, eidolon }));
-        }}
-      />
-    </main>
-  );
+  const data = useSelector((state: State) => {
+    if (checkCharacterName(name)) {
+      return state.characterSlice[name];
+    }
+    return templateCharacter;
+  });
+  if (data) {
+    return (
+      <main id={name} className='character_detail'>
+        <header>
+          <img src='' alt='' />
+        </header>
+        {/* {trailblazer(name)} */}
+        <main>{name} 상세보기</main>
+        <Level
+          level={data.레벨}
+          changeLevel={(level: number) => {
+            dispatch(changeLevel({ name, level }));
+          }}
+        />
+        <DetailEidolon
+          eidolon={data.성혼}
+          onChange={(eidolon: Eidolon) => {
+            dispatch(changeEidolon({ name, eidolon }));
+          }}
+        />
+      </main>
+    );
+  } else {
+    return <></>;
+  }
 }
 
 // export default class CharacterDetail extends Component {

@@ -1,5 +1,10 @@
-import type { EveryElement, EveryPath } from 'types/every';
-import type { Character, CharacterTrailblazer } from 'types/character';
+import type { EveryElement } from 'types/every';
+import {
+  everyCharacterDB,
+  type Character,
+  type CharacterTrailblazer,
+  EveryCharacterWithTrailblazer,
+} from 'types/character';
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import Lightcone from './Lightcone';
@@ -12,10 +17,9 @@ import { switchSubMode } from 'slice/modeSlice';
 import './CharacterCard.css';
 
 interface Props {
-  name: string;
+  name: EveryCharacterWithTrailblazer;
   data: Character | CharacterTrailblazer;
-  add: [EveryElement, EveryPath];
-  element?: EveryElement;
+  element: EveryElement;
   onDetail: (name: string) => void;
 }
 
@@ -41,13 +45,15 @@ export default function CharacterCard(props: Props) {
           break;
       }
     } else {
-      let everyCharacter = props.add;
-      if (everyCharacter) {
-        setElement(everyCharacter[0]);
-        setPath(everyCharacter[1]);
+      if (name !== '개척자') {
+        let everyCharacter = everyCharacterDB[name];
+        if (everyCharacter) {
+          setElement(everyCharacter[0]);
+          setPath(everyCharacter[1]);
+        }
       }
     }
-  }, [props]);
+  }, [props, name]);
   return (
     <article
       className='CharacterCard'

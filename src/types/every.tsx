@@ -1,7 +1,31 @@
-export const everyElement = ['물리', '화염', '얼음', '번개', '바람', '양자', '허수'] as const;
+const physical = '물리';
+const fire = '화염';
+const ice = '얼음';
+const lightning = '번개';
+const wind = '바람';
+const quantum = '양자';
+const imaginary = '허수';
+
+export const everyElement = [physical, fire, ice, lightning, wind, quantum, imaginary] as const;
 export type EveryElement = (typeof everyElement)[number];
 
-export const everyPath = ['파멸', '수렵', '지식', '화합', '공허', '보존', '풍요'] as const;
+const destruction = '파멸';
+const hunt = '수렵';
+const erudition = '지식';
+const harmory = '화합';
+const nihility = '공허';
+const preservation = '보존';
+const abundance = '풍요';
+
+export const everyPath = [
+  destruction,
+  hunt,
+  erudition,
+  harmory,
+  nihility,
+  preservation,
+  abundance,
+] as const;
 export type EveryPath = (typeof everyPath)[number];
 
 export const everyRelicsSlot = ['머리', '팔', '몸통', '다리', '구체', '매듭'] as const;

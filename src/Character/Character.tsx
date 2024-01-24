@@ -6,10 +6,12 @@ import CharacterNew from './CharacterNew';
 import CharacterDetail from './Detail/CharacterDetail';
 import { useSelector } from 'react-redux';
 import store, { State } from 'store';
+import { EveryCharacterWithTrailblazer } from 'types/character';
 import './Character.css';
 
 export default function Character() {
-  const [selectedCharacter, setSelectedCharacter] = useState('');
+  const [selectedCharacter, setSelectedCharacter] =
+    useState<EveryCharacterWithTrailblazer>('개척자');
   const subMode = useSelector((state: State) => state.modeSlice.subMode);
   const already = useSelector((state: State) => state.characterSlice);
   localStorage.setItem('캐릭터', JSON.stringify(store.getState().characterSlice));
@@ -27,7 +29,7 @@ export default function Character() {
       emptyLine = 2;
       innerCharacter = (
         <CharacterList
-          onDetail={(name: string) => {
+          onDetail={(name: EveryCharacterWithTrailblazer) => {
             setSelectedCharacter(name);
           }}
         />

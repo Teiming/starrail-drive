@@ -1,23 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { Character, CharacterTrailblazer, Characters, Eidolon } from 'types/character';
+import {
+  templateCharacter,
+  type CharacterTrailblazer,
+  type Characters,
+  type Eidolon,
+} from 'types/character';
+import { EveryCharacter, EveryCharacterWithTrailblazer } from 'types/character-name';
+import { EveryElement } from 'types/every';
 
 const name = 'characterSlice';
 
-const defaultCharacter: Character = {
-  레벨: 1,
-  행적: {
-    일반공격: 1,
-    전투스킬: 1,
-    필살기: 1,
-    특성: 1,
-    능력: [false, false, false],
-    속성: [],
-  },
-  성혼: 0,
-};
-const defaultT: CharacterTrailblazer = Object.assign({}, defaultCharacter, { 속성: '물리' });
+const defaultTEle: { 속성: EveryElement } = { 속성: '물리' };
+const defaultT: CharacterTrailblazer = Object.assign({}, templateCharacter, defaultTEle);
 
-let initialState: Characters = { 개척자: defaultT };
+let initialState: Partial<Characters> & { 개척자: CharacterTrailblazer } = { 개척자: defaultT };
 
 let storedCharacter = localStorage.getItem('캐릭터');
 if (storedCharacter) {
@@ -25,16 +21,28 @@ if (storedCharacter) {
 }
 
 const reducers = {
-  addCharacter: (state: Characters, action: { payload: string }) => {
-    state[action.payload] = defaultCharacter;
+  addCharacter: (state: Partial<Characters>, action: { payload: EveryCharacter }) => {
+    state[action.payload] = templateCharacter;
   },
-  changeLevel: (state: Characters, action: { payload: { name: string; level: number } }) => {
-    state[action.payload.name]['레벨'] = action.payload.level;
+  changeLevel: (
+    state: Partial<Characters>,
+    action: { payload: { name: EveryCharacterWithTrailblazer; level: number } }
+  ) => {
+    const target = state[action.payload.name];
+    if (target?.레벨) {
+      target.레벨 = action.payload.level;
+    }
   },
-  changeEidolon: (state: Characters, action: { payload: { name: string; eidolon: Eidolon } }) => {
-    state[action.payload.name]['성혼'] = action.payload.eidolon;
+  changeEidolon: (
+    state: Partial<Characters>,
+    action: { payload: { name: EveryCharacterWithTrailblazer; eidolon: Eidolon } }
+  ) => {
+    const target = state[action.payload.name];
+    if (target?.성혼) {
+      target.성혼 = action.payload.eidolon;
+    }
   },
-  saveCharacter: (state: Characters) => {
+  saveCharacter: (state: Partial<Characters>) => {
     console.log(state);
     localStorage.setItem('캐릭터', JSON.stringify(state));
   },
