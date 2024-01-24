@@ -7,7 +7,7 @@ import RelicAddEquip from './RelicAddEquip';
 import Empty from 'Empty';
 import { dispatch } from 'store';
 import { switchSubMode } from 'slice/modeSlice';
-import { addRelics } from 'slice/relicsSlice';
+import { add } from 'slice/relicsSlice';
 import { EveryRelicsSlot } from 'types/every';
 import { RelicSubOption } from 'types/relics';
 import './RelicAdd.css';
@@ -31,7 +31,7 @@ export default function RelicAdd() {
           e.preventDefault();
           const target = e.target as HTMLFormElement;
           dispatch(
-            addRelics({
+            add({
               id: '유물_' + newID,
               relicData: {
                 세트: target.set.value,
