@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-import { MainBox } from 'components';
+import { Grid, GridItem, Mode } from 'components';
 import Filter from './Filter';
 import { EveryPath, everyPath } from 'types/every';
-import './Add.css';
+import { EveryLightconeRarity } from 'types/lightcone';
 import {
-  everyAbundanceLightcone,
   everyDestructionLightcone,
+  everyHuntLightcone,
   everyEruditionLightcone,
   everyHarmonyLightcone,
-  everyHuntLightcone,
-  everyPreservationLightcone,
   everyNihilityLightcone,
-} from 'types/lightcone';
+  everyPreservationLightcone,
+  everyAbundanceLightcone,
+} from 'database/lightcone';
+import './Add.css';
 
-const categorizedLightcone: Record<EveryPath, any> = {
+const categorizedLightcone: Record<EveryPath, Readonly<Array<string>>> = {
   파멸: everyDestructionLightcone,
   수렵: everyHuntLightcone,
   지식: everyEruditionLightcone,
