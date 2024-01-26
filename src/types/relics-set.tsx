@@ -15,6 +15,8 @@ export const everyRelicSet = [
   '가상공간을 누비는 메신저',
   '재와 뼈마저 불사르는 대공',
   '깊은 감옥에 수감된 죄수',
+  '사수에 잠수한 선구자',
+  '꿈을 조작하는 시계공',
 ] as const;
 export type EveryRelicSet = (typeof everyRelicSet)[number];
 
