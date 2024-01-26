@@ -1,28 +1,28 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 
-interface Props {
-  content: Array<string>;
-  selected: (item: any) => void;
+interface Props<T> {
+  content: T[];
+  selected: (item: T) => void;
 }
 
-export default function Filter(props: Props) {
-  let innerPath: ReactElement[] = [];
-  const content = props.content;
-  for (const i in content) {
-    innerPath.push(
-      <label key={content[i]} htmlFor={content[i]}>
-        <input
-          type='radio'
-          name={props.content[0].toString()}
-          id={content[i]}
-          onChange={(e) => {
-            props.selected(e.target.id);
-          }}
-        />
-        <div>{content[i]}</div>
-      </label>
-    );
-  }
-  props.content.forEach((item) => {});
-  return <div className='filter'>{innerPath}</div>;
+export default function Filter<T extends string>({ content, selected }: Props<T>) {
+  return (
+    <div className='filter'>
+      {content.map((value) => {
+        return (
+          <label key={value} htmlFor={value}>
+            <input
+              type='radio'
+              name={content[0]}
+              id={value}
+              onChange={(e) => {
+                selected(e.target.id as typeof value);
+              }}
+            />
+            <div>{value}</div>
+          </label>
+        );
+      })}
+    </div>
+  );
 }
