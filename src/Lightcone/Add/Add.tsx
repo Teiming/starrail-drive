@@ -26,29 +26,44 @@ const categorizedLightcone: Record<EveryPath, Readonly<Array<string>>> = {
 
 export default function Add() {
   const [path, setPath] = useState<EveryPath>('파멸');
-  const [rarity, setRarity] = useState('');
+  const [rarity, setRarity] = useState<EveryLightconeRarity>(5);
+
+  const currentLightcone = categorizedLightcone[path];
+
   return (
-    <MainBox id='LightconeAdd'>
+    <Mode id='LightconeAdd'>
       <>
-      <section className='filters'>
-        <Filter
-          content={Array.from(everyPath)}
-          selected={(value: EveryPath) => {
-            setPath(value);
-          }}
-        />
-        <Filter
-          content={['5★', '4★', '3★']}
-          selected={(value: string) => {
-            setRarity(value);
-          }}
-        />
-      </section>
-      <section>
-        {categorizedLightcone[path]}
-        {rarity}
-      </section>
+        <section className='filters'>
+          <Filter
+            content={Array.from(everyPath)}
+            selected={(value: EveryPath) => {
+              setPath(value);
+            }}
+          />
+          <Filter
+            content={['5★', '4★', '3★']}
+            selected={(value: string) => {
+              setRarity(Number(value[0]) as EveryLightconeRarity);
+            }}
+          />
+        </section>
+        <Grid card_width={20} className='lightcones'>
+          <>
+            {currentLightcone.map((value) => {
+              return (
+                <GridItem key={value}>
+                  <>
+                    {value}
+                    <img src='' alt=''></img>
+                  </>
+                </GridItem>
+              );
+            })}
+          </>
+        </Grid>
+        <section className='lightcones' style={{}}></section>
+        <section className='lightcones'>{rarity}</section>
       </>
-    </MainBox>
+    </Mode>
   );
 }
