@@ -5,7 +5,7 @@ interface Props {
   eidolon: number;
 }
 
-export default function CharacterCardEidolon(props: Props) {
+export default function Eidolon(props: Props) {
   let innerStatus: ReactElement[] = [];
   for (let i = 0; i < props.eidolon; i++) {
     innerStatus.push(<div key={i + 1} className='EidolonItem'></div>);
