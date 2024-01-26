@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { MainBox } from 'components';
 import Filter from './Filter';
 import { EveryPath, everyPath } from 'types/every';
 import './Add.css';
@@ -26,7 +27,8 @@ export default function Add() {
   const [path, setPath] = useState<EveryPath>('파멸');
   const [rarity, setRarity] = useState('');
   return (
-    <main id='LightconeAdd'>
+    <MainBox id='LightconeAdd'>
+      <>
       <section className='filters'>
         <Filter
           content={Array.from(everyPath)}
@@ -45,6 +47,7 @@ export default function Add() {
         {categorizedLightcone[path]}
         {rarity}
       </section>
-    </main>
+      </>
+    </MainBox>
   );
 }
