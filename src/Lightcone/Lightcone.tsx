@@ -1,6 +1,5 @@
 import React from 'react';
-import Add from './Add';
-import List from './List';
+import { Add, List } from '.';
 import { useSelector } from 'react-redux';
 import { State } from 'store';
 

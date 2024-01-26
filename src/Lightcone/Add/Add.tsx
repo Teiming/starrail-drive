@@ -1,29 +1,48 @@
 import React, { useState } from 'react';
 import Filter from './Filter';
-import { everyPath } from 'types/every';
+import { EveryPath, everyPath } from 'types/every';
 import './Add.css';
+import {
+  everyAbundanceLightcone,
+  everyDestructionLightcone,
+  everyEruditionLightcone,
+  everyHarmonyLightcone,
+  everyHuntLightcone,
+  everyPreservationLightcone,
+  everyNihilityLightcone,
+} from 'types/lightcone';
+
+const categorizedLightcone: Record<EveryPath, any> = {
+  파멸: everyDestructionLightcone,
+  수렵: everyHuntLightcone,
+  지식: everyEruditionLightcone,
+  화합: everyHarmonyLightcone,
+  공허: everyNihilityLightcone,
+  보존: everyPreservationLightcone,
+  풍요: everyAbundanceLightcone,
+};
 
 export default function Add() {
-  const [path, setPath] = useState('');
+  const [path, setPath] = useState<EveryPath>('파멸');
   const [rarity, setRarity] = useState('');
   return (
     <main id='LightconeAdd'>
       <section className='filters'>
         <Filter
           content={Array.from(everyPath)}
-          selected={(value) => {
+          selected={(value: EveryPath) => {
             setPath(value);
           }}
         />
         <Filter
           content={['5★', '4★', '3★']}
-          selected={(value) => {
+          selected={(value: string) => {
             setRarity(value);
           }}
         />
       </section>
       <section>
-        {path}
+        {categorizedLightcone[path]}
         {rarity}
       </section>
     </main>
