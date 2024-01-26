@@ -2,19 +2,17 @@ import React, { CSSProperties } from 'react';
 
 interface Props {
   children: React.JSX.Element;
-  id: string;
 }
 
-export default function MainBox({ children, id }: Props) {
+export default function GridItem({ children }: Props) {
   const style: CSSProperties = {
+    borderRadius: '0.75rem',
     padding: '0.5rem',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '0.75rem',
+    backgroundColor: 'var(--primary)',
   };
   return (
-    <main id={id} style={style}>
+    <div className='grid-item' style={style}>
       {children}
-    </main>
+    </div>
   );
 }
