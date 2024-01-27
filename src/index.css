@@ -117,10 +117,10 @@ hr {
   height: 0.1rem;
   background: linear-gradient(
     to right,
-    var(--theme-color),
+    var(--primary),
     25%,
-    var(--theme-color-shadow),
+    var(--primary-shade-400),
     75%,
-    var(--theme-color)
+    var(--primary)
   );
 }
