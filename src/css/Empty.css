@@ -1,6 +1,0 @@
-#Empty[data-line="1"] {
-  min-height: calc(3.5rem + max(0.5rem, env(safe-area-inset-bottom)));
-}
-#Empty[data-line="2"] {
-  min-height: calc(7rem + max(0.5rem, env(safe-area-inset-bottom)));
-}
