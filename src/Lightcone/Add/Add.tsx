@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Grid, GridItem, Mode } from 'components';
+import { Flex, Grid, GridItem, Mode } from 'components';
 import Filter from './Filter';
 import { dispatch } from 'store';
+import { mode } from 'slice/grobalSlice';
 import { add } from 'slice/lightconeSlice';
 import { EveryPath, everyPath } from 'types/every';
 import { EveryLightcone, EveryLightconeRarity } from 'types/lightcone';
@@ -58,26 +59,28 @@ export default function Add() {
                   value={value as EveryLightcone}
                   onClick={(name: EveryLightcone) => {
                     dispatch(add(name));
+                    dispatch(mode(''));
                   }}
                 >
-                  <>
-                    <div
-                      style={{
-                        backgroundColor: 'var(--primary-shade-400)',
-                        width: '5rem',
-                        height: '5rem',
-                        margin: 'auto',
-                        borderRadius: '0.5rem',
-                      }}
-                    >
-                      <img
-                        src={process.env.PUBLIC_URL + '/png/lightcone/' + value + '.png'}
-                        alt={value}
-                        style={{ width: '100%', height: '100%' }}
-                      ></img>
-                    </div>
-                    <div style={{ marginTop: '0.5rem', textAlign: 'center' }}>{value}</div>
-                  </>
+                  <Flex>
+                    <>
+                      <div style={{ textAlign: 'center', padding: '0.25rem' }}>{value}</div>
+                      <div
+                        style={{
+                          backgroundColor: 'var(--primary-shade-400)',
+                          width: '5rem',
+                          height: '5rem',
+                          borderRadius: '0.25rem',
+                        }}
+                      >
+                        <img
+                          src={process.env.PUBLIC_URL + '/png/lightcone/' + value + '.png'}
+                          alt={value}
+                          style={{ width: '100%', height: '100%' }}
+                        ></img>
+                      </div>
+                    </>
+                  </Flex>
                 </GridItem>
               );
             })}
