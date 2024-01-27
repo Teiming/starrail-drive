@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from 'react';
+import { Empty } from 'components';
 import Backup from 'Backup';
-import Empty from 'Empty';
 import CharacterList from './CharacterList';
 import CharacterNew from './CharacterNew';
 import CharacterDetail from './Detail/CharacterDetail';

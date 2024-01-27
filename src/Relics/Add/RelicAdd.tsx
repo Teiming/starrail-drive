@@ -4,7 +4,7 @@ import RelicAddSet from './RelicAddSet';
 import RelicAddMain from './RelicAddMain';
 import RelicAddSub from './RelicAddSub';
 import RelicAddEquip from './RelicAddEquip';
-import Empty from 'Empty';
+import Empty from 'components/Empty';
 import { dispatch } from 'store';
 import { mode } from 'slice/grobalSlice';
 import { add } from 'slice/relicsSlice';
