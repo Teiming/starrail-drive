@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import RelicCard from './Card/RelicCard';
 import { useSelector } from 'react-redux';
 import { State, dispatch } from 'store';
-import { switchSubMode } from 'slice/modeSlice';
+import { mode } from 'slice/grobalSlice';
 import { remove, select, updateRelicsEquip } from 'slice/relicsSlice';
 import './RelicsList.css';
 import { EveryCharacterWithTrailblazer } from 'types/character-name';
@@ -35,7 +35,7 @@ export default function RelicsList() {
       <div
         className='controler'
         onClick={() => {
-          dispatch(switchSubMode('추가'));
+          dispatch(mode('추가'));
         }}
       >
         <span>+</span>

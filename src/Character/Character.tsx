@@ -12,13 +12,13 @@ import './Character.css';
 export default function Character() {
   const [selectedCharacter, setSelectedCharacter] =
     useState<EveryCharacterWithTrailblazer>('개척자');
-  const subMode = useSelector((state: State) => state.modeSlice.subMode);
+  const mode = useSelector((state: State) => state.grobalSlice.mode);
   const already = useSelector((state: State) => state.characterSlice);
   localStorage.setItem('캐릭터', JSON.stringify(store.getState().characterSlice));
 
   let innerCharacter: ReactElement = <></>;
   let emptyLine: 1 | 2 = 1;
-  switch (subMode) {
+  switch (mode) {
     case '상세':
       innerCharacter = <CharacterDetail name={selectedCharacter} />;
       break;

@@ -20,8 +20,8 @@ export default function Lightcone() {
   // const takeATK = takeStat(2.4);
   // const takeDEF = takeStat(3.0);
 
-  const subMode = useSelector((state: State) => state.modeSlice.subMode);
-  switch (subMode) {
+  const mode = useSelector((state: State) => state.grobalSlice.mode);
+  switch (mode) {
     case '추가':
       return <Add />;
     default:

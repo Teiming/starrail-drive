@@ -47,13 +47,13 @@ const reducers = {
     state: Filters,
     action: {
       payload: {
-        mode: string;
+        page: string;
         target: string;
         isSelected: true | false;
       };
     }
   ) => {
-    switch (action.payload.mode) {
+    switch (action.payload.page) {
       case '캐릭터':
         state.character[action.payload.target as EveryElement] = action.payload.isSelected;
         break;

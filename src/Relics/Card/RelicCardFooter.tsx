@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { State, dispatch } from 'store';
-import { switchSubMode } from 'slice/modeSlice';
+import { mode } from 'slice/grobalSlice';
 import './RelicCardFooter.css';
 
 interface Props {
@@ -57,7 +57,7 @@ export default function RelicCardFooter(props: Props) {
           className='RelicEdit'
           onClick={() => {
             props.select();
-            dispatch(switchSubMode('수정'));
+            dispatch(mode('수정'));
           }}
         ></input>
         <input

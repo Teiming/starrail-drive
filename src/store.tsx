@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import modeSlice from 'slice/modeSlice';
+import grobalSlice from 'slice/grobalSlice';
 import filterSlice from 'slice/filterSlice';
 import characterSlice from 'slice/characterSlice';
 import lightconeSlice from 'slice/lightconeSlice';
 import relicsSlice from 'slice/relicsSlice';
 
 const reducer = {
-  modeSlice,
+  grobalSlice,
   filterSlice,
   characterSlice,
   lightconeSlice,

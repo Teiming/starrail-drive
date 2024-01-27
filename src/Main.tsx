@@ -6,8 +6,8 @@ import { useSelector } from 'react-redux';
 import { State } from 'store';
 
 export default function Main() {
-  const mode = useSelector((state: State) => state.modeSlice.mode);
-  switch (mode) {
+  const page = useSelector((state: State) => state.grobalSlice.page);
+  switch (page) {
     case '캐릭터':
       return <Character />;
     case '광추':

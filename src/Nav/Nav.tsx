@@ -2,18 +2,18 @@ import React, { ReactElement } from 'react';
 import NavSecondary from './NavSecondary';
 import { useSelector } from 'react-redux';
 import { dispatch, State } from 'store';
-import { switchMode } from 'slice/modeSlice';
-import { everyMode } from 'types/mode';
+import { page } from 'slice/grobalSlice';
+import { everyPage } from 'types/mode';
 import './Nav.css';
 
 export default function Nav() {
-  const mode = useSelector((state: State) => state.modeSlice.mode);
-  const subMode = useSelector((state: State) => state.modeSlice.subMode);
+  const _page = useSelector((state: State) => state.grobalSlice.page);
+  const _mode = useSelector((state: State) => state.grobalSlice.mode);
 
   let innerNav: ReactElement[] = [];
-  for (const navItem of everyMode) {
+  for (const navItem of everyPage) {
     let isSelected: boolean = false;
-    if (navItem === mode) {
+    if (navItem === _page) {
       isSelected = true;
     }
     innerNav.push(
@@ -21,7 +21,7 @@ export default function Nav() {
         key={navItem}
         data-selected={isSelected}
         onClick={() => {
-          dispatch(switchMode(navItem));
+          dispatch(page(navItem));
         }}
       >
         {navItem}
@@ -30,13 +30,8 @@ export default function Nav() {
   }
 
   let innerNavSecondary: ReactElement = <></>;
-  switch (subMode) {
-    case '추가':
-    case '상세':
-      break;
-    default:
-      innerNavSecondary = <NavSecondary />;
-      break;
+  if (_mode === '') {
+    innerNavSecondary = <NavSecondary />;
   }
 
   return (

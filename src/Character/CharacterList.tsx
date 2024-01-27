@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import CharacterCard from './Card/CharacterCard';
 import { useSelector } from 'react-redux';
 import { State, dispatch } from 'store';
-import { switchSubMode } from 'slice/modeSlice';
+import { mode } from 'slice/grobalSlice';
 import { EveryElement } from 'types/every';
 import {
   Character,
@@ -69,7 +69,7 @@ export default function CharacterList(props: Props) {
       <div
         className='controler'
         onClick={() => {
-          dispatch(switchSubMode('추가'));
+          dispatch(mode('추가'));
         }}
       >
         <span>+</span>

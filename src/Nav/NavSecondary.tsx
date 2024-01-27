@@ -4,11 +4,11 @@ import { State, dispatch } from 'store';
 import { toggleFilter } from 'slice/filterSlice';
 
 export default function NavSecondary() {
-  const mode = useSelector((state: State) => state.modeSlice.mode);
+  const page = useSelector((state: State) => state.grobalSlice.page);
   const filters = useSelector((state: State) => state.filterSlice);
 
   let filter: { [key: string]: boolean } = {};
-  switch (mode) {
+  switch (page) {
     case '캐릭터':
       filter = filters.character;
       break;
@@ -30,7 +30,7 @@ export default function NavSecondary() {
         key={target}
         data-selected={isSelected}
         onClick={() => {
-          dispatch(toggleFilter({ mode, target, isSelected: !isSelected }));
+          dispatch(toggleFilter({ page, target, isSelected: !isSelected }));
         }}
       >
         {target}

@@ -6,7 +6,7 @@ import RelicAddSub from './RelicAddSub';
 import RelicAddEquip from './RelicAddEquip';
 import Empty from 'Empty';
 import { dispatch } from 'store';
-import { switchSubMode } from 'slice/modeSlice';
+import { mode } from 'slice/grobalSlice';
 import { add } from 'slice/relicsSlice';
 import { EveryRelicsSlot } from 'types/every';
 import { RelicSubOption } from 'types/relics';
@@ -43,7 +43,7 @@ export default function RelicAdd() {
               },
             })
           );
-          dispatch(switchSubMode(''));
+          dispatch(mode(''));
         }}
       >
         <input type='hidden' name='relicId' value={'유물_' + newID} />

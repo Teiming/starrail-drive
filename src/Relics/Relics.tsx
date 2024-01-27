@@ -6,8 +6,8 @@ import { State } from 'store';
 import './Relics.css';
 
 export default function Relics() {
-  const subMode = useSelector((state: State) => state.modeSlice.subMode);
-  switch (subMode) {
+  const mode = useSelector((state: State) => state.grobalSlice.mode);
+  switch (mode) {
     case '추가':
       return <RelicAdd />;
     case '수정':

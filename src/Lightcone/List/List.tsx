@@ -1,6 +1,6 @@
 import React from 'react';
 import { dispatch } from 'store';
-import { switchSubMode } from 'slice/modeSlice';
+import { mode } from 'slice/grobalSlice';
 import './List.css';
 
 export default function List() {
@@ -9,7 +9,7 @@ export default function List() {
       <div
         className='controler'
         onClick={() => {
-          dispatch(switchSubMode('추가'));
+          dispatch(mode('추가'));
         }}
       >
         <span>+</span>
