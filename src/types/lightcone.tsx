@@ -1,27 +1,10 @@
-import {
-  everyAbundanceLightcone,
-  everyDestructionLightcone,
-  everyEruditionLightcone,
-  everyHarmonyLightcone,
-  everyHuntLightcone,
-  everyNihilityLightcone,
-  everyPreservationLightcone,
-} from 'database/lightcone';
+import { everyLightcone } from 'database/lightcone';
 import { EveryPath } from './every';
+
+export type EveryLightcone = (typeof everyLightcone)[number];
 
 export const everyLightconeRarity = [5, 4, 3] as const;
 export type EveryLightconeRarity = (typeof everyLightconeRarity)[number];
-
-export const everyLightcone = [
-  ...everyDestructionLightcone,
-  ...everyHuntLightcone,
-  ...everyEruditionLightcone,
-  ...everyHarmonyLightcone,
-  ...everyNihilityLightcone,
-  ...everyPreservationLightcone,
-  ...everyAbundanceLightcone,
-] as const;
-export type EveryLightcone = (typeof everyLightcone)[number];
 
 export const lightconeDBs: {
   name: EveryLightcone;

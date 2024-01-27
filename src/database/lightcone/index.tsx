@@ -69,3 +69,13 @@ export const everyAbundanceLightcone = [
   '같은 심정',
   '수술 후의 대화',
 ] as const;
+
+export const everyLightcone = [
+  ...everyDestructionLightcone,
+  ...everyHuntLightcone,
+  ...everyEruditionLightcone,
+  ...everyHarmonyLightcone,
+  ...everyNihilityLightcone,
+  ...everyPreservationLightcone,
+  ...everyAbundanceLightcone,
+] as const;
