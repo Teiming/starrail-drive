@@ -1,14 +1,11 @@
 import React, { ReactElement } from 'react';
-import './CharacterCardEidolon.css';
+import { EveryEidolon } from 'types/character';
+import './Eidolon.css';
 
-interface Props {
-  eidolon: number;
-}
-
-export default function Eidolon(props: Props) {
+export default function Eidolon({ eidolon }: { eidolon: EveryEidolon }) {
   let innerStatus: ReactElement[] = [];
-  for (let i = 0; i < props.eidolon; i++) {
-    innerStatus.push(<div key={i + 1} className='EidolonItem'></div>);
+  for (let i = 0; i < eidolon; i++) {
+    innerStatus.push(<div key={i + 1} style={{ backgroundColor: 'var(--primary)' }}></div>);
   }
   return (
     <section className='CharacterCardEidolon'>

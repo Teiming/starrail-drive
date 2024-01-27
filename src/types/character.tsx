@@ -23,13 +23,13 @@ export interface Trace {
   능력: TraceMajor;
   속성: TraceMinor;
 }
-export type Eidolon = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+export type EveryEidolon = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 export type TraitLevelKeys = keyof Trace;
 
 export interface Character {
   레벨: number;
   행적: Trace;
-  성혼: Eidolon;
+  성혼: EveryEidolon;
 }
 
 export const templateCharacter: Character = {

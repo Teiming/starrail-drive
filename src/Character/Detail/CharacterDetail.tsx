@@ -6,7 +6,7 @@ import './CharacterDetail.css';
 import { useSelector } from 'react-redux';
 import { State, dispatch } from 'store';
 import { changeEidolon, changeLevel } from 'slice/characterSlice';
-import { Eidolon, EveryCharacterWithTrailblazer, templateCharacter } from 'types/character';
+import { EveryEidolon, EveryCharacterWithTrailblazer, templateCharacter } from 'types/character';
 import { checkCharacterName } from 'types/typeCheck';
 
 export default function CharacterDetail(props: { name: EveryCharacterWithTrailblazer }) {
@@ -33,7 +33,7 @@ export default function CharacterDetail(props: { name: EveryCharacterWithTrailbl
         />
         <DetailEidolon
           eidolon={data.성혼}
-          onChange={(eidolon: Eidolon) => {
+          onChange={(eidolon: EveryEidolon) => {
             dispatch(changeEidolon({ name, eidolon }));
           }}
         />
@@ -75,8 +75,5 @@ export default function CharacterDetail(props: { name: EveryCharacterWithTrailbl
 //       개척자: newTrailblazer,
 //     });
 //     localStorage.setItem('캐릭터', JSON.stringify(newTotalSet));
-//   }
-//   componentWillUnmount() {
-//     // this.props.onUpdateData();
 //   }
 // }

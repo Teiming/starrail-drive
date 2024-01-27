@@ -1,10 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  templateCharacter,
-  type CharacterTrailblazer,
-  type Characters,
-  type Eidolon,
-} from 'types/character';
+import { templateCharacter, CharacterTrailblazer, Characters, EveryEidolon } from 'types/character';
 import { EveryCharacter, EveryCharacterWithTrailblazer } from 'types/character-name';
 import { EveryElement } from 'types/every';
 
@@ -35,10 +30,10 @@ const reducers = {
   },
   changeEidolon: (
     state: Partial<Characters>,
-    action: { payload: { name: EveryCharacterWithTrailblazer; eidolon: Eidolon } }
+    action: { payload: { name: EveryCharacterWithTrailblazer; eidolon: EveryEidolon } }
   ) => {
     const target = state[action.payload.name];
-    if (target?.성혼) {
+    if (target) {
       target.성혼 = action.payload.eidolon;
     }
   },

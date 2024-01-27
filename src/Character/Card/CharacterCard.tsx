@@ -10,7 +10,7 @@ import Header from './Header';
 import Lightcone from './Lightcone';
 import CharacterCardTrace from './CharacterCardTrace';
 import CharacterCardRelic from './CharacterCardRelic';
-import CharacterCardEidolon from './CharacterCardEidolon';
+import Eidolon from './Eidolon';
 import { useSelector } from 'react-redux';
 import { State, dispatch } from 'store';
 import { switchSubMode } from 'slice/modeSlice';
@@ -70,7 +70,7 @@ export default function CharacterCard(props: Props) {
         <hr />
         <CharacterCardTrace trace={trace} />
         <CharacterCardRelic id={[1, 2, 3, 4, 5, 6]} />
-        <CharacterCardEidolon eidolon={eidolon} />
+        <Eidolon eidolon={eidolon} />
       </section>
     </article>
   );
