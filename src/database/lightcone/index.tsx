@@ -67,7 +67,7 @@ export const everyNihilityLightcone = [
   '밤 인사와 잠든 얼굴',
 ] as const;
 export const everyPreservationLightcone = [
-  '그녀는 두 눈을 감았네',
+  '그녀는 두 눈을 감았네',
 
   '기억의 소재',
   '운명의 실을 엮다',
