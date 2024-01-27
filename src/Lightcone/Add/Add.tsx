@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Grid, GridItem, Mode } from 'components';
 import Filter from './Filter';
+import { dispatch } from 'store';
+import { add } from 'slice/lightconeSlice';
 import { EveryPath, everyPath } from 'types/every';
-import { EveryLightconeRarity } from 'types/lightcone';
+import { EveryLightcone, EveryLightconeRarity } from 'types/lightcone';
 import {
   everyDestructionLightcone,
   everyHuntLightcone,
@@ -28,7 +30,7 @@ export default function Add() {
   const [path, setPath] = useState<EveryPath>('파멸');
   const [rarity, setRarity] = useState<EveryLightconeRarity>(5);
 
-  const currentLightcone = categorizedLightcone[path];
+  const lc = categorizedLightcone[path];
 
   return (
     <Mode id='LightconeAdd'>
@@ -49,12 +51,32 @@ export default function Add() {
         </section>
         <Grid card_width={20} className='lightcones'>
           <>
-            {currentLightcone.map((value) => {
+            {lc.map((value) => {
               return (
-                <GridItem key={value}>
+                <GridItem
+                  key={value}
+                  value={value as EveryLightcone}
+                  onClick={(name: EveryLightcone) => {
+                    dispatch(add(name));
+                  }}
+                >
                   <>
-                    {value}
-                    <img src='' alt=''></img>
+                    <div
+                      style={{
+                        backgroundColor: 'var(--primary-shade-400)',
+                        width: '5rem',
+                        height: '5rem',
+                        margin: 'auto',
+                        borderRadius: '0.5rem',
+                      }}
+                    >
+                      <img
+                        src={process.env.PUBLIC_URL + '/png/lightcone/' + value + '.png'}
+                        alt={value}
+                        style={{ width: '100%', height: '100%' }}
+                      ></img>
+                    </div>
+                    <div style={{ marginTop: '0.5rem', textAlign: 'center' }}>{value}</div>
                   </>
                 </GridItem>
               );
