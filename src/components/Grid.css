@@ -1,31 +1,49 @@
 section.grid[data-card='20'] {
   margin: auto;
-  max-width: 20rem;
   width: 100%;
   grid-template-columns: repeat(1, 1fr);
 
   @media (min-width: 40rem) {
-    max-width: 40rem;
     grid-template-columns: repeat(2, 1fr);
   }
   @media (min-width: 60rem) {
-    max-width: 60rem;
     grid-template-columns: repeat(3, 1fr);
   }
   @media (min-width: 80rem) {
-    max-width: 80rem;
     grid-template-columns: repeat(4, 1fr);
   }
   @media (min-width: 100rem) {
-    max-width: 100rem;
     grid-template-columns: repeat(5, 1fr);
   }
   @media (min-width: 120rem) {
-    max-width: 120rem;
     grid-template-columns: repeat(6, 1fr);
   }
-  @media (min-width: 140rem) {
-    max-width: 140rem;
-    grid-template-columns: repeat(7, 1fr);
+}
+main:has(.grid[data-card='20']) {
+  max-width: 20rem;
+}
+@media (min-width: 40rem) {
+  main:has(.grid[data-card='20']) {
+    max-width: 40rem;
+  }
+}
+@media (min-width: 60rem) {
+  main:has(.grid[data-card='20']) {
+    max-width: 60rem;
+  }
+}
+@media (min-width: 80rem) {
+  main:has(.grid[data-card='20']) {
+    max-width: 80rem;
+  }
+}
+@media (min-width: 100rem) {
+  main:has(.grid[data-card='20']) {
+    max-width: 100rem;
+  }
+}
+@media (min-width: 120rem) {
+  main:has(.grid[data-card='20']) {
+    max-width: 120rem;
   }
 }
