@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { EveryCharacter } from 'types/character';
 import { EveryLightcone } from 'types/lightcone';
 
 const name = 'lightconeSlice';
@@ -8,6 +9,7 @@ interface LightconeStructure {
     이름: EveryLightcone;
     레벨: number;
     중첩: 1 | 2 | 3 | 4 | 5;
+    장착: '미장착' | EveryCharacter;
   };
 }
 
@@ -28,7 +30,7 @@ const reducers = {
   add: (state: typeof initialState, action: { payload: EveryLightcone }) => {
     const genID = () => Math.round(Math.random() * 10000).toString();
     const newID = genID() + '-' + genID();
-    state.lightcones['광추_' + newID] = { 이름: action.payload, 레벨: 1, 중첩: 1 };
+    state.lightcones['광추_' + newID] = { 이름: action.payload, 레벨: 1, 중첩: 1, 장착: '미장착' };
     save(state);
   },
 };
